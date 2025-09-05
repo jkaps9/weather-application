@@ -1,7 +1,7 @@
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* Style Guide CSS Variables */
@@ -43,30 +43,29 @@ body {
 }
 
 header {
-	padding: 2rem 0;
+  padding: 2rem 0;
 }
 
 .container {
-	width: 90%;
-	max-width: 1120px;
-	margin: 0 auto;
+  width: 90%;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .flex-row {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;	
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .dropdown-button {
-	background-color: var(--neutral-700);
-	border-radius: 0.75rem;
-	border: none;
-	color: inherit;
-	padding: 0.5em 1em;
-
+  background-color: var(--neutral-700);
+  border-radius: 0.75rem;
+  border: none;
+  color: inherit;
+  padding: 0.5em 1em;
 }
 
 .dropdown-menu {
-	display: none;
+  display: none;
 }
