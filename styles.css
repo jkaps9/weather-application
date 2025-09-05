@@ -69,3 +69,17 @@ header {
 .dropdown-menu {
   display: none;
 }
+
+.search-button {
+  background-color: var(--blue-700);
+  color: inherit;
+  border-radius: 0.75rem;
+  padding: 1em 2em;
+  border: none;
+}
+
+input {
+  padding: 1em 2em;
+  border-radius: 0.75rem;
+  border: none;
+}
