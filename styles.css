@@ -1,0 +1,37 @@
+/* Style Guide CSS Variables */
+:root {
+  /* Colors - Neutral */
+  --neutral-900: hsl(243, 96%, 9%);
+  --neutral-800: hsl(243, 27%, 20%);
+  --neutral-700: hsl(243, 23%, 24%);
+  --neutral-600: hsl(243, 23%, 30%);
+  --neutral-300: hsl(240, 6%, 70%);
+  --neutral-200: hsl(250, 6%, 84%);
+  --neutral-0: hsl(0, 0%, 100%);
+
+  /* Colors - Orange */
+  --orange-500: hsl(28, 100%, 52%);
+
+  /* Colors - Blue */
+  --blue-500: hsl(233, 67%, 56%);
+  --blue-700: hsl(248, 70%, 36%);
+
+  /* Typography */
+  --font-family-primary: "DM Sans", sans-serif;
+  --font-family-secondary: "Bricolage Grotesque", sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-body: 18px;
+}
+
+/* Base styles using the variables */
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body);
+  color: var(--neutral-900);
+  background-color: var(--neutral-0);
+}
