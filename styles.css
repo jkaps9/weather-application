@@ -204,6 +204,14 @@ h1 {
   background-color: var(--blue-500);
   border-radius: 0.75rem;
   padding: 1rem 1.5rem;
+
+  &:hover {
+    background-color: var(--blue-700);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--blue-500);
+  }
 }
 
 @media (min-width: 48rem) {
