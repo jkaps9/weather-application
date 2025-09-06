@@ -47,10 +47,6 @@ body {
   background-color: var(--neutral-900);
 }
 
-header {
-  padding: 2rem 0;
-}
-
 button {
   border: none;
   color: inherit;
@@ -68,6 +64,7 @@ img {
   width: 100%;
 }
 
+/* Utility Classes */
 .container {
   width: 90%;
   max-width: 1120px;
@@ -78,6 +75,11 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Header */
+header {
+  padding: 2rem 0;
 }
 
 .dropdown-button {
