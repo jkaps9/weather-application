@@ -64,6 +64,12 @@ img {
   width: 100%;
 }
 
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
 /* Utility Classes */
 .container {
   width: 90%;
