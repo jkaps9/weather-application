@@ -132,6 +132,31 @@ main {
   gap: 2rem;
 }
 
+@media (min-width: 57rem) {
+  main {
+    grid-template-areas:
+      "hero hero"
+      "current hourly"
+      "daily hourly";
+  }
+
+  .hero {
+    grid-area: hero;
+  }
+
+  .current-weather {
+    grid-area: current;
+  }
+
+  .daily-forecast {
+    grid-area: daily;
+  }
+
+  .hourly-forecast {
+    grid-area: hourly;
+  }
+}
+
 /* Utility Classes */
 .container {
   width: 90%;
