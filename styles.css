@@ -108,7 +108,7 @@ header {
 /* HERO */
 h1 {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: clamp(3rem, 1.2857rem + 3.5714vw, 4rem);
 }
 
 .search-bar {
