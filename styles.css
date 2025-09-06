@@ -129,6 +129,12 @@ header {
   max-width: 7.5rem;
 }
 
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
 @media (min-width: 48rem) {
   .weather-info {
     grid-template-columns: 1fr auto auto;
