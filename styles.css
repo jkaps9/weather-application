@@ -107,7 +107,7 @@ body {
 }
 
 main {
-  padding: 3rem 0;
+  padding: clamp(3rem, 2.5541rem + 1.9025vw, 4rem) 0;
 }
 
 button {
@@ -160,7 +160,7 @@ img {
 
 /* Header */
 header {
-  padding: 1rem 0;
+  padding: clamp(1rem, 0.1082rem + 3.805vw, 3rem) 0 0;
 }
 
 .logo {
