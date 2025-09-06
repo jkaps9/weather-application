@@ -256,8 +256,7 @@ h1 {
 .weather-info {
   background-image: url("assets/images/bg-today-small.svg");
 background-color: var(--neutral-800);
-  /*background-repeat: no-repeat;*/
-  background-size: 100% 100%;
+  background-size: 100% auto;
   min-height: 17.875rem;
 
   border-radius: var(--border-radius-lg);
