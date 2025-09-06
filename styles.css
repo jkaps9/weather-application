@@ -77,6 +77,13 @@ img {
   align-items: center;
 }
 
+.card {
+  border-radius: var(--border-radius-md);
+  background-color: var(--neutral-800);
+  border: 1px solid var(--neutral-600);
+  padding: 1.25rem;
+}
+
 /* Header */
 header {
   padding: 2rem 0;
