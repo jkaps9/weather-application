@@ -221,3 +221,11 @@ h1 {
     padding: 1rem 0.625rem;
   }
 }
+
+@media (min-width: 48rem) {
+  .forecast-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
