@@ -137,7 +137,7 @@ h1 {
 .search-button {
   background-color: var(--blue-500);
   border-radius: 0.75rem;
-  padding: 1em 2em;
+  padding: 1rem 1.5rem;
 
   font-size: 1.25rem;
   font-weight: var(--font-weight-medium);
