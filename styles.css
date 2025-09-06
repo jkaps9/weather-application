@@ -205,6 +205,12 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 1rem;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
 
 @media (min-width: 48rem) {
@@ -235,7 +241,6 @@ h1 {
   .forecast-cards {
     display: flex;
     justify-content: space-between;
-    gap: 0;
   }
 }
 
