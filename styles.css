@@ -104,8 +104,10 @@ body {
   font-size: var(--font-size-body);
   color: var(--neutral-0);
   background-color: var(--neutral-900);
+}
 
-  padding: 4rem 0;
+main {
+  padding: 3rem 0;
 }
 
 button {
@@ -158,7 +160,7 @@ img {
 
 /* Header */
 header {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .logo {
@@ -353,7 +355,7 @@ h1 {
     margin: 0 auto;
   }
 
-  .container {
+  main .container {
     width: 100%;
     margin: 0;
   }
