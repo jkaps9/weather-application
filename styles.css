@@ -52,6 +52,12 @@ button {
   cursor: pointer;
 }
 
+input {
+  padding: 1em 2em;
+  border-radius: 0.75rem;
+  border: none;
+}
+
 .container {
   width: 90%;
   max-width: 1120px;
@@ -78,10 +84,4 @@ button {
   background-color: var(--blue-700);
   border-radius: 0.75rem;
   padding: 1em 2em;
-}
-
-input {
-  padding: 1em 2em;
-  border-radius: 0.75rem;
-  border: none;
 }
