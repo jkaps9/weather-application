@@ -63,7 +63,6 @@ input {
 
 img {
   max-width: 100%;
-  width: 100%;
 }
 
 main {
@@ -95,6 +94,15 @@ main {
 /* Header */
 header {
   padding: 2rem 0;
+}
+
+.logo {
+  width: auto;
+  height: clamp(1.75rem, 1.0344rem + 3.0534vw, 2.5rem);
+
+  img {
+    height: 100%;
+  }
 }
 
 .dropdown-button {
