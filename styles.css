@@ -209,3 +209,15 @@ h1 {
     grid-column: 1;
   }
 }
+
+/* Daily Forecast */
+.forecast-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  text-align: center;
+
+  .card {
+    padding: 1rem 0.625rem;
+  }
+}
