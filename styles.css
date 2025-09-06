@@ -45,6 +45,8 @@ body {
   font-size: var(--font-size-body);
   color: var(--neutral-0);
   background-color: var(--neutral-900);
+
+  padding: 4rem 0;
 }
 
 button {
@@ -93,6 +95,9 @@ main {
 
 .section-title {
   margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 120%;
 }
 
 /* Header */
@@ -231,5 +236,46 @@ h1 {
     display: flex;
     justify-content: space-between;
     gap: 0;
+  }
+}
+
+/* Hourly Forecasts */
+/* TODO: figure out how to get the hours to stop scrolling below the header, or to disappear underneath the header */
+.hourly-forecast-card {
+  position: relative;
+  max-height: 43.3125rem;
+  border: none;
+  overflow: scroll;
+}
+
+.hourly-header {
+  position: sticky;
+  top: 0;
+  margin-bottom: 1rem;
+  .section-title {
+    margin-bottom: 0;
+  }
+}
+
+.hourly-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hour-card {
+  padding: 0.5625rem 1rem 0.5625rem 0.75rem;
+  background-color: var(--neutral-700);
+
+  .weather-icon {
+    width: auto;
+    height: 2.5rem;
+    img {
+      height: 100%;
+    }
+  }
+
+  span.temp {
+    margin-left: auto;
   }
 }
