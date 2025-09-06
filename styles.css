@@ -46,6 +46,12 @@ header {
   padding: 2rem 0;
 }
 
+button {
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .container {
   width: 90%;
   max-width: 1120px;
@@ -61,8 +67,6 @@ header {
 .dropdown-button {
   background-color: var(--neutral-700);
   border-radius: 0.75rem;
-  border: none;
-  color: inherit;
   padding: 0.5em 1em;
 }
 
@@ -72,10 +76,8 @@ header {
 
 .search-button {
   background-color: var(--blue-700);
-  color: inherit;
   border-radius: 0.75rem;
   padding: 1em 2em;
-  border: none;
 }
 
 input {
