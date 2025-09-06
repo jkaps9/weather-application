@@ -110,6 +110,7 @@ header {
   background-image: url("assets/images/bg-today-small.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  min-height: 17.875rem;
 
   border-radius: var(--border-radius-lg);
   padding: 1.5rem;
