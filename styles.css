@@ -138,6 +138,7 @@ header {
 
 @media (min-width: 48rem) {
   .weather-info {
+    background-image: url("assets/images/bg-today-large.svg");
     grid-template-columns: 1fr auto auto;
     justify-items: start;
   }
