@@ -32,6 +32,11 @@
   --font-weight-bold: 700;
 
   --font-size-body: 18px;
+
+  /* Border-Radius */
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1.25rem;
 }
 
 /* Base styles using the variables */
@@ -54,8 +59,13 @@ button {
 
 input {
   padding: 1em 2em;
-  border-radius: 0.75rem;
+  border-radius: var(--border-radius-md);
   border: none;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
 }
 
 .container {
@@ -72,7 +82,7 @@ input {
 
 .dropdown-button {
   background-color: var(--neutral-700);
-  border-radius: 0.75rem;
+  border-radius: var(--border-radius-md);
   padding: 0.5em 1em;
 }
 
@@ -84,4 +94,36 @@ input {
   background-color: var(--blue-700);
   border-radius: 0.75rem;
   padding: 1em 2em;
+}
+
+/* Current Weather */
+.weather-info {
+  border-radius: var(--border-radius-lg);
+  background-color: var(--blue-700);
+  padding: 1.5rem;
+
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+
+.text {
+  grid-column: 1 / -1;
+}
+
+.weather-icon {
+  max-height: 7.5rem;
+  max-width: 7.5rem;
+}
+
+@media (min-width: 48rem) {
+  .weather-info {
+    grid-template-columns: 1fr auto auto;
+    justify-items: start;
+  }
+
+  .text {
+    grid-column: 1;
+  }
 }
