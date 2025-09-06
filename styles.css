@@ -242,7 +242,7 @@ h1 {
   grid-template-columns: 1fr 1fr;
   place-items: center;
 
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(1.25rem, -0.0357rem + 2.6786vw, 2rem);
 }
 
 .text {
@@ -261,7 +261,7 @@ h1 {
 .weather-details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 1rem;
+  gap: clamp(1rem, 0.7771rem + 0.9512vw, 1.5rem);
 
   .card {
     display: flex;
