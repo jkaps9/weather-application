@@ -21,7 +21,7 @@ const weatherUrl =
 // }
 
 //TODO: REMOVE LATER...DOING THIS NOW TO REDUCE API CALLS DURING DEVELOPMENT
-getWeatherFromLocal();
+// getWeatherFromLocal();
 
 async function getWeatherFromLocal() {
   fetch("data.json")
@@ -58,34 +58,9 @@ function processWeatherData(data) {
     `);
 }
 
-const body = document.querySelector(".weather-details");
-
-async function fetchDataFromAPI(url) {
-  try {
-    let response = await fetch(url, { mode: "cors" });
-    let json = await response.json();
-    console.log(json);
-    json.results.forEach((result) => {
-      const state = result.country_code === "US" ? result.admin1 + " " : "";
-
-      const outputStr = `${result.name}, ${state}${result.country}`;
-      const p = document.createElement("p");
-      p.textContent = outputStr;
-      body.appendChild(p);
-
-      console.log(outputStr);
-    });
-  } catch (err) {
-    console.log(`error fetching from  ${url}`);
-    console.log(err);
-  }
-}
-
-// fetchDataFromAPI(searchUrl);
-
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");
-const weather = new WeatherAPI();
+const weatherAPI = new WeatherAPI();
 
 searchButton.addEventListener("click", () => {
   const query = searchInput.value;
@@ -93,7 +68,41 @@ searchButton.addEventListener("click", () => {
   if (!query) {
     alert("enter a city");
   } else {
-    weather.getCoordinates(query);
     console.log(`query:${query}`);
+    getWeatherByCity(query)
+      .then((data) => {
+        console.log(
+          "Current temperature:",
+          data.weather.current.temperature + "°C"
+        );
+        console.log("Hourly forecast:", data.weather.hourly);
+        console.log("7-day forecast:", data.weather.daily);
+      })
+      .catch((error) => {
+        console.error("Failed to get weather:", error);
+      });
   }
 });
+
+// Function to get weather by city name
+async function getWeatherByCity(cityName) {
+  try {
+    // Get coordinates from city name
+    const location = await weatherAPI.getCoordinates(cityName);
+    console.log(`Found location: ${location.name}, ${location.country}`);
+
+    // Get weather data using coordinates
+    const weather = await weatherAPI.getWeatherData(
+      location.latitude,
+      location.longitude
+    );
+
+    return {
+      location,
+      weather,
+    };
+  } catch (error) {
+    console.error("Error getting weather:", error);
+    throw error;
+  }
+}

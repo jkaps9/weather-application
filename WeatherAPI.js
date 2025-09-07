@@ -17,7 +17,6 @@ export class WeatherAPI {
 
       if (data.results && data.results.length > 0) {
         const location = data.results[0];
-        console.log(location);
         return {
           latitude: location.latitude,
           longitude: location.longitude,
@@ -181,6 +180,7 @@ export class WeatherAPI {
   }
 }
 
+/*
 // Usage examples:
 const weatherAPI = new WeatherAPI();
 
@@ -217,6 +217,7 @@ async function getWeatherByCoordinates(lat, lon) {
     throw error;
   }
 }
+*/
 
 // Example usage:
 /*
