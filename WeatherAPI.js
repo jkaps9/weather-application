@@ -1,5 +1,5 @@
 // Weather API functions using Open-Meteo
-class WeatherAPI {
+export class WeatherAPI {
   constructor() {
     this.baseURL = "https://api.open-meteo.com/v1/forecast";
     this.geocodingURL = "https://geocoding-api.open-meteo.com/v1/search";
@@ -9,12 +9,15 @@ class WeatherAPI {
   async getCoordinates(cityName) {
     try {
       const response = await fetch(
-        `${this.geocodingURL}?name=${encodeURIComponent(cityName)}&count=1&language=en&format=json`,
+        `${this.geocodingURL}?name=${encodeURIComponent(
+          cityName
+        )}&count=1&language=en&format=json`
       );
       const data = await response.json();
 
       if (data.results && data.results.length > 0) {
         const location = data.results[0];
+        console.log(location);
         return {
           latitude: location.latitude,
           longitude: location.longitude,
@@ -191,7 +194,7 @@ async function getWeatherByCity(cityName) {
     // Get weather data using coordinates
     const weather = await weatherAPI.getWeatherData(
       location.latitude,
-      location.longitude,
+      location.longitude
     );
 
     return {
@@ -214,8 +217,6 @@ async function getWeatherByCoordinates(lat, lon) {
     throw error;
   }
 }
-
-export class WeatherAPI {}
 
 // Example usage:
 /*

@@ -1,4 +1,4 @@
-// import { WeatherAPI } from "./WeatherAPI";
+import { WeatherAPI } from "./WeatherAPI.js";
 
 const searchUrl =
   "https://geocoding-api.open-meteo.com/v1/search?name=berlin&count=3&language=en&format=json"; //replace spaces with +
@@ -82,3 +82,18 @@ async function fetchDataFromAPI(url) {
 }
 
 // fetchDataFromAPI(searchUrl);
+
+const searchButton = document.querySelector(".search-button");
+const searchInput = document.querySelector("#search");
+const weather = new WeatherAPI();
+
+searchButton.addEventListener("click", () => {
+  const query = searchInput.value;
+  console.log("searching...");
+  if (!query) {
+    alert("enter a city");
+  } else {
+    weather.getCoordinates(query);
+    console.log(`query:${query}`);
+  }
+});
