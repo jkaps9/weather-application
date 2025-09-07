@@ -1,3 +1,5 @@
+import { WeatherAPI } from "./WeatherAPI.js";
+
 const searchUrl =
   "https://geocoding-api.open-meteo.com/v1/search?name=berlin&count=3&language=en&format=json"; //replace spaces with +
 
@@ -56,6 +58,8 @@ function processWeatherData(data) {
     `);
 }
 
+const body = document.querySelector(".weather-details");
+
 async function fetchDataFromAPI(url) {
   try {
     let response = await fetch(url, { mode: "cors" });
@@ -63,7 +67,13 @@ async function fetchDataFromAPI(url) {
     console.log(json);
     json.results.forEach((result) => {
       const state = result.country_code === "US" ? result.admin1 + " " : "";
-      console.log(`${result.name}, ${state}${result.country}`);
+
+      const outputStr = `${result.name}, ${state}${result.country}`;
+      const p = document.createElement("p");
+      p.textContent = outputStr;
+      body.appendChild(p);
+
+      console.log(outputStr);
     });
   } catch (err) {
     console.log(`error fetching from  ${url}`);
