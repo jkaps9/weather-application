@@ -1,16 +1,21 @@
 export class DOMController {
-  weatherInfoCard = document.querySelector(".weather-info");
-  locationText = weatherInfo.querySelector(".location");
-  dateText = weatherInfo.querySelector(".date");
+  #weatherInfoCard = document.querySelector(".weather-info");
+  #locationText = document.querySelector(".weather-info .location");
+  #dateText = document.querySelector(".weather-info .date");
 
   constructor() {
     this.location = null;
     this.weather = null;
   }
 
-  setLocationText() {
+  setLocation(loc) {
+    this.location = loc;
+    this.#setLocationText();
+  }
+
+  #setLocationText() {
     if (location) {
-      this.locationText.textContent = `${this.location.name}, ${this.location.country}`;
+      this.#locationText.textContent = `${this.location.name}, ${this.location.country}`;
     } else {
       console.log("location not set");
     }

@@ -1,4 +1,5 @@
 import { WeatherAPI } from "./WeatherAPI.js";
+import { DOMController } from "./DOMController.js";
 
 const searchUrl =
   "https://geocoding-api.open-meteo.com/v1/search?name=berlin&count=3&language=en&format=json"; //replace spaces with +
@@ -61,6 +62,7 @@ function processWeatherData(data) {
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");
 const weatherAPI = new WeatherAPI();
+const domController = new DOMController();
 
 searchButton.addEventListener("click", () => {
   const query = searchInput.value;
@@ -77,6 +79,8 @@ searchButton.addEventListener("click", () => {
         );
         console.log("Hourly forecast:", data.weather.hourly);
         console.log("7-day forecast:", data.weather.daily);
+        domController.setLocation(data.location);
+        // domController.setWeather(data.weather);
       })
       .catch((error) => {
         console.error("Failed to get weather:", error);
