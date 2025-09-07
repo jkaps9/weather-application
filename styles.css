@@ -310,12 +310,15 @@ h1 {
   max-height: 43.3125rem;
   border: none;
   overflow: scroll;
+  padding-top: 0;
 }
 
 .hourly-header {
   position: sticky;
   top: 0;
-  margin-bottom: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+  background-color: inherit;
   .section-title {
     margin-bottom: 0;
   }

@@ -1,4 +1,4 @@
-import { WeatherAPI } from "./WeatherAPI.js";
+// import { WeatherAPI } from "./WeatherAPI";
 
 const searchUrl =
   "https://geocoding-api.open-meteo.com/v1/search?name=berlin&count=3&language=en&format=json"; //replace spaces with +
@@ -81,4 +81,4 @@ async function fetchDataFromAPI(url) {
   }
 }
 
-fetchDataFromAPI(searchUrl);
+// fetchDataFromAPI(searchUrl);
