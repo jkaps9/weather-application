@@ -212,9 +212,7 @@ h1 {
   }
 
   &:focus {
-    box-shadow:
-      0 0 0 3px var(--neutral-900),
-      0 0 0 5px var(--blue-500);
+    box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--blue-500);
   }
 }
 
