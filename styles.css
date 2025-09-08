@@ -366,13 +366,19 @@ h1 {
 }
 
 /* Daily Forecast */
+.daily-forecast > .container {
+  height: 100%;
+}
+
 .forecast-cards {
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
   text-align: center;
 
   .card {
+    flex-grow: 1;
     padding: 1rem 0.625rem;
   }
 }
