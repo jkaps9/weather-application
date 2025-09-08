@@ -232,8 +232,9 @@ h1 {
 /* Current Weather */
 .weather-info {
   background-image: url("assets/images/bg-today-small.svg");
-  background-color: var(--neutral-800);
+  background-color: var(--neutral-900);
   background-size: 100% auto;
+  background-repeat: no-repeat;
   min-height: 17.875rem;
 
   border-radius: var(--border-radius-lg);
@@ -277,6 +278,7 @@ h1 {
     background-image: url("assets/images/bg-today-large.svg");
     grid-template-columns: 1fr auto auto;
     justify-items: start;
+    text-align: start;
   }
 
   .text {
