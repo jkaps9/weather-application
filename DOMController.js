@@ -33,9 +33,16 @@ export class DOMController {
 
   #hourlyCards = document.querySelector(".hourly-forecast .hourly-cards");
 
+  #switchUnitsButton = document.querySelector(".switch-units-button");
+
   constructor() {
     this.location = null;
     this.weather = null;
+    this.preferredMeasurementSystem = "Metric"; // Metric or Imperial
+    this.preferredTempUnit = "C"; // C or F
+    this.preferredSpeedUnit = "km/h"; // km/h or mph
+    this.preferredPrecipitationUnit = "mm"; // mm or in
+    this.#addOnClickListeners();
   }
 
   setLocation(loc) {
@@ -239,5 +246,23 @@ export class DOMController {
     while (element.firstChild) {
       element.removeChild(element.lastChild);
     }
+  }
+
+  #addOnClickListeners() {
+    this.#switchUnitsButton.addEventListener("click", () => {
+      this.#switchUnitsButton.innerHTML = `Switch to ${this.preferredMeasurementSystem}`;
+
+      if (this.preferredMeasurementSystem === "Metric") {
+        this.preferredMeasurementSystem = "Imperial";
+        this.preferredTempUnit = "F";
+        this.preferredSpeedUnit = "mph";
+        this.preferredPrecipitationUnit = "in";
+      } else if (this.preferredMeasurementSystem === "Imperial") {
+        this.preferredMeasurementSystem = "Metric";
+        this.preferredTempUnit = "C";
+        this.preferredSpeedUnit = "km/h";
+        this.preferredPrecipitationUnit = "mm";
+      }
+    });
   }
 }
