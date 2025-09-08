@@ -254,6 +254,12 @@ export class DOMController {
     this.#switchUnitsButton.addEventListener("click", () =>
       this.#switchAllPreferredUnits()
     );
+
+    this.#unitsButtons.forEach((button) => {
+      button.addEventListener("click", (e) =>
+        this.#handleUnitButtonClick(e.currentTarget)
+      );
+    });
   }
 
   #switchAllPreferredUnits() {
@@ -269,6 +275,32 @@ export class DOMController {
       this.preferredTempUnit = "C";
       this.preferredSpeedUnit = "km/h";
       this.preferredPrecipitationUnit = "mm";
+    }
+  }
+
+  #handleUnitButtonClick(btn) {
+    // If button is not already selected then do something
+    if (!btn.classList.contains("selected")) {
+      btn.classList.add("selected");
+      if (btn.id === "fahrenheit") {
+        this.preferredTempUnit = "F";
+        document.querySelector("#celsius").classList.remove("selected");
+      } else if (btn.id === "celsius") {
+        this.preferredTempUnit = "C";
+        document.querySelector("#fahrenheit").classList.remove("selected");
+      } else if (btn.id === "kmh") {
+        this.preferredTempUnit = "km/h";
+        document.querySelector("#mph").classList.remove("selected");
+      } else if (btn.id === "mph") {
+        this.preferredTempUnit = "mph";
+        document.querySelector("#kmh").classList.remove("selected");
+      } else if (btn.id === "mm") {
+        this.preferredTempUnit = "mm";
+        document.querySelector("#in").classList.remove("selected");
+      } else if (btn.id === "in") {
+        this.preferredTempUnit = "in";
+        document.querySelector("#mm").classList.remove("selected");
+      }
     }
   }
 }
