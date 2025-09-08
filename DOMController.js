@@ -1,13 +1,32 @@
 export class DOMController {
   #weatherInfoCard = document.querySelector(".weather-info");
-  #locationText = document.querySelector(".weather-info .location");
-  #dateText = document.querySelector(".weather-info .date");
+  #locationText = document.querySelector(
+    ".current-weather .weather-info .location"
+  );
+
+  #dateText = document.querySelector(".current-weather .weather-info .date");
   #currentTemperatureText = document.querySelector(
-    ".weather-info .current-temperature"
+    ".current-weather .weather-info .current-temperature"
   );
 
   #currentWeatherIcon = document.querySelector(
     ".weather-info .weather-icon-image"
+  );
+
+  #currentFeelsLike = document.querySelector(
+    ".current-weather .weather-details .feels-like"
+  );
+
+  #currentRelativeHumidity = document.querySelector(
+    ".current-weather .weather-details .relative-humidity"
+  );
+
+  #currentWindSpeed = document.querySelector(
+    ".current-weather .weather-details .wind-speed"
+  );
+
+  #currentPrecipitation = document.querySelector(
+    ".current-weather .weather-details .precipitation"
   );
 
   constructor() {
@@ -33,6 +52,7 @@ export class DOMController {
     this.#setDateText();
     this.#setCurrentTemperature();
     this.#setCurrentWeatherIcon();
+    this.#setWeatherDetails();
   }
 
   #setDateText() {
@@ -150,5 +170,16 @@ export class DOMController {
     };
 
     return weatherCodes[weatherCode] || "Unknown";
+  }
+
+  #setWeatherDetails() {
+    if (!this.weather) {
+      console.log("weather not set");
+    } else {
+      this.#currentFeelsLike.textContent = `${this.weather.current.feelsLike}°`;
+      this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
+      this.#currentWindSpeed.textContent = `${this.weather.current.windSpeed} mph`;
+      this.#currentPrecipitation.textContent = `${this.weather.current.precipitation} in`;
+    }
   }
 }
