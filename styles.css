@@ -131,7 +131,7 @@ img {
 .main-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: clamp(2rem, 0.2857rem + 3.5714vw, 3rem);
 }
 
 /* Utility Classes */
@@ -451,7 +451,6 @@ h1 {
 
   .hero {
     grid-column: 1 / -1;
-    margin-bottom: 1rem;
   }
 
   .current-weather,
