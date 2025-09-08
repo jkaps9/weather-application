@@ -312,6 +312,7 @@ h1 {
   max-height: 43.3125rem;
   border: none;
   overflow: scroll;
+  overflow-x: hidden;
   padding-top: 0;
 }
 
