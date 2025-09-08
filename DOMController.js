@@ -304,6 +304,13 @@ export class DOMController {
         this.#handleUnitButtonClick(e.currentTarget)
       );
     });
+
+    const dropdownButtons = document.querySelectorAll(".dropdown-button");
+    dropdownButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) =>
+        e.currentTarget.nextElementSibling.classList.toggle("active")
+      );
+    });
   }
 
   #switchAllPreferredUnits() {

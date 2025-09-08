@@ -186,14 +186,19 @@ header {
 }
 
 .dropdown-menu {
-  position: absolute;
-  right: 0;
-  display: block;
-  margin-top: 0.625rem;
-  z-index: 1000;
+  display: none;
 
-  padding: 0.5rem;
-  min-width: 13.375rem;
+  &.active {
+    display: block;
+    position: absolute;
+    right: 0;
+
+    margin-top: 0.625rem;
+    z-index: 1000;
+
+    padding: 0.5rem;
+    min-width: 13.375rem;
+  }
 }
 
 .switch-units-button,
