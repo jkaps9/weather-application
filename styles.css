@@ -202,12 +202,22 @@ header {
 }
 
 .switch-units-button,
-.units-button {
+.units-button,
+.day-button {
   background: transparent;
   border: none;
   padding: 0.625rem 0.5rem;
   text-align: start;
   border-radius: 0.5rem;
+}
+
+.switch-units-button {
+  width: 100%;
+}
+
+.switch-units-button:hover,
+.units-button:hover {
+  background-color: var(--neutral-700);
 }
 
 .units-button.selected {
@@ -242,6 +252,15 @@ header {
 .dropdown-section-title {
   color: var(--neutral-300);
   margin: 0.25rem 0;
+}
+
+.day-button {
+  width: 100%;
+}
+
+.dropdown-option.selected .day-button,
+.day-button:hover {
+  background-color: var(--neutral-700);
 }
 
 /* HERO */

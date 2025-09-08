@@ -273,7 +273,7 @@ export class DOMController {
 
     for (let i = 0; i < days.length; i++) {
       const div = document.createElement("div");
-      div.className = "dropdown-option" + i === 0 ? " selected" : "";
+      div.className = "dropdown-option" + `${i === 0 ? " selected" : ""}`;
       const button = document.createElement("button");
       button.className = "day-button textpreset7";
       button.textContent = days[i];
