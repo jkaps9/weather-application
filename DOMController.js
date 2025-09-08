@@ -35,6 +35,8 @@ export class DOMController {
 
   #switchUnitsButton = document.querySelector(".switch-units-button");
 
+  #unitsButtons = document.querySelectorAll(".units-button");
+
   constructor() {
     this.location = null;
     this.weather = null;
@@ -249,20 +251,24 @@ export class DOMController {
   }
 
   #addOnClickListeners() {
-    this.#switchUnitsButton.addEventListener("click", () => {
-      this.#switchUnitsButton.innerHTML = `Switch to ${this.preferredMeasurementSystem}`;
+    this.#switchUnitsButton.addEventListener("click", () =>
+      this.#switchAllPreferredUnits()
+    );
+  }
 
-      if (this.preferredMeasurementSystem === "Metric") {
-        this.preferredMeasurementSystem = "Imperial";
-        this.preferredTempUnit = "F";
-        this.preferredSpeedUnit = "mph";
-        this.preferredPrecipitationUnit = "in";
-      } else if (this.preferredMeasurementSystem === "Imperial") {
-        this.preferredMeasurementSystem = "Metric";
-        this.preferredTempUnit = "C";
-        this.preferredSpeedUnit = "km/h";
-        this.preferredPrecipitationUnit = "mm";
-      }
-    });
+  #switchAllPreferredUnits() {
+    this.#switchUnitsButton.innerHTML = `Switch to ${this.preferredMeasurementSystem}`;
+
+    if (this.preferredMeasurementSystem === "Metric") {
+      this.preferredMeasurementSystem = "Imperial";
+      this.preferredTempUnit = "F";
+      this.preferredSpeedUnit = "mph";
+      this.preferredPrecipitationUnit = "in";
+    } else if (this.preferredMeasurementSystem === "Imperial") {
+      this.preferredMeasurementSystem = "Metric";
+      this.preferredTempUnit = "C";
+      this.preferredSpeedUnit = "km/h";
+      this.preferredPrecipitationUnit = "mm";
+    }
   }
 }
