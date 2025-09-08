@@ -102,12 +102,18 @@ export class DOMController {
   }
 
   #setWeatherDetails() {
-    this.#currentTemperatureText.textContent = `${this.weather.current.temperature}°`;
+    const currentTemp =
+      this.preferredTempUnit === "F"
+        ? Math.round(
+            UnitConverter.celsiusToFahrenheit(this.weather.current.temperature)
+          )
+        : this.weather.current.temperature;
+    this.#currentTemperatureText.textContent = `${currentTemp}°`;
     this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
     this.#currentFeelsLike.textContent = `${this.weather.current.feelsLike}°`;
     this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
-    this.#currentWindSpeed.textContent = `${this.weather.current.windSpeed} mph`;
-    this.#currentPrecipitation.textContent = `${this.weather.current.precipitation} in`;
+    this.#currentWindSpeed.textContent = `${this.weather.current.windSpeed} ${this.preferredSpeedUnit}`;
+    this.#currentPrecipitation.textContent = `${this.weather.current.precipitation} ${this.preferredPrecipitationUnit}`;
   }
 
   #setDailyForecast() {
@@ -174,12 +180,20 @@ export class DOMController {
     // Create low temperature span
     const lowTemp = document.createElement("span");
     lowTemp.className = "low-temp";
-    lowTemp.textContent = `${dayData.tempMin}°`;
+    const minTemp =
+      this.preferredTempUnit === "F"
+        ? Math.round(UnitConverter.celsiusToFahrenheit(dayData.tempMin))
+        : dayData.tempMin;
+    lowTemp.textContent = `${minTemp}°`;
 
     // Create high temperature span
     const highTemp = document.createElement("span");
     highTemp.className = "high-temp";
-    highTemp.textContent = `${dayData.tempMax}°`;
+    const maxTemp =
+      this.preferredTempUnit === "F"
+        ? Math.round(UnitConverter.celsiusToFahrenheit(dayData.tempMax))
+        : dayData.tempMax;
+    highTemp.textContent = `${maxTemp}°`;
 
     // Append temperatures to row
     tempRow.appendChild(lowTemp);
@@ -240,7 +254,11 @@ export class DOMController {
     // Create temperature span
     const tempElement = document.createElement("span");
     tempElement.className = "temp textpreset7";
-    tempElement.textContent = `${hourData.temperature}°`;
+    const hourTemp =
+      this.preferredTempUnit === "F"
+        ? Math.round(UnitConverter.celsiusToFahrenheit(hourData.temperature))
+        : hourData.temperature;
+    tempElement.textContent = `${hourTemp}°`;
 
     // Append all elements to card
     card.appendChild(iconContainer);
@@ -295,16 +313,16 @@ export class DOMController {
         this.preferredTempUnit = "C";
         document.querySelector("#fahrenheit").classList.remove("selected");
       } else if (btn.id === "kmh") {
-        this.preferredTempUnit = "km/h";
+        this.preferredSpeedUnit = "km/h";
         document.querySelector("#mph").classList.remove("selected");
       } else if (btn.id === "mph") {
-        this.preferredTempUnit = "mph";
+        this.preferredSpeedUnit = "mph";
         document.querySelector("#kmh").classList.remove("selected");
       } else if (btn.id === "mm") {
-        this.preferredTempUnit = "mm";
+        this.preferredPrecipitationUnit = "mm";
         document.querySelector("#in").classList.remove("selected");
       } else if (btn.id === "in") {
-        this.preferredTempUnit = "in";
+        this.preferredPrecipitationUnit = "in";
         document.querySelector("#mm").classList.remove("selected");
       }
 
