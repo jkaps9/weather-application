@@ -1,3 +1,5 @@
+import * as UnitConverter from "./UnitConverter.js";
+
 export class DOMController {
   #weatherInfoCard = document.querySelector(".weather-info");
   #locationText = document.querySelector(
@@ -63,9 +65,7 @@ export class DOMController {
   setWeather(weath) {
     this.weather = weath;
     this.#setDateText();
-    this.#setWeatherDetails();
-    this.#setDailyForecast();
-    this.#setHourlyForecast();
+    this.#setWeather();
   }
 
   #setDateText() {
@@ -91,17 +91,23 @@ export class DOMController {
     return formatter.format(date);
   }
 
-  #setWeatherDetails() {
+  #setWeather() {
     if (!this.weather) {
       console.log("weather not set");
     } else {
-      this.#currentTemperatureText.textContent = `${this.weather.current.temperature}°`;
-      this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
-      this.#currentFeelsLike.textContent = `${this.weather.current.feelsLike}°`;
-      this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
-      this.#currentWindSpeed.textContent = `${this.weather.current.windSpeed} mph`;
-      this.#currentPrecipitation.textContent = `${this.weather.current.precipitation} in`;
+      this.#setWeatherDetails();
+      this.#setDailyForecast();
+      this.#setHourlyForecast();
     }
+  }
+
+  #setWeatherDetails() {
+    this.#currentTemperatureText.textContent = `${this.weather.current.temperature}°`;
+    this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
+    this.#currentFeelsLike.textContent = `${this.weather.current.feelsLike}°`;
+    this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
+    this.#currentWindSpeed.textContent = `${this.weather.current.windSpeed} mph`;
+    this.#currentPrecipitation.textContent = `${this.weather.current.precipitation} in`;
   }
 
   #setDailyForecast() {
@@ -301,6 +307,8 @@ export class DOMController {
         this.preferredTempUnit = "in";
         document.querySelector("#mm").classList.remove("selected");
       }
+
+      this.#setWeather();
     }
   }
 }
