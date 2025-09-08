@@ -202,6 +202,24 @@ header {
   border: none;
   padding: 0.625rem 0.5rem;
   text-align: start;
+  border-radius: 0.5rem;
+}
+
+.units-button.selected {
+  background-color: var(--neutral-700);
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0.5rem;
+    background: url("assets/images/icon-checkmark.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+  }
 }
 
 .dropdown-section {
