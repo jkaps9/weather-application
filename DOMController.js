@@ -52,8 +52,6 @@ export class DOMController {
   setWeather(weath) {
     this.weather = weath;
     this.#setDateText();
-    this.#setCurrentTemperature();
-    this.#setCurrentWeatherIcon();
     this.#setWeatherDetails();
     this.#setDailyForecast();
   }
@@ -81,26 +79,12 @@ export class DOMController {
     return formatter.format(date);
   }
 
-  #setCurrentTemperature() {
-    if (!this.weather) {
-      console.log("weather not set");
-    } else {
-      this.#currentTemperatureText.textContent = `${this.weather.current.temperature}°`;
-    }
-  }
-
-  #setCurrentWeatherIcon() {
-    if (!this.weather) {
-      console.log("weather not set");
-    } else {
-      this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
-    }
-  }
-
   #setWeatherDetails() {
     if (!this.weather) {
       console.log("weather not set");
     } else {
+      this.#currentTemperatureText.textContent = `${this.weather.current.temperature}°`;
+      this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
       this.#currentFeelsLike.textContent = `${this.weather.current.feelsLike}°`;
       this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
       this.#currentWindSpeed.textContent = `${this.weather.current.windSpeed} mph`;
