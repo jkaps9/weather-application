@@ -176,6 +176,9 @@ header {
   background-color: var(--neutral-700);
   border-radius: var(--border-radius-md);
   padding: 0.5em 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .dropdown-menu {
