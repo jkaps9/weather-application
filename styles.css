@@ -181,8 +181,44 @@ header {
   gap: 0.5em;
 }
 
+.dropdown {
+  position: relative;
+}
+
 .dropdown-menu {
-  display: none;
+  position: absolute;
+  right: 0;
+  display: block;
+  margin-top: 0.625rem;
+  z-index: 1000;
+
+  padding: 0.5rem;
+  min-width: 13.375rem;
+}
+
+.switch-units-button,
+.units-button {
+  background: transparent;
+  border: none;
+  padding: 0.625rem 0.5rem;
+  text-align: start;
+}
+
+.dropdown-section {
+  border-bottom: 1px solid var(--neutral-600);
+  padding: 0.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.dropdown-section-title {
+  color: var(--neutral-300);
+  margin: 0.25rem 0;
 }
 
 /* HERO */
