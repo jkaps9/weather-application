@@ -438,6 +438,7 @@ h1 {
 @media (min-width: 57rem) {
   .main-container {
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto 1fr;
     width: 90%;
     max-width: 1216px;
     margin: 0 auto;
@@ -456,10 +457,32 @@ h1 {
   .current-weather,
   .daily-forecast {
     grid-column: 1;
+    min-height: 0;
+  }
+
+  .current-weather {
+    max-height: fit-content;
+  }
+
+  .daily-forecast {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .daily-forecast .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .forecast-cards {
+    flex: 1;
   }
 
   .hourly-forecast {
     grid-column: 2;
     grid-row: 2 / span 2;
+
+    height: 100%;
   }
 }
