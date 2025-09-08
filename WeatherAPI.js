@@ -167,17 +167,6 @@ export class WeatherAPI {
 
     return weatherCodes[weatherCode] || "Unknown";
   }
-
-  // Get weather icon class/name based on weather code
-  getWeatherIcon(weatherCode) {
-    if (weatherCode === 0 || weatherCode === 1) return "icon-sunny.webp";
-    if (weatherCode === 2) return "icon-partly-cloudy.webp";
-    if (weatherCode === 3) return "icon-cloudy.webp";
-    if (weatherCode >= 51 && weatherCode <= 67) return "icon-rainy.webp";
-    if (weatherCode >= 71 && weatherCode <= 86) return "icon-snowy.webp";
-    if (weatherCode >= 95) return "icon-stormy.webp";
-    return "icon-cloudy.webp";
-  }
 }
 
 /*
