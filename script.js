@@ -24,6 +24,7 @@ searchButton.addEventListener("click", () => {
         console.log("7-day forecast:", data.weather.daily);
         domController.setLocation(data.location);
         domController.setWeather(data.weather);
+        domController.updateDOM();
       })
       .catch((error) => {
         console.error("Failed to get weather:", error);

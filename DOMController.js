@@ -51,30 +51,14 @@ export class DOMController {
 
   setLocation(loc) {
     this.location = loc;
-    this.#setLocationText();
-  }
-
-  #setLocationText() {
-    if (!this.location) {
-      console.log("location not set");
-    } else {
-      this.#locationText.textContent = `${this.location.name}, ${this.location.country}`;
-    }
   }
 
   setWeather(weath) {
     this.weather = weath;
-    this.#setDateText();
-    this.#setWeather();
   }
 
-  #setDateText() {
-    if (!this.weather) {
-      console.log("weather not set");
-    } else {
-      const date = this.#formatDate(this.weather.current.time);
-      this.#dateText.textContent = `${date}`;
-    }
+  updateDOM() {
+    this.#setWeather();
   }
 
   #formatDate(dt) {
@@ -100,41 +84,6 @@ export class DOMController {
       this.#setDailyForecast();
       this.#setHourlyForecast();
     }
-  }
-
-  #setWeatherDetails() {
-    const currentTemp =
-      this.preferredTempUnit === "F"
-        ? Math.round(
-            UnitConverter.celsiusToFahrenheit(this.weather.current.temperature)
-          )
-        : this.weather.current.temperature;
-    this.#currentTemperatureText.textContent = `${currentTemp}°`;
-
-    this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
-
-    const feelsLikeTemp =
-      this.preferredTempUnit === "F"
-        ? Math.round(
-            UnitConverter.celsiusToFahrenheit(this.weather.current.feelsLike)
-          )
-        : this.weather.current.feelsLike;
-    this.#currentFeelsLike.textContent = `${feelsLikeTemp}°`;
-    this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
-
-    const currentWindSpeed =
-      this.preferredSpeedUnit === "mph"
-        ? Math.round(UnitConverter.kmhToMph(this.weather.current.windSpeed))
-        : this.weather.current.windSpeed;
-    this.#currentWindSpeed.textContent = `${currentWindSpeed} ${this.preferredSpeedUnit}`;
-
-    const currentPrecipitation =
-      this.preferredPrecipitationUnit === "in"
-        ? Math.round(
-            UnitConverter.mmToInches(this.weather.current.precipitation) * 100
-          ) / 100
-        : this.weather.current.precipitation;
-    this.#currentPrecipitation.textContent = `${currentPrecipitation} ${this.preferredPrecipitationUnit}`;
   }
 
   #createCurrentWeatherSection() {
@@ -282,19 +231,6 @@ export class DOMController {
   }
 
   #createForecastCard(dayData) {
-    /* 
-      <div class="card">
-        <p class="day textpreset6">Tue</p>
-        <div class="weather-icon">
-          <img src="assets/images/icon-drizzle.webp" alt="drizzle" />
-        </div>
-        <div class="flex-row textpreset7">
-          <span class="low-temp">16°</span>
-          <span class="high-temp">22°</span>
-        </div>
-      </div>
-    */
-
     // Create the main card div
     const card = document.createElement("div");
     card.className = "card";
