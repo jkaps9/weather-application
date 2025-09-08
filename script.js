@@ -77,10 +77,11 @@ searchButton.addEventListener("click", () => {
           "Current temperature:",
           data.weather.current.temperature + "°C"
         );
+        console.log("Current:", data.weather.current);
         console.log("Hourly forecast:", data.weather.hourly);
         console.log("7-day forecast:", data.weather.daily);
         domController.setLocation(data.location);
-        // domController.setWeather(data.weather);
+        domController.setWeather(data.weather);
       })
       .catch((error) => {
         console.error("Failed to get weather:", error);

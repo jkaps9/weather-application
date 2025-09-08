@@ -20,4 +20,8 @@ export class DOMController {
       console.log("location not set");
     }
   }
+
+  setWeather(weath) {
+    this.weather = weath;
+  }
 }
