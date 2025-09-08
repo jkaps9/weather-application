@@ -53,3 +53,26 @@ async function getWeatherByCity(cityName) {
     throw error;
   }
 }
+
+// TODO: store preferred units locally for each user
+let preferredMeasurementSystem = "Metric"; // Metric or Imperial
+let preferredTempUnit = "C"; // C or F
+let preferredSpeedUnit = "km/h"; // km/h or mph
+let preferredPrecipitationUnit = "mm"; // mm or in
+
+const switchUnitsButton = document.querySelector(".switch-units-button");
+switchUnitsButton.addEventListener("click", () => {
+  switchUnitsButton.innerHTML = `Switch to ${preferredMeasurementSystem}`;
+
+  if (preferredMeasurementSystem === "Metric") {
+    preferredMeasurementSystem = "Imperial";
+    preferredTempUnit = "F";
+    preferredSpeedUnit = "mph";
+    preferredPrecipitationUnit = "in";
+  } else if (preferredMeasurementSystem === "Imperial") {
+    preferredMeasurementSystem = "Metric";
+    preferredTempUnit = "C";
+    preferredSpeedUnit = "km/h";
+    preferredPrecipitationUnit = "mm";
+  }
+});
