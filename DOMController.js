@@ -136,6 +136,68 @@ export class DOMController {
     this.#currentPrecipitation.textContent = `${currentPrecipitation} ${this.preferredPrecipitationUnit}`;
   }
 
+  #createCurrentWeatherSection() {
+    const currentWeatherSection = document.querySelector(
+      "section.current-weather .container"
+    );
+    this.#removeAllChildren(currentWeatherSection);
+    currentWeatherSection.appendChild(this.#createWeatherInfo);
+  }
+
+  #createWeatherInfo() {
+    // Create the main div
+    const weatherInfo = document.createElement("div");
+    weatherInfo.className = "weather-info";
+
+    // Create text elements
+    const textElements = document.createElement("div");
+    textElements.className = "text";
+
+    const locationElement = document.createElement("p");
+    locationElement.className = "location textpreset4";
+    locationElement.textContent = `${this.location.name}, ${this.location.country}`;
+
+    const dateElement = document.createElement("p");
+    dateElement.className = "date textpreset6";
+
+    const date = this.#formatDate(this.weather.current.time);
+    dateElement.textContent = `${date}`;
+
+    // add location and date to text element
+    textElements.appendChild(locationElement);
+    textElements.appendChild(dateElement);
+
+    // Create weather icon
+    const weatherIcon = document.createElement("div");
+    weatherIcon.className = "weather-icon";
+
+    const weatherImg = document.createElement("img");
+    weatherImg.className = "weather-icon-image";
+    weatherImg.src = `assets/images/${this.weather.current.icon}`;
+    weatherImg.alt = this.weather.current.altText;
+
+    // Add weather image to weather icon
+    weatherIcon.appendChild(weatherImg);
+
+    // Create temperature element
+    const temperatureElement = document.createElement("p");
+    temperatureElement.className = "current-temperature textpreset1";
+    const currentTemp =
+      this.preferredTempUnit === "F"
+        ? Math.round(
+            UnitConverter.celsiusToFahrenheit(this.weather.current.temperature)
+          )
+        : this.weather.current.temperature;
+    temperatureElement.textContent = currentTemp;
+
+    // Add all elements to weather info
+    weatherInfo.appendChild(textElements);
+    weatherInfo.appendChild(weatherIcon);
+    weatherInfo.appendChild(temperatureElement);
+
+    return weatherInfo;
+  }
+
   #setDailyForecast() {
     if (!this.weather) {
       console.log("weather not set");
