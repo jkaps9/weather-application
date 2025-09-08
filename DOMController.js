@@ -320,6 +320,9 @@ export class DOMController {
       this.preferredSpeedUnit = "km/h";
       this.preferredPrecipitationUnit = "mm";
     }
+
+    this.#updatePreferenceButtons();
+    this.#setWeather();
   }
 
   #handleUnitButtonClick(btn) {
@@ -328,25 +331,44 @@ export class DOMController {
       btn.classList.add("selected");
       if (btn.id === "fahrenheit") {
         this.preferredTempUnit = "F";
-        document.querySelector("#celsius").classList.remove("selected");
       } else if (btn.id === "celsius") {
         this.preferredTempUnit = "C";
-        document.querySelector("#fahrenheit").classList.remove("selected");
       } else if (btn.id === "kmh") {
         this.preferredSpeedUnit = "km/h";
-        document.querySelector("#mph").classList.remove("selected");
       } else if (btn.id === "mph") {
         this.preferredSpeedUnit = "mph";
-        document.querySelector("#kmh").classList.remove("selected");
       } else if (btn.id === "mm") {
         this.preferredPrecipitationUnit = "mm";
-        document.querySelector("#in").classList.remove("selected");
       } else if (btn.id === "in") {
         this.preferredPrecipitationUnit = "in";
-        document.querySelector("#mm").classList.remove("selected");
       }
 
+      this.#updatePreferenceButtons();
       this.#setWeather();
+    }
+  }
+
+  #updatePreferenceButtons() {
+    this.#unitsButtons.forEach((button) => {
+      button.classList.remove("selected");
+    });
+
+    if (this.preferredTempUnit === "F") {
+      document.querySelector("#fahrenheit").classList.add("selected");
+    } else if (this.preferredTempUnit === "C") {
+      document.querySelector("#celsius").classList.add("selected");
+    }
+
+    if (this.preferredSpeedUnit === "km/h") {
+      document.querySelector("#kmh").classList.add("selected");
+    } else if (this.preferredSpeedUnit === "mph") {
+      document.querySelector("#mph").classList.add("selected");
+    }
+
+    if (this.preferredPrecipitationUnit === "mm") {
+      document.querySelector("#mm").classList.add("selected");
+    } else if (this.preferredPrecipitationUnit === "in") {
+      document.querySelector("#in").classList.add("selected");
     }
   }
 }
