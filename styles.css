@@ -421,6 +421,7 @@ h1 {
 .hour-card {
   padding: 0.5625rem 1rem 0.5625rem 0.75rem;
   background-color: var(--neutral-700);
+  min-height: 3.75rem;
 
   .weather-icon {
     width: auto;
