@@ -154,7 +154,7 @@ export class WeatherAPI {
       71: "Slight snow fall",
       73: "Moderate snow fall",
       75: "Heavy snow fall",
-      77: "Snow grains",
+      77: "Snowformat dates grains",
       80: "Slight rain showers",
       81: "Moderate rain showers",
       82: "Violent rain showers",
