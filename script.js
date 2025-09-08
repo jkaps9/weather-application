@@ -15,13 +15,13 @@ searchButton.addEventListener("click", () => {
     console.log(`query:${query}`);
     getWeatherByCity(query)
       .then((data) => {
-        console.log(
-          "Current temperature:",
-          data.weather.current.temperature + "°C"
-        );
-        console.log("Current:", data.weather.current);
-        console.log("Hourly forecast:", data.weather.hourly);
-        console.log("7-day forecast:", data.weather.daily);
+        // console.log(
+        //   "Current temperature:",
+        //   data.weather.current.temperature + "°C"
+        // );
+        // console.log("Current:", data.weather.current);
+        // console.log("Hourly forecast:", data.weather.hourly);
+        // console.log("7-day forecast:", data.weather.daily);
         domController.setLocation(data.location);
         domController.setWeather(data.weather);
         domController.updateDOM();

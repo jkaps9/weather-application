@@ -22,6 +22,7 @@ export class DOMController {
 
   setWeather(weath) {
     this.weather = weath;
+    this.#setDaysForHourlyForecastDropdown();
   }
 
   updateDOM() {
@@ -250,6 +251,16 @@ export class DOMController {
     card.appendChild(tempRow);
 
     return card;
+  }
+
+  #setDaysForHourlyForecastDropdown() {
+    const dropdownMenu = document.querySelector(
+      ".hourly-forcast-card .dropdown-menu"
+    );
+    const days = this.weather.daily.map((day) => day.dayLong);
+    console.log(days);
+    const dates = this.weather.daily.map((day) => day.date);
+    console.log(dates);
   }
 
   #setHourlyForecast() {
