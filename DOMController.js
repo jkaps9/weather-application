@@ -255,12 +255,31 @@ export class DOMController {
 
   #setDaysForHourlyForecastDropdown() {
     const dropdownMenu = document.querySelector(
-      ".hourly-forcast-card .dropdown-menu"
+      ".hourly-forecast-card .dropdown-menu"
     );
+
     const days = this.weather.daily.map((day) => day.dayLong);
-    console.log(days);
-    const dates = this.weather.daily.map((day) => day.date);
-    console.log(dates);
+    const dropdownButton = document.querySelector(
+      ".hourly-forecast-card .dropdown-button"
+    );
+    dropdownButton.innerHTML =
+      days[0] +
+      ` <img
+                      src="assets/images/icon-dropdown.svg"
+                      alt="dropdown icon"
+                    />`;
+
+    this.#removeAllChildren(dropdownMenu);
+
+    for (let i = 0; i < days.length; i++) {
+      const div = document.createElement("div");
+      div.className = "dropdown-option" + i === 0 ? " selected" : "";
+      const button = document.createElement("button");
+      button.className = "day-button textpreset7";
+      button.textContent = days[i];
+      div.appendChild(button);
+      dropdownMenu.appendChild(div);
+    }
   }
 
   #setHourlyForecast() {
