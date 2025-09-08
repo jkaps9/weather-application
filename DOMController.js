@@ -31,6 +31,8 @@ export class DOMController {
 
   #forecastCards = document.querySelector(".daily-forecast .forecast-cards");
 
+  #hourlyCards = document.querySelector(".hourly-forecast .hourly-cards");
+
   constructor() {
     this.location = null;
     this.weather = null;
@@ -54,6 +56,7 @@ export class DOMController {
     this.#setDateText();
     this.#setWeatherDetails();
     this.#setDailyForecast();
+    this.#setHourlyForecast();
   }
 
   #setDateText() {
@@ -105,7 +108,6 @@ export class DOMController {
         // Clear out any forecast cards that may currently exist
         this.#removeAllChildren(this.#forecastCards);
 
-        console.log(this.weather.daily);
         // Create new cards
         this.weather.daily.forEach((dayData) => {
           const card = this.#createForecastCard(dayData);
@@ -172,6 +174,63 @@ export class DOMController {
     card.appendChild(dayElement);
     card.appendChild(iconContainer);
     card.appendChild(tempRow);
+
+    return card;
+  }
+
+  #setHourlyForecast() {
+    if (!this.weather) {
+      console.log("weather not set");
+    } else {
+      if (!this.#forecastCards) {
+        console.error(
+          "Forecast card container not found:",
+          ".daily-forecast .forecast-cards"
+        );
+      } else {
+        // Clear out any hourly cards that may currently exist
+        this.#removeAllChildren(this.#hourlyCards);
+
+        // Create new cards
+        this.weather.hourly.forEach((hourlyData) => {
+          const card = this.#createHourlyCard(hourlyData);
+          this.#hourlyCards.appendChild(card);
+        });
+      }
+    }
+  }
+
+  #createHourlyCard(hourData) {
+    // Create the main card div
+    const card = document.createElement("div");
+    card.className = "card hour-card flex-row";
+
+    // Create weather icon container
+    const iconContainer = document.createElement("div");
+    iconContainer.className = "weather-icon";
+
+    // Create weather icon image
+    const iconImg = document.createElement("img");
+    iconImg.src = `assets/images/${hourData.icon}`;
+    iconImg.alt = hourData.altText;
+
+    // Append image to container
+    iconContainer.appendChild(iconImg);
+
+    // Create time paragraph
+    const timeElement = document.createElement("p");
+    timeElement.className = "time textpreset5medium";
+    timeElement.textContent = hourData.time;
+
+    // Create temperature span
+    const tempElement = document.createElement("span");
+    tempElement.className = "temp textpreset7";
+    tempElement.textContent = `${hourData.temperature}°`;
+
+    // Append all elements to card
+    card.appendChild(iconContainer);
+    card.appendChild(timeElement);
+    card.appendChild(tempElement);
 
     return card;
   }
