@@ -1,42 +1,9 @@
 import * as UnitConverter from "./UnitConverter.js";
 
 export class DOMController {
-  #weatherInfoCard = document.querySelector(".weather-info");
-  #locationText = document.querySelector(
-    ".current-weather .weather-info .location"
-  );
-
-  #dateText = document.querySelector(".current-weather .weather-info .date");
-  #currentTemperatureText = document.querySelector(
-    ".current-weather .weather-info .current-temperature"
-  );
-
-  #currentWeatherIcon = document.querySelector(
-    ".weather-info .weather-icon-image"
-  );
-
-  #currentFeelsLike = document.querySelector(
-    ".current-weather .weather-details .feels-like"
-  );
-
-  #currentRelativeHumidity = document.querySelector(
-    ".current-weather .weather-details .relative-humidity"
-  );
-
-  #currentWindSpeed = document.querySelector(
-    ".current-weather .weather-details .wind-speed"
-  );
-
-  #currentPrecipitation = document.querySelector(
-    ".current-weather .weather-details .precipitation"
-  );
-
   #forecastCards = document.querySelector(".daily-forecast .forecast-cards");
-
   #hourlyCards = document.querySelector(".hourly-forecast .hourly-cards");
-
   #switchUnitsButton = document.querySelector(".switch-units-button");
-
   #unitsButtons = document.querySelectorAll(".units-button");
 
   constructor() {
@@ -79,7 +46,6 @@ export class DOMController {
     if (!this.weather) {
       console.log("weather not set");
     } else {
-      // this.#setWeatherDetails();
       this.#createCurrentWeatherSection();
       this.#setDailyForecast();
       this.#setHourlyForecast();
