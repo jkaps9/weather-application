@@ -95,7 +95,8 @@ export class DOMController {
     if (!this.weather) {
       console.log("weather not set");
     } else {
-      this.#setWeatherDetails();
+      // this.#setWeatherDetails();
+      this.#createCurrentWeatherSection();
       this.#setDailyForecast();
       this.#setHourlyForecast();
     }
@@ -141,7 +142,8 @@ export class DOMController {
       "section.current-weather .container"
     );
     this.#removeAllChildren(currentWeatherSection);
-    currentWeatherSection.appendChild(this.#createWeatherInfo);
+    currentWeatherSection.appendChild(this.#createWeatherInfo());
+    currentWeatherSection.appendChild(this.#createWeatherDetails());
   }
 
   #createWeatherInfo() {
@@ -188,7 +190,7 @@ export class DOMController {
             UnitConverter.celsiusToFahrenheit(this.weather.current.temperature)
           )
         : this.weather.current.temperature;
-    temperatureElement.textContent = currentTemp;
+    temperatureElement.textContent = `${currentTemp}°`;
 
     // Add all elements to weather info
     weatherInfo.appendChild(textElements);
@@ -196,6 +198,65 @@ export class DOMController {
     weatherInfo.appendChild(temperatureElement);
 
     return weatherInfo;
+  }
+
+  #createWeatherDetails() {
+    // Create the main div
+    const weatherInfo = document.createElement("div");
+    weatherInfo.className = "weather-details";
+
+    const feelsLikeTemp =
+      this.preferredTempUnit === "F"
+        ? Math.round(
+            UnitConverter.celsiusToFahrenheit(this.weather.current.feelsLike)
+          )
+        : this.weather.current.feelsLike;
+
+    const currentWindSpeed =
+      this.preferredSpeedUnit === "mph"
+        ? Math.round(UnitConverter.kmhToMph(this.weather.current.windSpeed))
+        : this.weather.current.windSpeed;
+
+    const currentPrecipitation =
+      this.preferredPrecipitationUnit === "in"
+        ? Math.round(
+            UnitConverter.mmToInches(this.weather.current.precipitation) * 100
+          ) / 100
+        : this.weather.current.precipitation;
+
+    const weatherDetails = {
+      "Feels like": `${feelsLikeTemp}°`,
+      Humidity: `${this.weather.current.humidity}%`,
+      Wind: `${currentWindSpeed} ${this.preferredSpeedUnit}`,
+      Precipitation: `${currentPrecipitation} ${this.preferredPrecipitationUnit}`,
+    };
+
+    for (let key in weatherDetails) {
+      weatherInfo.appendChild(
+        this.#createWeatherDetailCard(key, weatherDetails[key])
+      );
+    }
+
+    return weatherInfo;
+  }
+
+  #createWeatherDetailCard(attribute, value) {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const attributeElement = document.createElement("p");
+    attributeElement.className = "textpreset6";
+    attributeElement.textContent = `${attribute}`;
+
+    const valueElement = document.createElement("p");
+    valueElement.className = "textpreset3";
+
+    valueElement.textContent = `${value}`;
+
+    card.appendChild(attributeElement);
+    card.appendChild(valueElement);
+
+    return card;
   }
 
   #setDailyForecast() {
