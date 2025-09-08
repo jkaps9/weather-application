@@ -111,7 +111,14 @@ export class DOMController {
     this.#currentTemperatureText.textContent = `${currentTemp}°`;
 
     this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
-    this.#currentFeelsLike.textContent = `${this.weather.current.feelsLike}°`;
+
+    const feelsLikeTemp =
+      this.preferredTempUnit === "F"
+        ? Math.round(
+            UnitConverter.celsiusToFahrenheit(this.weather.current.feelsLike)
+          )
+        : this.weather.current.feelsLike;
+    this.#currentFeelsLike.textContent = `${feelsLikeTemp}°`;
     this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
 
     const currentWindSpeed =
