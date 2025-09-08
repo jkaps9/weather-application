@@ -109,11 +109,24 @@ export class DOMController {
           )
         : this.weather.current.temperature;
     this.#currentTemperatureText.textContent = `${currentTemp}°`;
+
     this.#currentWeatherIcon.src = `assets/images/${this.weather.current.icon}`;
     this.#currentFeelsLike.textContent = `${this.weather.current.feelsLike}°`;
     this.#currentRelativeHumidity.textContent = `${this.weather.current.humidity}%`;
-    this.#currentWindSpeed.textContent = `${this.weather.current.windSpeed} ${this.preferredSpeedUnit}`;
-    this.#currentPrecipitation.textContent = `${this.weather.current.precipitation} ${this.preferredPrecipitationUnit}`;
+
+    const currentWindSpeed =
+      this.preferredSpeedUnit === "mph"
+        ? Math.round(UnitConverter.kmhToMph(this.weather.current.windSpeed))
+        : this.weather.current.windSpeed;
+    this.#currentWindSpeed.textContent = `${currentWindSpeed} ${this.preferredSpeedUnit}`;
+
+    const currentPrecipitation =
+      this.preferredPrecipitationUnit === "in"
+        ? Math.round(
+            UnitConverter.mmToInches(this.weather.current.precipitation) * 100
+          ) / 100
+        : this.weather.current.precipitation;
+    this.#currentPrecipitation.textContent = `${currentPrecipitation} ${this.preferredPrecipitationUnit}`;
   }
 
   #setDailyForecast() {
