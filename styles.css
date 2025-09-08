@@ -255,7 +255,7 @@ h1 {
   background-color: var(--neutral-900);
   background-size: 100% auto;
   background-repeat: no-repeat;
-  min-height: 17.875rem;
+  height: 17.875rem;
 
   border-radius: var(--border-radius-lg);
   padding: 1.5rem;
