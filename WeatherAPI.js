@@ -25,7 +25,8 @@ export class WeatherAPI {
           admin1: location.admin1, // state/province
         };
       } else {
-        throw new Error("Location not found");
+        // throw new Error("Location not found");
+        return;
       }
     } catch (error) {
       console.error("Error fetching coordinates:", error);

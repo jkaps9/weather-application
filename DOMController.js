@@ -441,6 +441,16 @@ export class DOMController {
     this.#createNoResultsSection();
   }
 
+  setPageToResultsFound() {
+    document.querySelector("section.current-weather").removeAttribute("style");
+    document.querySelector("section.daily-forecast").removeAttribute("style");
+    document.querySelector("section.hourly-forecast").removeAttribute("style");
+    const noResults = document.querySelector("section.no-results");
+    if (noResults) {
+      noResults.remove();
+    }
+  }
+
   #createNoResultsSection() {
     const noResults = document.createElement("section");
     noResults.className = "no-results";

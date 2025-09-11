@@ -15,16 +15,14 @@ searchButton.addEventListener("click", () => {
     console.log(`query:${query}`);
     getWeatherByCity(query)
       .then((data) => {
-        // console.log(
-        //   "Current temperature:",
-        //   data.weather.current.temperature + "°C"
-        // );
-        // console.log("Current:", data.weather.current);
-        // console.log("Hourly forecast:", data.weather.hourly);
-        // console.log("7-day forecast:", data.weather.daily);
-        domController.setLocation(data.location);
-        domController.setWeather(data.weather);
-        domController.updateDOM();
+        if (data === undefined) {
+          domController.setPageToNoReultsFound();
+        } else {
+          domController.setPageToResultsFound();
+          domController.setLocation(data.location);
+          domController.setWeather(data.weather);
+          domController.updateDOM();
+        }
       })
       .catch((error) => {
         console.error("Failed to get weather:", error);
@@ -37,18 +35,23 @@ async function getWeatherByCity(cityName) {
   try {
     // Get coordinates from city name
     const location = await weatherAPI.getCoordinates(cityName);
-    console.log(`Found location: ${location.name}, ${location.country}`);
+    if (location === undefined) {
+      console.log("Location not found");
+      return;
+    } else {
+      console.log(`Found location: ${location.name}, ${location.country}`);
 
-    // Get weather data using coordinates
-    const weather = await weatherAPI.getWeatherData(
-      location.latitude,
-      location.longitude
-    );
+      // Get weather data using coordinates
+      const weather = await weatherAPI.getWeatherData(
+        location.latitude,
+        location.longitude
+      );
 
-    return {
-      location,
-      weather,
-    };
+      return {
+        location,
+        weather,
+      };
+    }
   } catch (error) {
     console.error("Error getting weather:", error);
     throw error;
@@ -56,4 +59,4 @@ async function getWeatherByCity(cityName) {
 }
 
 // domController.setPageToNoReultsFound();
-domController.setPageToApiError();
+// domController.setPageToApiError();
