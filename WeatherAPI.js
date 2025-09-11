@@ -95,12 +95,14 @@ export class WeatherAPI {
 
   // Format hourly data for next 24 hours
   formatHourlyData(hourly) {
-    const next24Hours = [];
-    const now = new Date();
+    const allHourlyData = [];
+    const hourlyByDay = {};
 
-    for (let i = 0; i < 24 && i < hourly.time.length; i++) {
+    for (let i = 0; i < hourly.time.length; i++) {
       const time = new Date(hourly.time[i]);
-      next24Hours.push({
+      const dayKey = time.toDateString();
+
+      const hourData = {
         time: time
           .toLocaleTimeString("en-US", {
             hour: "numeric",
@@ -112,10 +114,25 @@ export class WeatherAPI {
         precipitationProbability: hourly.precipitation_probability[i],
         icon: this.getWeatherIcon(hourly.weather_code[i]),
         altText: this.getWeatherDescription(hourly.weather_code[i]),
-      });
+        date: time.toISOString().split("T")[0], // YYYY-MM-DD format
+        dayName: time.toLocaleDateString("en-US", { weekday: "long" }),
+      };
+
+      // Add to flat array
+      allHourlyData.push(hourData);
+
+      // Group by day for easier access
+      if (!hourlyByDay[dayKey]) {
+        hourlyByDay[dayKey] = [];
+      }
+      hourlyByDay[dayKey].push(hourData);
     }
 
-    return next24Hours;
+    return {
+      all: allHourlyData,
+      today: allHourlyData.slice(0, 24),
+      byDay: hourlyByDay,
+    };
   }
 
   // Format daily data for 7-day forecast
