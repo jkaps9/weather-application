@@ -277,9 +277,28 @@ export class DOMController {
       const button = document.createElement("button");
       button.className = "day-button textpreset7";
       button.textContent = days[i];
+      button.addEventListener("click", () => {
+        this.#setHourlyForecastByDay(`${days[i]}`);
+        // Remove all selected
+        this.#removeSelectedFromDayDropdown();
+        // only select this one
+        div.className = "dropdown-option selected";
+        dropdownButton.innerHTML =
+          days[i] +
+          ` <img
+                      src="assets/images/icon-dropdown.svg"
+                      alt="dropdown icon"
+                    />`;
+      });
       div.appendChild(button);
       dropdownMenu.appendChild(div);
     }
+  }
+
+  #removeSelectedFromDayDropdown() {
+    document.querySelectorAll(".dropdown-option").forEach((element) => {
+      element.classList.remove("selected");
+    });
   }
 
   #setHourlyForecast() {
