@@ -476,6 +476,7 @@ export class DOMController {
     const errorImg = document.createElement("img");
     errorImg.src = "assets/images/icon-error.svg";
     errorImg.alt = "error icon";
+    errorImg.className = "error-img";
 
     const apiErrorHeader = document.createElement("h1");
     apiErrorHeader.textContent = "Something went wrong";
@@ -489,6 +490,7 @@ export class DOMController {
     const retryImg = document.createElement("img");
     retryImg.src = "assets/images/icon-retry.svg";
     retryImg.alt = "retry icon";
+    retryImg.className = "retry-img";
 
     const retryButton = document.createElement("button");
     retryButton.className = "dropdown-button retry-button textpreset7";

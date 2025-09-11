@@ -470,7 +470,7 @@ h1 {
     gap: 1.5rem;
   }
 
-  img {
+  .error-img {
     height: 3.125rem;
     width: 2.625rem;
   }
@@ -483,6 +483,11 @@ h1 {
     text-align: center;
     color: var(--neutral-200);
     max-width: 50ch;
+  }
+
+  .retry-img {
+    height: 1rem;
+    width: 1rem;
   }
 }
 
