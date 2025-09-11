@@ -173,12 +173,25 @@ header {
 }
 
 .dropdown-button {
-  background-color: var(--neutral-700);
+  background-color: var(--neutral-800);
   border-radius: var(--border-radius-sm);
   padding: 0.5em 1em;
   display: flex;
   align-items: center;
   gap: 0.5em;
+
+  &:hover,
+  &:focus {
+    background-color: var(--neutral-700);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--neutral-0);
+  }
+}
+
+.hourly-header .dropdown-button {
+  background-color: var(--neutral-700);
 }
 
 .dropdown-button::after {
@@ -223,6 +236,10 @@ header {
 
 .switch-units-button {
   width: 100%;
+
+  &:focus {
+    box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--neutral-0);
+  }
 }
 
 .switch-units-button:hover,
