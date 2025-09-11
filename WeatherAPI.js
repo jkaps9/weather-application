@@ -75,7 +75,6 @@ export class WeatherAPI {
 
   // Format the API response into a more usable structure
   formatWeatherData(data) {
-    console.log(data.daily);
     return {
       current: {
         temperature: Math.round(data.current.temperature_2m),
@@ -134,7 +133,6 @@ export class WeatherAPI {
     ];
     for (let i = 0; i < daily.time.length; i++) {
       const date = new Date(daily.time[i]);
-      console.log("date:", daily.time[i]);
       forecast.push({
         day: shortDays[date.getUTCDay()],
         dayLong: longDays[date.getUTCDay()],
