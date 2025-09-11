@@ -174,7 +174,7 @@ header {
 
 .dropdown-button {
   background-color: var(--neutral-700);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   padding: 0.5em 1em;
   display: flex;
   align-items: center;
@@ -455,6 +455,37 @@ h1 {
   }
 }
 
+.no-results {
+  p {
+    text-align: center;
+  }
+}
+
+.api-error {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  img {
+    height: 3.125rem;
+    width: 2.625rem;
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  p {
+    text-align: center;
+    color: var(--neutral-200);
+    max-width: 50ch;
+  }
+}
+
 @media (min-width: 57rem) {
   .main-container {
     grid-template-columns: 2fr 1fr;
@@ -470,7 +501,8 @@ h1 {
   }
 
   .hero,
-  .no-results {
+  .no-results,
+  .api-error {
     grid-column: 1 / -1;
   }
 

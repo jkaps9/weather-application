@@ -449,13 +449,58 @@ export class DOMController {
     noResultsContainer.className = "container";
 
     const noResultsText = document.createElement("p");
-    noResultsText.innerHTML = "No search result found!";
+    noResultsText.textContent = "No search result found!";
     noResultsText.className = "textpreset4";
-    noResultsText.style = "text-align: center;";
 
     noResultsContainer.appendChild(noResultsText);
     noResults.appendChild(noResultsContainer);
 
     document.querySelector(".main-container").appendChild(noResults);
+  }
+
+  setPageToApiError() {
+    document.querySelector("section.hero").style = "display:none";
+    document.querySelector("section.current-weather").style = "display:none";
+    document.querySelector("section.daily-forecast").style = "display:none";
+    document.querySelector("section.hourly-forecast").style = "display:none";
+    this.#createApiErrorSection();
+  }
+
+  #createApiErrorSection() {
+    const apiError = document.createElement("section");
+    apiError.className = "api-error";
+
+    const apiErrorContainer = document.createElement("div");
+    apiErrorContainer.className = "container";
+
+    const errorImg = document.createElement("img");
+    errorImg.src = "assets/images/icon-error.svg";
+    errorImg.alt = "error icon";
+
+    const apiErrorHeader = document.createElement("h1");
+    apiErrorHeader.textContent = "Something went wrong";
+    apiErrorHeader.className = "textpreset2";
+
+    const apiErrorText = document.createElement("p");
+    apiErrorText.textContent =
+      "We couldn't connect to the server (API error). Please try again in a few moments.";
+    apiErrorText.className = "textpreset5medium";
+
+    const retryImg = document.createElement("img");
+    retryImg.src = "assets/images/icon-retry.svg";
+    retryImg.alt = "retry icon";
+
+    const retryButton = document.createElement("button");
+    retryButton.className = "dropdown-button retry-button textpreset7";
+    retryButton.appendChild(retryImg);
+    retryButton.innerHTML += "Retry";
+
+    apiErrorContainer.appendChild(errorImg);
+    apiErrorContainer.appendChild(apiErrorHeader);
+    apiErrorContainer.appendChild(apiErrorText);
+    apiErrorContainer.appendChild(retryButton);
+    apiError.appendChild(apiErrorContainer);
+
+    document.querySelector(".main-container").appendChild(apiError);
   }
 }
