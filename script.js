@@ -25,6 +25,7 @@ searchButton.addEventListener("click", () => {
         }
       })
       .catch((error) => {
+        domController.setPageToApiError();
         console.error("Failed to get weather:", error);
       });
   }
@@ -53,10 +54,8 @@ async function getWeatherByCity(cityName) {
       };
     }
   } catch (error) {
+    domController.setPageToApiError();
     console.error("Error getting weather:", error);
     throw error;
   }
 }
-
-// domController.setPageToNoReultsFound();
-// domController.setPageToApiError();
