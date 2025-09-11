@@ -496,6 +496,9 @@ export class DOMController {
     retryButton.className = "dropdown-button retry-button textpreset7";
     retryButton.appendChild(retryImg);
     retryButton.innerHTML += "Retry";
+    retryButton.addEventListener("click", () => {
+      window.location.reload();
+    });
 
     apiErrorContainer.appendChild(errorImg);
     apiErrorContainer.appendChild(apiErrorHeader);
