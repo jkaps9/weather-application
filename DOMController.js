@@ -433,4 +433,6 @@ export class DOMController {
       document.querySelector("#in").classList.add("selected");
     }
   }
+
+  #setPageToNoReultsFound() {}
 }
