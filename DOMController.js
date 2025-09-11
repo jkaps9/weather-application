@@ -434,5 +434,28 @@ export class DOMController {
     }
   }
 
-  #setPageToNoReultsFound() {}
+  setPageToNoReultsFound() {
+    document.querySelector("section.current-weather").style = "display:none";
+    document.querySelector("section.daily-forecast").style = "display:none";
+    document.querySelector("section.hourly-forecast").style = "display:none";
+    this.#createNoResultsSection();
+  }
+
+  #createNoResultsSection() {
+    const noResults = document.createElement("section");
+    noResults.className = "no-results";
+
+    const noResultsContainer = document.createElement("div");
+    noResultsContainer.className = "container";
+
+    const noResultsText = document.createElement("p");
+    noResultsText.innerHTML = "No search result found!";
+    noResultsText.className = "textpreset4";
+    noResultsText.style = "text-align: center;";
+
+    noResultsContainer.appendChild(noResultsText);
+    noResults.appendChild(noResultsContainer);
+
+    document.querySelector(".main-container").appendChild(noResults);
+  }
 }

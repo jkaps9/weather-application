@@ -54,3 +54,5 @@ async function getWeatherByCity(cityName) {
     throw error;
   }
 }
+
+domController.setPageToNoReultsFound();
