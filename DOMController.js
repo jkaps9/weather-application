@@ -296,7 +296,7 @@ export class DOMController {
         this.#removeAllChildren(this.#hourlyCards);
 
         // Create new cards
-        this.weather.hourly.forEach((hourlyData) => {
+        this.weather.hourly.today.forEach((hourlyData) => {
           const card = this.#createHourlyCard(hourlyData);
           this.#hourlyCards.appendChild(card);
         });
