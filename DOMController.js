@@ -284,7 +284,7 @@ export class DOMController {
 
   #setHourlyForecast() {
     if (!this.weather) {
-      console.log("weather not set");
+      console.error("weather not set");
     } else {
       if (!this.#forecastCards) {
         console.error(
@@ -302,6 +302,34 @@ export class DOMController {
         });
       }
     }
+  }
+
+  #setHourlyForecastByDay(selectedDay) {
+    if (!this.weather) {
+      console.error("weather not set");
+    } else if (!this.#hourlyCards) {
+      console.error("Hourly cards container not found");
+    } else {
+      // Clear out any hourly cards that may currently exist
+      this.#removeAllChildren(this.#hourlyCards);
+
+      //Get hourly data for the selected day
+      const dayHourlyData = this.#getHourlyDataForDay(selectedDay);
+
+      // Create new cards
+      dayHourlyData.forEach((hourlyData) => {
+        const card = this.#createHourlyCard(hourlyData);
+        this.#hourlyCards.appendChild(card);
+      });
+    }
+  }
+
+  #getHourlyDataForDay(selectedDay) {
+    if (!this.weather?.hourly?.all) return [];
+
+    return this.weather.hourly.all.filter((hour) => {
+      return hour.dayName === selectedDay;
+    });
   }
 
   #createHourlyCard(hourData) {
