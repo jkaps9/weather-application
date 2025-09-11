@@ -37,6 +37,8 @@
   --border-radius-sm: 0.5rem;
   --border-radius-md: 0.75rem;
   --border-radius-lg: 1.25rem;
+
+  --focus-box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--neutral-0);
 }
 
 /* Typography */
@@ -186,7 +188,7 @@ header {
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--neutral-0);
+    box-shadow: var(--focus-box-shadow);
   }
 }
 
@@ -238,7 +240,7 @@ header {
   width: 100%;
 
   &:focus {
-    box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--neutral-0);
+    box-shadow: var(--focus-box-shadow);
   }
 }
 
@@ -312,9 +314,21 @@ h1 {
     flex-grow: 1;
     background-color: var(--neutral-800);
     padding-left: 4rem; /* make room for icon */
-
+    cursor: pointer;
     &::placeholder {
       color: var(--neutral-200);
+    }
+
+    &:hover {
+      background: var(--neutral-700);
+    }
+
+    &:focus,
+    &:active {
+      background-color: (var(--neutral-700));
+      box-shadow: var(--focus-box-shadow);
+      outline: none;
+      border: none;
     }
   }
 
