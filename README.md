@@ -29,6 +29,18 @@ Your users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
+Bonus Features:
+
+- Geolocation
+- Saved/favorite locations
+- Location comparison
+- UV index, visibility, air pressure data
+- Sunrise/sunset times
+- Animated weather backgrounds
+- Voice search
+- Dark/light mode themes
+- PWA capabilities
+
 Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
 
 ## Where to find everything
