@@ -15,11 +15,9 @@ const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
 
 searchButton.addEventListener("click", () => {
   const query = searchInput.value;
-  console.log("searching...");
   if (!query) {
     alert("enter a city");
   } else {
-    console.log(`query:${query}`);
     getWeatherByCity(query)
       .then((data) => {
         if (data === undefined) {
@@ -47,10 +45,6 @@ async function getWeatherByCity(cityName, country_code) {
       console.log("Location not found");
       return;
     } else {
-      console.log(
-        `Found location: ${location.name}, ${location.country} at ${location.latitude} ${location.longitude}`
-      );
-
       // Get weather data using coordinates
       const weather = await weatherAPI.getWeatherData(
         location.latitude,
@@ -69,7 +63,7 @@ async function getWeatherByCity(cityName, country_code) {
   }
 }
 
-function getLocation() {
+function getUserLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
@@ -86,7 +80,6 @@ async function showPosition(position) {
   if (location === undefined) {
     console.log("location not found...");
   } else {
-    console.log(location);
     getWeatherByCity(location.city, location.country_code.toUpperCase())
       .then((data) => {
         if (data === undefined) {
@@ -105,4 +98,4 @@ async function showPosition(position) {
   }
 }
 
-getLocation();
+getUserLocation();

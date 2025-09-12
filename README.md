@@ -1,4 +1,4 @@
-# Frontend Mentor - Weather app
+# Frontend Mentor - []Weather app
 
 ![Design preview for the Weather app coding challenge](./preview.jpg)
 
@@ -18,28 +18,28 @@ You can use any tools you like to help you complete the challenge. So if you've 
 
 Your users should be able to:
 
-- Search for weather information by entering a location in the search bar
-- View current weather conditions including temperature, weather icon, and location details
-- See additional weather metrics like "feels like" temperature, humidity percentage, wind speed, and precipitation amounts
-- Browse a 7-day weather forecast with daily high/low temperatures and weather icons
-- View an hourly forecast showing temperature changes throughout the day
-- Switch between different days of the week using the day selector in the hourly forecast section
-- Toggle between Imperial and Metric measurement units via the units dropdown
-- Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+- [x] Search for weather information by entering a location in the search bar
+- [ ] View current weather conditions including temperature, weather icon, and location details
+- [ ] See additional weather metrics like "feels like" temperature, humidity percentage, wind speed, and precipitation amounts
+- [ ] Browse a 7-day weather forecast with daily high/low temperatures and weather icons
+- [ ] View an hourly forecast showing temperature changes throughout the day
+- [ ] Switch between different days of the week using the day selector in the hourly forecast section
+- [ ] Toggle between Imperial and Metric measurement units via the units dropdown
+- [ ] Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown
+- [ ] View the optimal layout for the interface depending on their device's screen size
+- [ ] See hover and focus states for all interactive elements on the page
 
 Bonus Features:
 
-- Geolocation
-- Saved/favorite locations
-- Location comparison
-- UV index, visibility, air pressure data
-- Sunrise/sunset times
-- Animated weather backgrounds
-- Voice search
-- Dark/light mode themes
-- PWA capabilities
+- [ ] Geolocation
+- [ ] Saved/favorite locations
+- [ ] Location comparison
+- [ ] UV index, visibility, air pressure data
+- [ ] Sunrise/sunset times
+- [ ] Animated weather backgrounds
+- [ ] Voice search
+- [ ] Dark/light mode themes
+- [ ] PWA capabilities
 
 Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
 
@@ -72,9 +72,9 @@ Feel free to use any workflow that you feel comfortable with. Below is a suggest
 
 As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+- [][GitHub Pages](https://pages.github.com/)
+- [][Vercel](https://vercel.com/)
+- [][Netlify](https://www.netlify.com/)
 
 You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
 
