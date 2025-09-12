@@ -1,6 +1,7 @@
 import "./styles.css";
 import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
 import { DOMController } from "./assets/scripts/DOMController.js";
+import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const dbHost = import.meta.env.VITE_DB_HOST;
@@ -9,6 +10,8 @@ const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");
 const weatherAPI = new WeatherAPI();
 const domController = new DOMController();
+
+const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
 
 searchButton.addEventListener("click", () => {
   const query = searchInput.value;
@@ -36,15 +39,17 @@ searchButton.addEventListener("click", () => {
 });
 
 // Function to get weather by city name
-async function getWeatherByCity(cityName) {
+async function getWeatherByCity(cityName, country_code) {
   try {
     // Get coordinates from city name
-    const location = await weatherAPI.getCoordinates(cityName);
+    const location = await weatherAPI.getCoordinates(cityName, country_code);
     if (location === undefined) {
       console.log("Location not found");
       return;
     } else {
-      console.log(`Found location: ${location.name}, ${location.country}`);
+      console.log(
+        `Found location: ${location.name}, ${location.country} at ${location.latitude} ${location.longitude}`
+      );
 
       // Get weather data using coordinates
       const weather = await weatherAPI.getWeatherData(
@@ -72,10 +77,32 @@ function getLocation() {
   }
 }
 
-function showPosition(position) {
-  console.log(
-    `Latitude: ${position.coords.latitude}\nLongitude: ${position.coords.longitude}`
+async function showPosition(position) {
+  const location = await reverseGeocodingAPI.getLocation(
+    position.coords.latitude,
+    position.coords.longitude
   );
+
+  if (location === undefined) {
+    console.log("location not found...");
+  } else {
+    console.log(location);
+    getWeatherByCity(location.city, location.country_code.toUpperCase())
+      .then((data) => {
+        if (data === undefined) {
+          domController.setPageToNoReultsFound();
+        } else {
+          domController.setPageToResultsFound();
+          domController.setLocation(data.location);
+          domController.setWeather(data.weather);
+          domController.updateDOM();
+        }
+      })
+      .catch((error) => {
+        domController.setPageToApiError();
+        console.error("Failed to get weather:", error);
+      });
+  }
 }
 
 getLocation();

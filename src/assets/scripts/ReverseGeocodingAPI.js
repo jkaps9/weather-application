@@ -5,9 +5,21 @@ export class ReverseGeocodingAPI {
   }
 
   async getLocation(lat, lon) {
-    fetch(`${this.baseURL}?lat=${lat}&lon=${lon}&apiKey=${this.API_KEY}`)
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    try {
+      const response = await fetch(
+        `${this.baseURL}?lat=${lat}&lon=${lon}&apiKey=${this.API_KEY}`
+      );
+      const data = await response.json();
+      if (data.features && data.features.length > 0) {
+        return {
+          city: data.features[0].properties.city,
+          country_code: data.features[0].properties.country_code,
+        };
+      } else {
+        return;
+      }
+    } catch (error) {
+      console.error("Error fetching user location:", error);
+    }
   }
 }

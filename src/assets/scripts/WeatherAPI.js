@@ -6,12 +6,14 @@ export class WeatherAPI {
   }
 
   // Get coordinates from city name
-  async getCoordinates(cityName) {
+  async getCoordinates(cityName, countryCode = "") {
+    const countryParameter =
+      countryCode === "" ? `` : `&countryCode=${countryCode}`;
     try {
       const response = await fetch(
         `${this.geocodingURL}?name=${encodeURIComponent(
           cityName
-        )}&count=1&language=en&format=json`
+        )}&count=1&language=en&format=json${countryParameter}`
       );
       const data = await response.json();
 
