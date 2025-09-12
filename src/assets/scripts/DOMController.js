@@ -91,7 +91,7 @@ export class DOMController {
 
     const weatherImg = document.createElement("img");
     weatherImg.className = "weather-icon-image";
-    weatherImg.src = `assets/images/${this.weather.current.icon}`;
+    weatherImg.src = `src/assets/images/${this.weather.current.icon}`;
     weatherImg.alt = this.weather.current.altText;
 
     // Add weather image to weather icon
@@ -213,7 +213,7 @@ export class DOMController {
 
     // Create weather icon image
     const iconImg = document.createElement("img");
-    iconImg.src = `assets/images/${dayData.icon}`;
+    iconImg.src = `src/assets/images/${dayData.icon}`;
     iconImg.alt = dayData.altText;
 
     // Append image to container
@@ -265,7 +265,7 @@ export class DOMController {
     dropdownButton.innerHTML =
       days[0] +
       ` <img
-                      src="assets/images/icon-dropdown.svg"
+                      src="src/assets/images/icon-dropdown.svg"
                       alt="dropdown icon"
                     />`;
 
@@ -286,7 +286,7 @@ export class DOMController {
         dropdownButton.innerHTML =
           days[i] +
           ` <img
-                      src="assets/images/icon-dropdown.svg"
+                      src="src/assets/images/icon-dropdown.svg"
                       alt="dropdown icon"
                     />`;
       });
@@ -362,7 +362,7 @@ export class DOMController {
 
     // Create weather icon image
     const iconImg = document.createElement("img");
-    iconImg.src = `assets/images/${hourData.icon}`;
+    iconImg.src = `src/assets/images/${hourData.icon}`;
     iconImg.alt = hourData.altText;
 
     // Append image to container
@@ -524,7 +524,7 @@ export class DOMController {
     apiErrorContainer.className = "container";
 
     const errorImg = document.createElement("img");
-    errorImg.src = "assets/images/icon-error.svg";
+    errorImg.src = "src/assets/images/icon-error.svg";
     errorImg.alt = "error icon";
     errorImg.className = "error-img";
 
@@ -538,7 +538,7 @@ export class DOMController {
     apiErrorText.className = "textpreset5medium";
 
     const retryImg = document.createElement("img");
-    retryImg.src = "assets/images/icon-retry.svg";
+    retryImg.src = "src/assets/images/icon-retry.svg";
     retryImg.alt = "retry icon";
     retryImg.className = "retry-img";
 
