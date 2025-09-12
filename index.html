@@ -20,195 +20,202 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=DM+Sans:ital,wght@0,300;0,500;0,600;0,700;1,600&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="styles.css" />
-
-    <script type="module" src="./script.js" defer></script>
   </head>
   <body>
-    <header>
-      <div class="container flex-row">
-        <div class="logo">
-          <img src="assets/images/logo.svg" alt="Company Logo" />
-        </div>
-        <nav>
-          <div class="dropdown">
-            <button class="dropdown-button textpreset7">
-              <img src="assets/images/icon-units.svg" alt="units icon" />
-              Units
-              <img src="assets/images/icon-dropdown.svg" alt="dropdown icon" />
-            </button>
-            <div class="dropdown-menu card">
-              <button class="switch-units-button textpreset7">
-                Switch to Imperial
-              </button>
-              <div class="dropdown-section">
-                <h3 class="dropdown-section-title textpreset8">Temperature</h3>
-                <button class="units-button textpreset7 selected" id="celsius">
-                  Celsius (°C)
-                </button>
-                <button class="units-button textpreset7" id="fahrenheit">
-                  Fahrenheit (°F)
-                </button>
-              </div>
-              <div class="dropdown-section textpreset7">
-                <h3 class="dropdown-section-title textpreset8">Wind Speed</h3>
-                <button class="units-button textpreset7 selected" id="kmh">
-                  km/h
-                </button>
-                <button class="units-button textpreset7" id="mph">mph</button>
-              </div>
-              <div class="dropdown-section textpreset7">
-                <h3 class="dropdown-section-title textpreset8">
-                  Precipitation
-                </h3>
-                <button class="units-button textpreset7 selected" id="mm">
-                  Millimeters (mm)
-                </button>
-                <button class="units-button textpreset7" id="in">
-                  Inches (in)
-                </button>
-              </div>
-            </div>
+    <div id="app">
+      <header>
+        <div class="container flex-row">
+          <div class="logo">
+            <img src="src/assets/images/logo.svg" alt="Company Logo" />
           </div>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <div class="main-container">
-        <section class="hero">
-          <div class="container">
-            <h1 class="textpreset2">How's the sky looking today?</h1>
-            <div class="search-bar">
-              <div class="input-container">
-                <input
-                  id="search"
-                  type="text"
-                  class="textpreset5medium"
-                  placeholder="Search for a place..."
-                />
+          <nav>
+            <div class="dropdown">
+              <button class="dropdown-button textpreset7">
+                <img src="src/assets/images/icon-units.svg" alt="units icon" />
+                Units
                 <img
-                  class="search-icon"
-                  src="assets/images/icon-search.svg"
-                  alt="search icon"
+                  src="src/assets/images/icon-dropdown.svg"
+                  alt="dropdown icon"
                 />
-              </div>
-              <button type="submit" class="search-button textpreset5medium">
-                Search
               </button>
-            </div>
-          </div>
-        </section>
-        <section class="current-weather">
-          <div class="container">
-            <div class="weather-info"></div>
-            <div class="weather-details">
-              <div class="card">
-                <p class="textpreset6">Feels like</p>
-                <p class="textpreset3 feels-like">-</p>
-              </div>
-
-              <div class="card">
-                <p class="textpreset6">Humidity</p>
-                <p class="textpreset3 relative-humidity">-</p>
-              </div>
-
-              <div class="card">
-                <p class="textpreset6">Wind</p>
-                <p class="textpreset3 wind-speed">-</p>
-              </div>
-
-              <div class="card">
-                <p class="textpreset6">Precipitation</p>
-                <p class="textpreset3 precipitation">-</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="daily-forecast">
-          <div class="container">
-            <h2 class="section-title textpreset5">Daily forecast</h2>
-            <div class="forecast-cards">
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="hourly-forecast">
-          <div class="container">
-            <div class="card hourly-forecast-card">
-              <div class="hourly-header flex-row">
-                <h2 class="section-title textpreset5">Hourly forecast</h2>
-                <div class="dropdown">
-                  <button class="dropdown-button textpreset7">
-                    -
-                    <img
-                      src="assets/images/icon-dropdown.svg"
-                      alt="dropdown icon"
-                    />
+              <div class="dropdown-menu card">
+                <button class="switch-units-button textpreset7">
+                  Switch to Imperial
+                </button>
+                <div class="dropdown-section">
+                  <h3 class="dropdown-section-title textpreset8">
+                    Temperature
+                  </h3>
+                  <button
+                    class="units-button textpreset7 selected"
+                    id="celsius"
+                  >
+                    Celsius (°C)
                   </button>
-                  <div class="dropdown-menu card textpreset7">
-                    <div class="dropdown-option selected">
-                      <button class="day-button textpreset7">-</button>
-                    </div>
-                    <div class="dropdown-option">
-                      <button class="day-button textpreset7">-</button>
-                    </div>
-                    <div class="dropdown-option">
-                      <button class="day-button textpreset7">-</button>
-                    </div>
-                    <div class="dropdown-option">
-                      <button class="day-button textpreset7">-</button>
-                    </div>
-                    <div class="dropdown-option">
-                      <button class="day-button textpreset7">-</button>
-                    </div>
-                    <div class="dropdown-option">
-                      <button class="day-button textpreset7">-</button>
-                    </div>
-                    <div class="dropdown-option">
-                      <button class="day-button textpreset7">-</button>
+                  <button class="units-button textpreset7" id="fahrenheit">
+                    Fahrenheit (°F)
+                  </button>
+                </div>
+                <div class="dropdown-section textpreset7">
+                  <h3 class="dropdown-section-title textpreset8">Wind Speed</h3>
+                  <button class="units-button textpreset7 selected" id="kmh">
+                    km/h
+                  </button>
+                  <button class="units-button textpreset7" id="mph">mph</button>
+                </div>
+                <div class="dropdown-section textpreset7">
+                  <h3 class="dropdown-section-title textpreset8">
+                    Precipitation
+                  </h3>
+                  <button class="units-button textpreset7 selected" id="mm">
+                    Millimeters (mm)
+                  </button>
+                  <button class="units-button textpreset7" id="in">
+                    Inches (in)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="main-container">
+          <section class="hero">
+            <div class="container">
+              <h1 class="textpreset2">How's the sky looking today?</h1>
+              <div class="search-bar">
+                <div class="input-container">
+                  <input
+                    id="search"
+                    type="text"
+                    class="textpreset5medium"
+                    placeholder="Search for a place..."
+                  />
+                  <img
+                    class="search-icon"
+                    src="src/assets/images/icon-search.svg"
+                    alt="search icon"
+                  />
+                </div>
+                <button type="submit" class="search-button textpreset5medium">
+                  Search
+                </button>
+              </div>
+            </div>
+          </section>
+          <section class="current-weather">
+            <div class="container">
+              <div class="weather-info"></div>
+              <div class="weather-details">
+                <div class="card">
+                  <p class="textpreset6">Feels like</p>
+                  <p class="textpreset3 feels-like">-</p>
+                </div>
+
+                <div class="card">
+                  <p class="textpreset6">Humidity</p>
+                  <p class="textpreset3 relative-humidity">-</p>
+                </div>
+
+                <div class="card">
+                  <p class="textpreset6">Wind</p>
+                  <p class="textpreset3 wind-speed">-</p>
+                </div>
+
+                <div class="card">
+                  <p class="textpreset6">Precipitation</p>
+                  <p class="textpreset3 precipitation">-</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="daily-forecast">
+            <div class="container">
+              <h2 class="section-title textpreset5">Daily forecast</h2>
+              <div class="forecast-cards">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="hourly-forecast">
+            <div class="container">
+              <div class="card hourly-forecast-card">
+                <div class="hourly-header flex-row">
+                  <h2 class="section-title textpreset5">Hourly forecast</h2>
+                  <div class="dropdown">
+                    <button class="dropdown-button textpreset7">
+                      -
+                      <img
+                        src="src/assets/images/icon-dropdown.svg"
+                        alt="dropdown icon"
+                      />
+                    </button>
+                    <div class="dropdown-menu card textpreset7">
+                      <div class="dropdown-option selected">
+                        <button class="day-button textpreset7">-</button>
+                      </div>
+                      <div class="dropdown-option">
+                        <button class="day-button textpreset7">-</button>
+                      </div>
+                      <div class="dropdown-option">
+                        <button class="day-button textpreset7">-</button>
+                      </div>
+                      <div class="dropdown-option">
+                        <button class="day-button textpreset7">-</button>
+                      </div>
+                      <div class="dropdown-option">
+                        <button class="day-button textpreset7">-</button>
+                      </div>
+                      <div class="dropdown-option">
+                        <button class="day-button textpreset7">-</button>
+                      </div>
+                      <div class="dropdown-option">
+                        <button class="day-button textpreset7">-</button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="hourly-cards">
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
-                <div class="card hour-card flex-row"></div>
+                <div class="hourly-cards">
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                  <div class="card hour-card flex-row"></div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </main>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

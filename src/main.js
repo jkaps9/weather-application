@@ -1,5 +1,9 @@
-import { WeatherAPI } from "./WeatherAPI.js";
-import { DOMController } from "./DOMController.js";
+import "./styles.css";
+import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
+import { DOMController } from "./assets/scripts/DOMController.js";
+
+const apiKey = import.meta.env.VITE_API_KEY;
+const dbHost = import.meta.env.VITE_DB_HOST;
 
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");

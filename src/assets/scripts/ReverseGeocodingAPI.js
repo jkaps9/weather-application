@@ -1,5 +1,6 @@
 export class ReverseGeocodingAPI {
-  constructor() {
+  constructor(API_KEY) {
+    this.API_KEY = API_KEY;
     this.baseURL = "https://api.geoapify.com/v1/geocode/reverse";
   }
 
