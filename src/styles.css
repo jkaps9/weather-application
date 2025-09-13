@@ -418,14 +418,16 @@ h1 {
 
 .save-location-button {
   font: inherit;
+  font-size: 1rem;
   background-color: transparent;
+  color: inherit;
 
   border-radius: 0.75rem;
   padding: 1rem 1.5rem;
 
   position: absolute;
-  right: 0;
-  bottom: 0;
+  left: 0;
+  bottom: 0.25rem;
 
   &:hover {
     color: var(--orange-500);

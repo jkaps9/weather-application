@@ -108,10 +108,16 @@ export class DOMController {
         : this.weather.current.temperature;
     temperatureElement.textContent = `${currentTemp}°`;
 
+    // Create the save location button element
+    const saveLocationButton = document.createElement("button");
+    saveLocationButton.className = "save-location-button";
+    saveLocationButton.textContent = "Save Location";
+
     // Add all elements to weather info
     weatherInfo.appendChild(textElements);
     weatherInfo.appendChild(weatherIcon);
     weatherInfo.appendChild(temperatureElement);
+    weatherInfo.appendChild(saveLocationButton);
 
     return weatherInfo;
   }
