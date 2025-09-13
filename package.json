@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "firstdeploy": "git branch gh-pages",
+    "predeploy": "git checkout gh-pages && git merge main --no-edit && npm run build && git add dist -f && git commit -m 'Deployment commit'",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "postdeploy": "git checkout main"
   },
   "repository": {
     "type": "git",
