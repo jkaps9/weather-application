@@ -36,7 +36,7 @@ Bonus Features:
 - [ ] Saved/favorite locations
 - [ ] Location comparison
 - [x] UV index, visibility, air pressure data
-- [ ] Sunrise/sunset times
+- [x] Sunrise/sunset times
 - [ ] Animated weather backgrounds
 - [ ] Voice search
 - [ ] Dark/light mode themes
