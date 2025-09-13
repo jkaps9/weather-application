@@ -412,6 +412,26 @@ h1 {
   }
 }
 
+.weather-info {
+  position: relative;
+}
+
+.save-location-button {
+  font: inherit;
+  background-color: transparent;
+
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  &:hover {
+    color: var(--orange-500);
+  }
+}
+
 @media (min-width: 48rem) {
   .weather-info {
     background-image: url("assets/images/bg-today-large.svg");
