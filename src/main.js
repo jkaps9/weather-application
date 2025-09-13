@@ -14,17 +14,11 @@ const loc = {
 storeLocation(loc);
 
 const loc_retrieved = getLocation();
-console.log(loc_retrieved);
-
-// const apiKey = import.meta.env.VITE_API_KEY;
-// const dbHost = import.meta.env.VITE_DB_HOST;
 
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");
 const weatherAPI = new WeatherAPI();
 const domController = new DOMController();
-
-// const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
 
 searchButton.addEventListener("click", () => {
   const query = searchInput.value;
@@ -57,7 +51,53 @@ function searchCity(city, country_code) {
 async function getWeatherByCity(cityName, country_code) {
   try {
     // Get coordinates from city name
+    const location = await getLocationByCity(cityName, country_code);
+    if (location === undefined) {
+      console.log("Location not found");
+      return;
+    } else {
+      // Get weather data using coordinates
+      const weather = await getWeatherByLocation(location);
+
+      if (weather === undefined) {
+        console.log("Weather not found");
+        return;
+      } else {
+        return {
+          location,
+          weather,
+        };
+      }
+    }
+  } catch (error) {
+    domController.setPageToApiError();
+    console.error("Error getting weather:", error);
+    throw error;
+  }
+}
+
+async function getLocationByCity(cityName, country_code) {
+  // Function takes in a city name, and optionally a country code.
+  // Function should return the location
+  try {
     const location = await weatherAPI.getCoordinates(cityName, country_code);
+    if (location === undefined) {
+      console.log("Location not found");
+      return;
+    } else {
+      return location;
+    }
+  } catch (error) {
+    domController.setPageToApiError();
+    console.error("Error getting weather:", error);
+    throw error;
+  }
+}
+
+async function getWeatherByLocation(location) {
+  // Function takes in a location
+  // Function should return the weather
+  try {
     if (location === undefined) {
       console.log("Location not found");
       return;
@@ -68,10 +108,12 @@ async function getWeatherByCity(cityName, country_code) {
         location.longitude
       );
 
-      return {
-        location,
-        weather,
-      };
+      if (weather === undefined) {
+        console.log("weather not found");
+        return;
+      } else {
+        return weather;
+      }
     }
   } catch (error) {
     domController.setPageToApiError();
@@ -79,6 +121,14 @@ async function getWeatherByCity(cityName, country_code) {
     throw error;
   }
 }
+
+//  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\
+// //// BELOW IS FOR GETTING THE USERS LOCATION \\\\ \\
+
+// const apiKey = import.meta.env.VITE_API_KEY;
+// const dbHost = import.meta.env.VITE_DB_HOST;
+// const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
+// getUserLocation();
 
 function getUserLocation() {
   if (navigator.geolocation) {
@@ -100,5 +150,3 @@ async function showPosition(position) {
     searchCity(location.city, location.country_code.toUpperCase());
   }
 }
-
-// getUserLocation();
