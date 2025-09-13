@@ -2,6 +2,19 @@ import "./styles.css";
 import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
 import { DOMController } from "./assets/scripts/DOMController.js";
 import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
+import { storeLocation, getLocation } from "./assets/scripts/LocalStorage.js";
+
+const loc = {
+  city: "Nanuet",
+  country: "United States",
+  latitude: 41.08871,
+  longitude: -74.01347,
+};
+
+storeLocation(loc);
+
+const loc_retrieved = getLocation();
+console.log(loc_retrieved);
 
 // const apiKey = import.meta.env.VITE_API_KEY;
 // const dbHost = import.meta.env.VITE_DB_HOST;
@@ -18,23 +31,27 @@ searchButton.addEventListener("click", () => {
   if (!query) {
     alert("enter a city");
   } else {
-    getWeatherByCity(query)
-      .then((data) => {
-        if (data === undefined) {
-          domController.setPageToNoReultsFound();
-        } else {
-          domController.setPageToResultsFound();
-          domController.setLocation(data.location);
-          domController.setWeather(data.weather);
-          domController.updateDOM();
-        }
-      })
-      .catch((error) => {
-        domController.setPageToApiError();
-        console.error("Failed to get weather:", error);
-      });
+    searchCity(query);
   }
 });
+
+function searchCity(city, country_code) {
+  getWeatherByCity(city, country_code)
+    .then((data) => {
+      if (data === undefined) {
+        domController.setPageToNoReultsFound();
+      } else {
+        domController.setPageToResultsFound();
+        domController.setLocation(data.location);
+        domController.setWeather(data.weather);
+        domController.updateDOM();
+      }
+    })
+    .catch((error) => {
+      domController.setPageToApiError();
+      console.error("Failed to get weather:", error);
+    });
+}
 
 // Function to get weather by city name
 async function getWeatherByCity(cityName, country_code) {
