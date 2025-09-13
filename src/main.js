@@ -3,15 +3,15 @@ import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
 import { DOMController } from "./assets/scripts/DOMController.js";
 import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
 
-const apiKey = import.meta.env.VITE_API_KEY;
-const dbHost = import.meta.env.VITE_DB_HOST;
+// const apiKey = import.meta.env.VITE_API_KEY;
+// const dbHost = import.meta.env.VITE_DB_HOST;
 
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");
 const weatherAPI = new WeatherAPI();
 const domController = new DOMController();
 
-const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
+// const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
 
 searchButton.addEventListener("click", () => {
   const query = searchInput.value;
@@ -98,4 +98,4 @@ async function showPosition(position) {
   }
 }
 
-getUserLocation();
+// getUserLocation();
