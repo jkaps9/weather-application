@@ -13,7 +13,7 @@ export function getLocation() {
     return;
   } else {
     return {
-      name: localStorage.getItem("city"),
+      name: localStorage.getItem("name"),
       country: localStorage.getItem("country"),
       latitude: Number(localStorage.getItem("latitude")),
       longitude: Number(localStorage.getItem("longitude")),
