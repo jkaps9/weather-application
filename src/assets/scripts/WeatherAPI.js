@@ -62,6 +62,8 @@ export class WeatherAPI {
         "temperature_2m_max",
         "temperature_2m_min",
         "precipitation_sum",
+        "sunrise",
+        "sunset",
       ].join(","),
       timezone: "auto",
       forecast_days: 7,
@@ -94,6 +96,8 @@ export class WeatherAPI {
         visibility: data.current.visibility,
         uvIndex: data.current.uv_index,
         surfacePressure: data.current.surface_pressure,
+        sunrise: this.getTime(data.daily.sunrise[0]),
+        sunset: this.getTime(data.daily.sunset[0]),
       },
       hourly: this.formatHourlyData(data.hourly),
       daily: this.formatDailyData(data.daily),
@@ -172,6 +176,13 @@ export class WeatherAPI {
     }
 
     return forecast;
+  }
+
+  getTime(dateTime) {
+    const dateObject = new Date(dateTime);
+    const localTime = dateObject.toLocaleTimeString([], { timeStyle: "short" });
+
+    return localTime;
   }
 
   // Get weather icon class/name based on weather code

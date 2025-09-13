@@ -178,6 +178,7 @@ export class DOMController {
       Visibility: `${currentVisibility}`,
       "UV Index": `${this.weather.current.uvIndex}`,
       Pressure: `${currentSurfacePressure}`,
+      Sun: `${this.weather.current.sunrise}\n${this.weather.current.sunset}`,
     };
 
     for (let key in weatherDetails) {
