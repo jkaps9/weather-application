@@ -1,101 +1,101 @@
 import "./styles.css";
-// import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
-// import { DOMController } from "./assets/scripts/DOMController.js";
-// import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
+import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
+import { DOMController } from "./assets/scripts/DOMController.js";
+import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
 
-// const apiKey = import.meta.env.VITE_API_KEY;
-// const dbHost = import.meta.env.VITE_DB_HOST;
+const apiKey = import.meta.env.VITE_API_KEY;
+const dbHost = import.meta.env.VITE_DB_HOST;
 
-// const searchButton = document.querySelector(".search-button");
-// const searchInput = document.querySelector("#search");
-// const weatherAPI = new WeatherAPI();
-// const domController = new DOMController();
+const searchButton = document.querySelector(".search-button");
+const searchInput = document.querySelector("#search");
+const weatherAPI = new WeatherAPI();
+const domController = new DOMController();
 
-// const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
+const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
 
-// searchButton.addEventListener("click", () => {
-//   const query = searchInput.value;
-//   if (!query) {
-//     alert("enter a city");
-//   } else {
-//     getWeatherByCity(query)
-//       .then((data) => {
-//         if (data === undefined) {
-//           domController.setPageToNoReultsFound();
-//         } else {
-//           domController.setPageToResultsFound();
-//           domController.setLocation(data.location);
-//           domController.setWeather(data.weather);
-//           domController.updateDOM();
-//         }
-//       })
-//       .catch((error) => {
-//         domController.setPageToApiError();
-//         console.error("Failed to get weather:", error);
-//       });
-//   }
-// });
+searchButton.addEventListener("click", () => {
+  const query = searchInput.value;
+  if (!query) {
+    alert("enter a city");
+  } else {
+    getWeatherByCity(query)
+      .then((data) => {
+        if (data === undefined) {
+          domController.setPageToNoReultsFound();
+        } else {
+          domController.setPageToResultsFound();
+          domController.setLocation(data.location);
+          domController.setWeather(data.weather);
+          domController.updateDOM();
+        }
+      })
+      .catch((error) => {
+        domController.setPageToApiError();
+        console.error("Failed to get weather:", error);
+      });
+  }
+});
 
-// // Function to get weather by city name
-// async function getWeatherByCity(cityName, country_code) {
-//   try {
-//     // Get coordinates from city name
-//     const location = await weatherAPI.getCoordinates(cityName, country_code);
-//     if (location === undefined) {
-//       console.log("Location not found");
-//       return;
-//     } else {
-//       // Get weather data using coordinates
-//       const weather = await weatherAPI.getWeatherData(
-//         location.latitude,
-//         location.longitude
-//       );
+// Function to get weather by city name
+async function getWeatherByCity(cityName, country_code) {
+  try {
+    // Get coordinates from city name
+    const location = await weatherAPI.getCoordinates(cityName, country_code);
+    if (location === undefined) {
+      console.log("Location not found");
+      return;
+    } else {
+      // Get weather data using coordinates
+      const weather = await weatherAPI.getWeatherData(
+        location.latitude,
+        location.longitude
+      );
 
-//       return {
-//         location,
-//         weather,
-//       };
-//     }
-//   } catch (error) {
-//     domController.setPageToApiError();
-//     console.error("Error getting weather:", error);
-//     throw error;
-//   }
-// }
+      return {
+        location,
+        weather,
+      };
+    }
+  } catch (error) {
+    domController.setPageToApiError();
+    console.error("Error getting weather:", error);
+    throw error;
+  }
+}
 
-// function getUserLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(showPosition);
-//   } else {
-//     console.log("Geolocation is not supported by this browser.");
-//   }
-// }
+function getUserLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+}
 
-// async function showPosition(position) {
-//   const location = await reverseGeocodingAPI.getLocation(
-//     position.coords.latitude,
-//     position.coords.longitude
-//   );
+async function showPosition(position) {
+  const location = await reverseGeocodingAPI.getLocation(
+    position.coords.latitude,
+    position.coords.longitude
+  );
 
-//   if (location === undefined) {
-//     console.log("location not found...");
-//   } else {
-//     getWeatherByCity(location.city, location.country_code.toUpperCase())
-//       .then((data) => {
-//         if (data === undefined) {
-//           domController.setPageToNoReultsFound();
-//         } else {
-//           domController.setPageToResultsFound();
-//           domController.setLocation(data.location);
-//           domController.setWeather(data.weather);
-//           domController.updateDOM();
-//         }
-//       })
-//       .catch((error) => {
-//         domController.setPageToApiError();
-//         console.error("Failed to get weather:", error);
-//       });
-//   }
-// }
+  if (location === undefined) {
+    console.log("location not found...");
+  } else {
+    getWeatherByCity(location.city, location.country_code.toUpperCase())
+      .then((data) => {
+        if (data === undefined) {
+          domController.setPageToNoReultsFound();
+        } else {
+          domController.setPageToResultsFound();
+          domController.setLocation(data.location);
+          domController.setWeather(data.weather);
+          domController.updateDOM();
+        }
+      })
+      .catch((error) => {
+        domController.setPageToApiError();
+        console.error("Failed to get weather:", error);
+      });
+  }
+}
 
-// getUserLocation();
+getUserLocation();
