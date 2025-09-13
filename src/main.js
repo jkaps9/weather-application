@@ -4,17 +4,6 @@ import { DOMController } from "./assets/scripts/DOMController.js";
 import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
 import { storeLocation, getLocation } from "./assets/scripts/LocalStorage.js";
 
-const loc = {
-  city: "Nanuet",
-  country: "United States",
-  latitude: 41.08871,
-  longitude: -74.01347,
-};
-
-storeLocation(loc);
-
-const loc_retrieved = getLocation();
-
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");
 const weatherAPI = new WeatherAPI();
@@ -148,5 +137,41 @@ async function showPosition(position) {
     console.log("location not found...");
   } else {
     searchCity(location.city, location.country_code.toUpperCase());
+  }
+}
+
+//  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\
+// //// BELOW IS FOR SAVING & GETTING LOCATION  \\\\ \\
+// const loc = {
+//   name: "Nanuet",
+//   country: "United States",
+//   latitude: 41.08871,
+//   longitude: -74.01347,
+// };
+
+// storeLocation(loc);
+getWeatherFromSavedLoc();
+
+function getWeatherFromSavedLoc() {
+  const loc_retrieved = getLocation();
+  console.log(loc_retrieved);
+  if (loc_retrieved === undefined) {
+    console.log("no saved location");
+  } else {
+    getWeatherByLocation(loc_retrieved)
+      .then((data) => {
+        if (data === undefined) {
+          domController.setPageToNoReultsFound();
+        } else {
+          domController.setPageToResultsFound();
+          domController.setLocation(loc_retrieved);
+          domController.setWeather(data);
+          domController.updateDOM();
+        }
+      })
+      .catch((error) => {
+        domController.setPageToApiError();
+        console.error("Failed to get weather:", error);
+      });
   }
 }

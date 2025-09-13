@@ -9,10 +9,14 @@ export function storeLocation(location) {
 }
 
 export function getLocation() {
-  return {
-    city: localStorage.getItem("city"),
-    country: localStorage.getItem("country"),
-    latitude: localStorage.getItem("latitude"),
-    longitude: localStorage.getItem("longitude"),
-  };
+  if (localStorage.length <= 0) {
+    return;
+  } else {
+    return {
+      name: localStorage.getItem("city"),
+      country: localStorage.getItem("country"),
+      latitude: Number(localStorage.getItem("latitude")),
+      longitude: Number(localStorage.getItem("longitude")),
+    };
+  }
 }
