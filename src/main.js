@@ -146,7 +146,6 @@ getWeatherFromSavedLoc();
 
 function getWeatherFromSavedLoc() {
   const loc_retrieved = getLocation();
-  console.log(loc_retrieved);
   if (loc_retrieved === undefined) {
     console.log("no saved location");
   } else {
