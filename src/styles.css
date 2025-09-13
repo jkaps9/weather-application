@@ -427,6 +427,7 @@ h1 {
 
   position: absolute;
   left: 0;
+  right: 0;
   bottom: 0.25rem;
 
   &:hover {
@@ -444,6 +445,10 @@ h1 {
 
   .text {
     grid-column: 1;
+  }
+
+  .save-location-button {
+    right: auto;
   }
 }
 
@@ -475,7 +480,7 @@ h1 {
 /* Hourly Forecasts */
 .hourly-forecast-card {
   position: relative;
-  max-height: 43.3125rem;
+  max-height: 53rem;
   border: none;
   overflow: scroll;
   scrollbar-color: var(--neutral-700) var(--neutral-800);
