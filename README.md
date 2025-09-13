@@ -32,6 +32,7 @@ Your users should be able to:
 Bonus Features:
 
 - [x] Geolocation
+- [x] Save one location
 - [ ] Saved/favorite locations
 - [ ] Location comparison
 - [ ] UV index, visibility, air pressure data
