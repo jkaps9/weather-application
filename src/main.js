@@ -141,15 +141,7 @@ async function showPosition(position) {
 }
 
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\
-// //// BELOW IS FOR SAVING & GETTING LOCATION  \\\\ \\
-// const loc = {
-//   name: "Nanuet",
-//   country: "United States",
-//   latitude: 41.08871,
-//   longitude: -74.01347,
-// };
-
-// storeLocation(loc);
+// ////   BELOW IS FOR GETTING SAVED LOCATION   \\\\ \\
 getWeatherFromSavedLoc();
 
 function getWeatherFromSavedLoc() {
