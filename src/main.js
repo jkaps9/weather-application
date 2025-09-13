@@ -2,7 +2,7 @@ import "./styles.css";
 import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
 import { DOMController } from "./assets/scripts/DOMController.js";
 import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
-import { storeLocation, getLocation } from "./assets/scripts/LocalStorage.js";
+import { getLocation } from "./assets/scripts/LocalStorage.js";
 
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector("#search");
