@@ -1,4 +1,5 @@
 import * as UnitConverter from "./UnitConverter.js";
+import { storeLocation } from "./LocalStorage.js";
 
 export class DOMController {
   #forecastCards = document.querySelector(".daily-forecast .forecast-cards");
@@ -112,6 +113,9 @@ export class DOMController {
     const saveLocationButton = document.createElement("button");
     saveLocationButton.className = "save-location-button";
     saveLocationButton.textContent = "Save Location";
+    saveLocationButton.addEventListener("click", () => {
+      storeLocation(this.location);
+    });
 
     // Add all elements to weather info
     weatherInfo.appendChild(textElements);
