@@ -115,6 +115,9 @@ export class DOMController {
     saveLocationButton.textContent = "Save Location";
     saveLocationButton.addEventListener("click", () => {
       storeLocation(this.location);
+      alert(
+        `${this.location.name}, ${this.location.country} saved successfully`
+      );
     });
 
     // Add all elements to weather info
