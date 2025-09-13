@@ -1,5 +1,16 @@
 import * as UnitConverter from "./UnitConverter.js";
 import { storeLocation } from "./LocalStorage.js";
+import sunnyIcon from "../images/icon-sunny.webp";
+import drizzleIcon from "../images/icon-drizzle.webp";
+import fogIcon from "../images/icon-fog.webp";
+import overcastIcon from "../images/icon-overcast.webp";
+import partlyCloudyIcon from "../images/icon-partly-cloudy.webp";
+import rainIcon from "../images/icon-rain.webp";
+import snowIcon from "../images/icon-snow.webp";
+import stormIcon from "../images/icon-storm.webp";
+import errorIcon from "../images/icon-error.svg";
+import retryIcon from "../images/icon-retry.svg";
+import dropdownIcon from "../images/icon-dropdown.svg";
 
 export class DOMController {
   #forecastCards = document.querySelector(".daily-forecast .forecast-cards");
@@ -87,12 +98,13 @@ export class DOMController {
     textElements.appendChild(dateElement);
 
     // Create weather icon
+    const weatherImage = this.#getWeatherIcon(this.weather.current.icon);
     const weatherIcon = document.createElement("div");
     weatherIcon.className = "weather-icon";
 
     const weatherImg = document.createElement("img");
     weatherImg.className = "weather-icon-image";
-    weatherImg.src = `src/assets/images/${this.weather.current.icon}`;
+    weatherImg.src = weatherImage;
     weatherImg.alt = this.weather.current.altText;
 
     // Add weather image to weather icon
@@ -246,8 +258,9 @@ export class DOMController {
     iconContainer.className = "weather-icon";
 
     // Create weather icon image
+    const weatherImage = this.#getWeatherIcon(dayData.icon);
     const iconImg = document.createElement("img");
-    iconImg.src = `src/assets/images/${dayData.icon}`;
+    iconImg.src = weatherImage;
     iconImg.alt = dayData.altText;
 
     // Append image to container
@@ -299,7 +312,7 @@ export class DOMController {
     dropdownButton.innerHTML =
       days[0] +
       ` <img
-                      src="src/assets/images/icon-dropdown.svg"
+                      src=${dropdownIcon}
                       alt="dropdown icon"
                     />`;
 
@@ -320,7 +333,7 @@ export class DOMController {
         dropdownButton.innerHTML =
           days[i] +
           ` <img
-                      src="src/assets/images/icon-dropdown.svg"
+                      src=${dropdownIcon}
                       alt="dropdown icon"
                     />`;
       });
@@ -395,8 +408,9 @@ export class DOMController {
     iconContainer.className = "weather-icon";
 
     // Create weather icon image
+    const weatherImage = this.#getWeatherIcon(hourData.icon);
     const iconImg = document.createElement("img");
-    iconImg.src = `src/assets/images/${hourData.icon}`;
+    iconImg.src = weatherImage;
     iconImg.alt = hourData.altText;
 
     // Append image to container
@@ -558,7 +572,7 @@ export class DOMController {
     apiErrorContainer.className = "container";
 
     const errorImg = document.createElement("img");
-    errorImg.src = "src/assets/images/icon-error.svg";
+    errorImg.src = errorIcon;
     errorImg.alt = "error icon";
     errorImg.className = "error-img";
 
@@ -572,7 +586,7 @@ export class DOMController {
     apiErrorText.className = "textpreset5medium";
 
     const retryImg = document.createElement("img");
-    retryImg.src = "src/assets/images/icon-retry.svg";
+    retryImg.src = retryIcon;
     retryImg.alt = "retry icon";
     retryImg.className = "retry-img";
 
@@ -591,5 +605,27 @@ export class DOMController {
     apiError.appendChild(apiErrorContainer);
 
     document.querySelector(".main-container").appendChild(apiError);
+  }
+
+  #getWeatherIcon(weatherIcon) {
+    if (weatherIcon === "icon-sunny.webp") {
+      return sunnyIcon;
+    } else if (weatherIcon === "icon-partly-cloudy.webp") {
+      return partlyCloudyIcon;
+    } else if (weatherIcon === "icon-overcast.webp") {
+      return overcastIcon;
+    } else if (weatherIcon === "icon-fog.webp") {
+      return fogIcon;
+    } else if (weatherIcon === "icon-drizzle.webp") {
+      return drizzleIcon;
+    } else if (weatherIcon === "icon-rain.webp") {
+      return rainIcon;
+    } else if (weatherIcon === "icon-snow.webp") {
+      return snowIcon;
+    } else if (weatherIcon === "icon-storm.webp") {
+      return stormIcon;
+    }
+
+    return errorIcon;
   }
 }
