@@ -153,11 +153,20 @@ export class DOMController {
           ) / 100
         : this.weather.current.precipitation;
 
+    const currentVisibility =
+      this.preferredSpeedUnit === "mph"
+        ? `${Math.round(
+            UnitConverter.kmhToMph(this.weather.current.visibility / 1000)
+          )} mi`
+        : `${Math.round(this.weather.current.visibility / 1000)} km`;
+
     const weatherDetails = {
       "Feels like": `${feelsLikeTemp}°`,
       Humidity: `${this.weather.current.humidity}%`,
       Wind: `${currentWindSpeed} ${this.preferredSpeedUnit}`,
       Precipitation: `${currentPrecipitation} ${this.preferredPrecipitationUnit}`,
+      Visibility: `${currentVisibility}`,
+      "UV Index": `${this.weather.current.uvIndex}`,
     };
 
     for (let key in weatherDetails) {

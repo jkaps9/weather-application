@@ -48,6 +48,8 @@ export class WeatherAPI {
         "precipitation",
         "weather_code",
         "wind_speed_10m",
+        "visibility",
+        "uv_index",
       ].join(","),
       hourly: [
         "temperature_2m",
@@ -88,6 +90,8 @@ export class WeatherAPI {
         time: data.current.time,
         icon: this.getWeatherIcon(data.current.weather_code),
         altText: this.getWeatherDescription(data.current.weather_code),
+        visibility: data.current.visibility,
+        uvIndex: data.current.uv_index,
       },
       hourly: this.formatHourlyData(data.hourly),
       daily: this.formatDailyData(data.daily),

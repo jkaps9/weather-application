@@ -35,7 +35,8 @@ Bonus Features:
 - [x] Save one location
 - [ ] Saved/favorite locations
 - [ ] Location comparison
-- [ ] UV index, visibility, air pressure data
+- [ ] UV index, visibility
+- [ ] Air pressure data
 - [ ] Sunrise/sunset times
 - [ ] Animated weather backgrounds
 - [ ] Voice search
