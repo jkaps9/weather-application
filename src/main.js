@@ -1,4 +1,4 @@
-import "./styles.css";
+import "/src/styles.css";
 import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
 import { DOMController } from "./assets/scripts/DOMController.js";
 import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
