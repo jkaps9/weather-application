@@ -97,21 +97,7 @@ async function showPosition(position) {
   if (location === undefined) {
     console.log("location not found...");
   } else {
-    getWeatherByCity(location.city, location.country_code.toUpperCase())
-      .then((data) => {
-        if (data === undefined) {
-          domController.setPageToNoReultsFound();
-        } else {
-          domController.setPageToResultsFound();
-          domController.setLocation(data.location);
-          domController.setWeather(data.weather);
-          domController.updateDOM();
-        }
-      })
-      .catch((error) => {
-        domController.setPageToApiError();
-        console.error("Failed to get weather:", error);
-      });
+    searchCity(location.city, location.country_code.toUpperCase());
   }
 }
 
