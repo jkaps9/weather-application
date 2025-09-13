@@ -12,6 +12,11 @@ export function mmToInches(distInMm) {
   return distInMm * multiplier;
 }
 
+export function mbToInches(pressureInMb) {
+  const multiplier = 1 / 33.8639;
+  return pressureInMb * multiplier;
+}
+
 export function kmhToMph(speedInKmh) {
   // 1 kmh = 0.621371 mph
   const multiplier = 0.621371;

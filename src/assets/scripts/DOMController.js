@@ -160,6 +160,16 @@ export class DOMController {
           )} mi`
         : `${Math.round(this.weather.current.visibility / 1000)} km`;
 
+    const currentSurfacePressure =
+      this.preferredPrecipitationUnit === "in"
+        ? `${
+            Math.round(
+              UnitConverter.mbToInches(this.weather.current.surfacePressure) *
+                100
+            ) / 100
+          } in`
+        : `${this.weather.current.surfacePressure} mb`;
+
     const weatherDetails = {
       "Feels like": `${feelsLikeTemp}°`,
       Humidity: `${this.weather.current.humidity}%`,
@@ -167,6 +177,7 @@ export class DOMController {
       Precipitation: `${currentPrecipitation} ${this.preferredPrecipitationUnit}`,
       Visibility: `${currentVisibility}`,
       "UV Index": `${this.weather.current.uvIndex}`,
+      Pressure: `${currentSurfacePressure}`,
     };
 
     for (let key in weatherDetails) {

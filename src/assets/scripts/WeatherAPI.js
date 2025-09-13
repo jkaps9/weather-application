@@ -50,6 +50,7 @@ export class WeatherAPI {
         "wind_speed_10m",
         "visibility",
         "uv_index",
+        "surface_pressure",
       ].join(","),
       hourly: [
         "temperature_2m",
@@ -92,6 +93,7 @@ export class WeatherAPI {
         altText: this.getWeatherDescription(data.current.weather_code),
         visibility: data.current.visibility,
         uvIndex: data.current.uv_index,
+        surfacePressure: data.current.surface_pressure,
       },
       hourly: this.formatHourlyData(data.hourly),
       daily: this.formatDailyData(data.daily),
