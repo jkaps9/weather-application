@@ -14,6 +14,7 @@
   --neutral-300: hsl(240, 6%, 70%);
   --neutral-200: hsl(250, 6%, 84%);
   --neutral-0: hsl(0, 0%, 100%);
+  --neutral-0-light: hsla(0, 0%, 100%, 0.8);
 
   /* Colors - Orange */
   --orange-500: hsl(28, 100%, 52%);
@@ -393,7 +394,7 @@ h1 {
 }
 
 .date {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--neutral-0-light);
 }
 
 .weather-icon {
@@ -561,7 +562,7 @@ h1 {
   }
 }
 
-body.light {
+body.inverted {
   color: var(--neutral-900);
   background-color: var(--neutral-0);
 
@@ -595,6 +596,21 @@ body.light {
   .hourly-forecast-card {
     scrollbar-color: var(--neutral-300) var(--neutral-200);
   }
+}
+
+body.light {
+  /* TODO: SWITCH UP BG IMAGES ON WEATHER-INFO */
+  --neutral-900: hsl(184, 25%, 95%);
+  --neutral-800: hsl(184, 70%, 74%);
+  --neutral-700: hsl(184, 80%, 57%);
+  --netural-600: hsl(184, 90%, 30%);
+  --neutral-300: hsl(166, 100%, 24%);
+  --neutral-200: hsl(166, 100%, 20%);
+  --neutral-0: hsl(166, 100%, 5%);
+  --neutral-0-light: hsla(166, 100%, 6%, 0.8);
+
+  --blue-500: hsl(99, 59%, 48%);
+  --blue-700: hsl(96, 100%, 26%);
 }
 
 @media (min-width: 57rem) {
