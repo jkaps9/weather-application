@@ -642,13 +642,18 @@ export class DOMController {
     return errorIcon;
   }
 
-  updateSearchDropdown(locations) {
+  updateSearchDropdown(locations, callback) {
     const searchDropDown = document.querySelector(".dropdown-search");
     searchDropDown.classList.add("visible");
     this.#removeAllChildren(searchDropDown);
     for (let i = 0; i < locations.length; i++) {
       const searchItem = document.createElement("div");
       searchItem.className = "search-item";
+
+      searchItem.addEventListener("click", () => {
+        callback(locations[i]);
+        searchDropDown.classList.remove("visible");
+      });
 
       const paragraph = document.createElement("p");
       paragraph.className = "text-preset-7";

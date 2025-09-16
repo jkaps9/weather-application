@@ -18,7 +18,10 @@ searchButton.addEventListener("click", () => {
     getMultipleLocationsByCity(query)
       .then((locations) => {
         console.log(locations);
-        domController.updateSearchDropdown(locations);
+        domController.updateSearchDropdown(
+          locations,
+          getWeatherByLocationAndUpdateDOM
+        );
       })
       .catch((error) => {
         console.error(error);
@@ -129,6 +132,37 @@ async function getWeatherByLocation(location) {
         return;
       } else {
         return weather;
+      }
+    }
+  } catch (error) {
+    domController.setPageToApiError();
+    console.error("Error getting weather:", error);
+    throw error;
+  }
+}
+
+async function getWeatherByLocationAndUpdateDOM(location) {
+  // Function takes in a location
+  // Function should update DOM with the weather
+  try {
+    if (location === undefined) {
+      console.log("Location not found");
+      domController.setPageToNoReultsFound();
+    } else {
+      // Get weather data using coordinates
+      const weather = await weatherAPI.getWeatherData(
+        location.latitude,
+        location.longitude
+      );
+
+      if (weather === undefined) {
+        console.log("weather not found");
+        domController.setPageToNoReultsFound();
+      } else {
+        domController.setPageToResultsFound();
+        domController.setLocation(location);
+        domController.setWeather(weather);
+        domController.updateDOM();
       }
     }
   } catch (error) {
