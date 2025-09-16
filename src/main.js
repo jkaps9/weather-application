@@ -180,26 +180,26 @@ async function getWeatherByLocationAndUpdateDOM(location) {
 // const reverseGeocodingAPI = new ReverseGeocodingAPI(apiKey);
 // getUserLocation();
 
-function getUserLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
-}
+// function getUserLocation() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(showPosition);
+//   } else {
+//     console.log("Geolocation is not supported by this browser.");
+//   }
+// }
 
-async function showPosition(position) {
-  const location = await reverseGeocodingAPI.getLocation(
-    position.coords.latitude,
-    position.coords.longitude
-  );
+// async function showPosition(position) {
+//   const location = await reverseGeocodingAPI.getLocation(
+//     position.coords.latitude,
+//     position.coords.longitude
+//   );
 
-  if (location === undefined) {
-    console.log("location not found...");
-  } else {
-    searchCity(location.city, location.country_code.toUpperCase());
-  }
-}
+//   if (location === undefined) {
+//     console.log("location not found...");
+//   } else {
+//     searchCity(location.city, location.country_code.toUpperCase());
+//   }
+// }
 
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\
 // ////   BELOW IS FOR GETTING SAVED LOCATION   \\\\ \\
