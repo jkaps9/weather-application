@@ -454,6 +454,19 @@ export class DOMController {
         this.#handleUnitButtonClick(e.currentTarget)
       );
     });
+
+    const body = document.querySelector("body");
+    const darkModeToggle = document.querySelector(".dark-mode-toggle");
+
+    darkModeToggle.addEventListener("click", () => {
+      if (body.classList.contains("light")) {
+        darkModeToggle.innerHTML = `<img src="src/assets/images/icon-sun.svg" alt="dark-mode-toggle" />`;
+      } else {
+        darkModeToggle.innerHTML = `<img src="src/assets/images/icon-moon.svg" alt="dark-mode-toggle" />`;
+      }
+
+      body.classList.toggle("light");
+    });
   }
 
   #switchAllPreferredUnits() {
