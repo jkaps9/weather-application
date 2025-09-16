@@ -38,7 +38,7 @@ export class WeatherAPI {
 
   async getMultipleCoordinates(cityName, countryCode = "") {
     const countryParameter =
-      countryCode === "" ? `` : `&countryCode=${countryCode}`;
+      countryCode === "" || !countryCode ? `` : `&countryCode=${countryCode}`;
     try {
       const response = await fetch(
         `${this.geocodingURL}?name=${encodeURIComponent(

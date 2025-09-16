@@ -3,165 +3,168 @@ import { WeatherAPI } from "./assets/scripts/WeatherAPI.js";
 import { DOMController } from "./assets/scripts/DOMController.js";
 import { ReverseGeocodingAPI } from "./assets/scripts/ReverseGeocodingAPI.js";
 import { getLocation } from "./assets/scripts/LocalStorage.js";
+import { WeatherController } from "./assets/scripts/WeatherController.js";
 
-const searchButton = document.querySelector(".search-button");
-const searchInput = document.querySelector("#search");
-const weatherAPI = new WeatherAPI();
-const domController = new DOMController();
+const weatherController = new WeatherController();
 
-searchButton.addEventListener("click", () => {
-  const query = searchInput.value;
-  if (!query) {
-    alert("enter a city");
-  } else {
-    // searchCity(query);
-    getMultipleLocationsByCity(query)
-      .then((locations) => {
-        domController.updateSearchDropdown(
-          locations,
-          getWeatherByLocationAndUpdateDOM
-        );
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-});
+// const searchButton = document.querySelector(".search-button");
+// const searchInput = document.querySelector("#search");
+// const weatherAPI = new WeatherAPI();
+// const domController = new DOMController();
 
-function searchCity(city, country_code) {
-  getWeatherByCity(city, country_code)
-    .then((data) => {
-      if (data === undefined) {
-        domController.setPageToNoReultsFound();
-      } else {
-        domController.setPageToResultsFound();
-        domController.setLocation(data.location);
-        domController.setWeather(data.weather);
-        domController.updateDOM();
-      }
-    })
-    .catch((error) => {
-      domController.setPageToApiError();
-      console.error("Failed to get weather:", error);
-    });
-}
+// searchButton.addEventListener("click", () => {
+//   const query = searchInput.value;
+//   if (!query) {
+//     alert("enter a city");
+//   } else {
+//     // searchCity(query);
+//     getMultipleLocationsByCity(query)
+//       .then((locations) => {
+//         domController.updateSearchDropdown(
+//           locations,
+//           getWeatherByLocationAndUpdateDOM
+//         );
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//   }
+// });
 
-// Function to get weather by city name
-async function getWeatherByCity(cityName, country_code) {
-  try {
-    // Get coordinates from city name
-    const location = await getLocationByCity(cityName, country_code);
-    if (location === undefined) {
-      return;
-    } else {
-      // Get weather data using coordinates
-      const weather = await getWeatherByLocation(location);
+// function searchCity(city, country_code) {
+//   getWeatherByCity(city, country_code)
+//     .then((data) => {
+//       if (data === undefined) {
+//         domController.setPageToNoReultsFound();
+//       } else {
+//         domController.setPageToResultsFound();
+//         domController.setLocation(data.location);
+//         domController.setWeather(data.weather);
+//         domController.updateDOM();
+//       }
+//     })
+//     .catch((error) => {
+//       domController.setPageToApiError();
+//       console.error("Failed to get weather:", error);
+//     });
+// }
 
-      if (weather === undefined) {
-        return;
-      } else {
-        return {
-          location,
-          weather,
-        };
-      }
-    }
-  } catch (error) {
-    domController.setPageToApiError();
-    console.error("Error getting weather:", error);
-    throw error;
-  }
-}
+// // Function to get weather by city name
+// async function getWeatherByCity(cityName, country_code) {
+//   try {
+//     // Get coordinates from city name
+//     const location = await getLocationByCity(cityName, country_code);
+//     if (location === undefined) {
+//       return;
+//     } else {
+//       // Get weather data using coordinates
+//       const weather = await getWeatherByLocation(location);
 
-async function getLocationByCity(cityName, country_code) {
-  // Function takes in a city name, and optionally a country code.
-  // Function should return the location
-  try {
-    const location = await weatherAPI.getCoordinates(cityName, country_code);
-    if (location === undefined) {
-      return;
-    } else {
-      return location;
-    }
-  } catch (error) {
-    domController.setPageToApiError();
-    console.error("Error getting weather:", error);
-    throw error;
-  }
-}
+//       if (weather === undefined) {
+//         return;
+//       } else {
+//         return {
+//           location,
+//           weather,
+//         };
+//       }
+//     }
+//   } catch (error) {
+//     domController.setPageToApiError();
+//     console.error("Error getting weather:", error);
+//     throw error;
+//   }
+// }
 
-async function getMultipleLocationsByCity(cityName, country_code) {
-  try {
-    const locations = await weatherAPI.getMultipleCoordinates(
-      cityName,
-      country_code
-    );
-    if (locations === undefined) {
-      domController.setPageToNoReultsFound();
-    } else {
-      return locations;
-    }
-  } catch (error) {
-    domController.setPageToApiError();
-    console.error("Error getting weather:", error);
-    throw error;
-  }
-}
+// async function getLocationByCity(cityName, country_code) {
+//   // Function takes in a city name, and optionally a country code.
+//   // Function should return the location
+//   try {
+//     const location = await weatherAPI.getCoordinates(cityName, country_code);
+//     if (location === undefined) {
+//       return;
+//     } else {
+//       return location;
+//     }
+//   } catch (error) {
+//     domController.setPageToApiError();
+//     console.error("Error getting weather:", error);
+//     throw error;
+//   }
+// }
 
-async function getWeatherByLocation(location) {
-  // Function takes in a location
-  // Function should return the weather
-  try {
-    if (location === undefined) {
-      return;
-    } else {
-      // Get weather data using coordinates
-      const weather = await weatherAPI.getWeatherData(
-        location.latitude,
-        location.longitude
-      );
+// async function getMultipleLocationsByCity(cityName, country_code) {
+//   try {
+//     const locations = await weatherAPI.getMultipleCoordinates(
+//       cityName,
+//       country_code
+//     );
+//     if (locations === undefined) {
+//       domController.setPageToNoReultsFound();
+//     } else {
+//       return locations;
+//     }
+//   } catch (error) {
+//     domController.setPageToApiError();
+//     console.error("Error getting weather:", error);
+//     throw error;
+//   }
+// }
 
-      if (weather === undefined) {
-        return;
-      } else {
-        return weather;
-      }
-    }
-  } catch (error) {
-    domController.setPageToApiError();
-    console.error("Error getting weather:", error);
-    throw error;
-  }
-}
+// async function getWeatherByLocation(location) {
+//   // Function takes in a location
+//   // Function should return the weather
+//   try {
+//     if (location === undefined) {
+//       return;
+//     } else {
+//       // Get weather data using coordinates
+//       const weather = await weatherAPI.getWeatherData(
+//         location.latitude,
+//         location.longitude
+//       );
 
-async function getWeatherByLocationAndUpdateDOM(location) {
-  // Function takes in a location
-  // Function should update DOM with the weather
-  try {
-    if (location === undefined) {
-      domController.setPageToNoReultsFound();
-    } else {
-      // Get weather data using coordinates
-      const weather = await weatherAPI.getWeatherData(
-        location.latitude,
-        location.longitude
-      );
+//       if (weather === undefined) {
+//         return;
+//       } else {
+//         return weather;
+//       }
+//     }
+//   } catch (error) {
+//     domController.setPageToApiError();
+//     console.error("Error getting weather:", error);
+//     throw error;
+//   }
+// }
 
-      if (weather === undefined) {
-        domController.setPageToNoReultsFound();
-      } else {
-        domController.setPageToResultsFound();
-        domController.setLocation(location);
-        domController.setWeather(weather);
-        domController.updateDOM();
-      }
-    }
-  } catch (error) {
-    domController.setPageToApiError();
-    console.error("Error getting weather:", error);
-    throw error;
-  }
-}
+// async function getWeatherByLocationAndUpdateDOM(location) {
+//   // Function takes in a location
+//   // Function should update DOM with the weather
+//   try {
+//     if (location === undefined) {
+//       domController.setPageToNoReultsFound();
+//     } else {
+//       // Get weather data using coordinates
+//       const weather = await weatherAPI.getWeatherData(
+//         location.latitude,
+//         location.longitude
+//       );
+
+//       if (weather === undefined) {
+//         domController.setPageToNoReultsFound();
+//       } else {
+//         domController.setPageToResultsFound();
+//         domController.setLocation(location);
+//         domController.setWeather(weather);
+//         domController.updateDOM();
+//       }
+//     }
+//   } catch (error) {
+//     domController.setPageToApiError();
+//     console.error("Error getting weather:", error);
+//     throw error;
+//   }
+// }
 
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\
 // //// BELOW IS FOR GETTING THE USERS LOCATION \\\\ \\
@@ -194,27 +197,27 @@ async function getWeatherByLocationAndUpdateDOM(location) {
 
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\
 // ////   BELOW IS FOR GETTING SAVED LOCATION   \\\\ \\
-getWeatherFromSavedLoc();
+// getWeatherFromSavedLoc();
 
-function getWeatherFromSavedLoc() {
-  const loc_retrieved = getLocation();
-  if (loc_retrieved === undefined) {
-    console.log("no saved location");
-  } else {
-    getWeatherByLocation(loc_retrieved)
-      .then((data) => {
-        if (data === undefined) {
-          domController.setPageToNoReultsFound();
-        } else {
-          domController.setPageToResultsFound();
-          domController.setLocation(loc_retrieved);
-          domController.setWeather(data);
-          domController.updateDOM();
-        }
-      })
-      .catch((error) => {
-        domController.setPageToApiError();
-        console.error("Failed to get weather:", error);
-      });
-  }
-}
+// function getWeatherFromSavedLoc() {
+//   const loc_retrieved = getLocation();
+//   if (loc_retrieved === undefined) {
+//     console.log("no saved location");
+//   } else {
+//     getWeatherByLocation(loc_retrieved)
+//       .then((data) => {
+//         if (data === undefined) {
+//           domController.setPageToNoReultsFound();
+//         } else {
+//           domController.setPageToResultsFound();
+//           domController.setLocation(loc_retrieved);
+//           domController.setWeather(data);
+//           domController.updateDOM();
+//         }
+//       })
+//       .catch((error) => {
+//         domController.setPageToApiError();
+//         console.error("Failed to get weather:", error);
+//       });
+//   }
+// }
