@@ -237,7 +237,7 @@ header {
   border: 1px solid var(--neutral-700);
   border-radius: var(--border-radius-md);
   padding: 0.5rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.25rem;
   z-index: 1000;

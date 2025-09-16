@@ -36,6 +36,43 @@ export class WeatherAPI {
     }
   }
 
+  async getMultipleCoordinates(cityName, countryCode = "") {
+    const countryParameter =
+      countryCode === "" ? `` : `&countryCode=${countryCode}`;
+    try {
+      const response = await fetch(
+        `${this.geocodingURL}?name=${encodeURIComponent(
+          cityName
+        )}&count=3&language=en&format=json${countryParameter}`
+      );
+      const data = await response.json();
+
+      if (data.results && data.results.length > 0) {
+        const locations = [];
+
+        for (let i = 0; i < data.results.length; i++) {
+          const location = data.results[i];
+          const loc = {
+            latitude: location.latitude,
+            longitude: location.longitude,
+            name: location.name,
+            country: location.country,
+            admin1: location.admin1, // state/province
+          };
+          locations.push(loc);
+        }
+
+        return locations;
+      } else {
+        // throw new Error("Location not found");
+        return;
+      }
+    } catch (error) {
+      console.error("Error fetching coordinates:", error);
+      throw error;
+    }
+  }
+
   // Get complete weather data (current, hourly, daily)
   async getWeatherData(latitude, longitude) {
     const params = new URLSearchParams({

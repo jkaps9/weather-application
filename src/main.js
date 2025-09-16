@@ -14,7 +14,14 @@ searchButton.addEventListener("click", () => {
   if (!query) {
     alert("enter a city");
   } else {
-    searchCity(query);
+    // searchCity(query);
+    getMultipleLocationsByCity(query)
+      .then((locations) => {
+        console.log(locations);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 });
 
@@ -75,6 +82,25 @@ async function getLocationByCity(cityName, country_code) {
       return;
     } else {
       return location;
+    }
+  } catch (error) {
+    domController.setPageToApiError();
+    console.error("Error getting weather:", error);
+    throw error;
+  }
+}
+
+async function getMultipleLocationsByCity(cityName, country_code) {
+  try {
+    const locations = await weatherAPI.getMultipleCoordinates(
+      cityName,
+      country_code
+    );
+    if (locations === undefined) {
+      console.log("Location not found");
+      return;
+    } else {
+      return locations;
     }
   } catch (error) {
     domController.setPageToApiError();
