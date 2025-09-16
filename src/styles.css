@@ -483,12 +483,9 @@ h1 {
 /* Hourly Forecasts */
 .hourly-forecast-card {
   position: relative;
-  max-height: 53rem;
   border: none;
-  overflow: scroll;
   scrollbar-color: var(--neutral-700) var(--neutral-800);
   scrollbar-width: thin;
-  overflow-x: hidden;
   padding-top: 0;
 }
 
@@ -673,5 +670,11 @@ body.light {
     grid-row: 2 / span 2;
 
     height: 100%;
+  }
+
+  .hourly-forecast-card {
+    max-height: 53rem;
+    overflow: scroll;
+    overflow-x: hidden;
   }
 }
