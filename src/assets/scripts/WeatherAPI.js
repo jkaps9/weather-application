@@ -43,7 +43,7 @@ export class WeatherAPI {
       const response = await fetch(
         `${this.geocodingURL}?name=${encodeURIComponent(
           cityName
-        )}&count=3&language=en&format=json${countryParameter}`
+        )}&count=5&language=en&format=json${countryParameter}`
       );
       const data = await response.json();
 
