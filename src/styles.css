@@ -228,6 +228,32 @@ header {
   display: block;
 }
 
+.dropdown-search {
+  position: absolute;
+  top: calc(100% + 0.625rem);
+  left: 0;
+  width: 100%;
+  background-color: var(--neutral-800);
+  border: 1px solid var(--neutral-700);
+  border-radius: var(--border-radius-md);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 1000;
+}
+
+.search-item {
+  padding: 0.625rem 0.5rem;
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid transparent;
+  &:hover {
+    background-color: var(--neutral-700);
+    border-color: var(--neutral-600);
+  }
+}
+
 .switch-units-button,
 .units-button,
 .day-button {
