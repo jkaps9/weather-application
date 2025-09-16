@@ -641,4 +641,21 @@ export class DOMController {
 
     return errorIcon;
   }
+
+  updateSearchDropdown(locations) {
+    const searchDropDown = document.querySelector(".dropdown-search");
+    searchDropDown.classList.add("visible");
+    this.#removeAllChildren(searchDropDown);
+    for (let i = 0; i < locations.length; i++) {
+      const searchItem = document.createElement("div");
+      searchItem.className = "search-item";
+
+      const paragraph = document.createElement("p");
+      paragraph.className = "text-preset-7";
+      paragraph.textContent = `${locations[i].name}, ${locations[i].admin1} ${locations[i].country}`;
+
+      searchItem.appendChild(paragraph);
+      searchDropDown.appendChild(searchItem);
+    }
+  }
 }

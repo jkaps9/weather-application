@@ -18,6 +18,7 @@ searchButton.addEventListener("click", () => {
     getMultipleLocationsByCity(query)
       .then((locations) => {
         console.log(locations);
+        domController.updateSearchDropdown(locations);
       })
       .catch((error) => {
         console.error(error);

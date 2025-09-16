@@ -241,6 +241,10 @@ header {
   flex-direction: column;
   gap: 0.25rem;
   z-index: 1000;
+
+  &.visible {
+    display: flex;
+  }
 }
 
 .search-item {
