@@ -39,7 +39,7 @@ Bonus Features:
 - [x] Sunrise/sunset times
 - [ ] Animated weather backgrounds
 - [ ] Voice search
-- [ ] Dark/light mode themes
+- [x] Dark/light mode themes
 - [ ] PWA capabilities
 
 TODO:
