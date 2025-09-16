@@ -1,5 +1,5 @@
 import * as UnitConverter from "./UnitConverter.js";
-import { storeLocation } from "./LocalStorage.js";
+import { LocalStorage } from "./LocalStorage.js";
 import sunnyIcon from "../images/icon-sunny.webp";
 import drizzleIcon from "../images/icon-drizzle.webp";
 import fogIcon from "../images/icon-fog.webp";
@@ -126,7 +126,8 @@ export class DOMController {
     saveLocationButton.className = "save-location-button";
     saveLocationButton.textContent = "Save Location";
     saveLocationButton.addEventListener("click", () => {
-      storeLocation(this.location);
+      const localStorage = new LocalStorage();
+      localStorage.saveLocation(this.location);
       alert(
         `${this.location.name}, ${this.location.country} saved successfully`
       );

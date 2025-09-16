@@ -1,10 +1,12 @@
 import { WeatherAPI } from "./WeatherAPI";
 import { DOMController } from "./DOMController";
+import { LocalStorage } from "./LocalStorage";
 
 export class WeatherController {
   constructor() {
     this.weatherAPI = new WeatherAPI();
     this.domController = new DOMController();
+    this.localStorage = new LocalStorage();
     this.init();
   }
 
@@ -23,6 +25,8 @@ export class WeatherController {
     searchInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") this.handleSearch();
     });
+
+    this.loadSavedLocationWeather();
   }
 
   async handleSearch() {
@@ -119,5 +123,12 @@ export class WeatherController {
     this.domController.showError(
       "Sorry, we couldn't get the weather data. Please try again."
     );
+  }
+
+  async loadSavedLocationWeather() {
+    const location = this.localStorage.getSavedLocation();
+    if (location) {
+      await this.getWeatherAndUpdateDOM(location);
+    }
   }
 }
