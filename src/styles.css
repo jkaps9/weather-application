@@ -124,6 +124,7 @@ input {
   border: none;
   font: inherit;
   color: inherit;
+  max-width: 100%;
 }
 
 img {
