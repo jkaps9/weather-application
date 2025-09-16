@@ -643,24 +643,26 @@ export class DOMController {
   }
 
   updateSearchDropdown(locations, callback) {
-    const searchDropDown = document.querySelector(".dropdown-search");
-    searchDropDown.classList.add("visible");
-    this.#removeAllChildren(searchDropDown);
-    for (let i = 0; i < locations.length; i++) {
-      const searchItem = document.createElement("div");
-      searchItem.className = "search-item";
+    if (locations.length > 0) {
+      const searchDropDown = document.querySelector(".dropdown-search");
+      this.#removeAllChildren(searchDropDown);
+      searchDropDown.classList.add("visible");
+      for (let i = 0; i < locations.length; i++) {
+        const searchItem = document.createElement("div");
+        searchItem.className = "search-item";
 
-      searchItem.addEventListener("click", () => {
-        callback(locations[i]);
-        searchDropDown.classList.remove("visible");
-      });
+        searchItem.addEventListener("click", () => {
+          callback(locations[i]);
+          searchDropDown.classList.remove("visible");
+        });
 
-      const paragraph = document.createElement("p");
-      paragraph.className = "text-preset-7";
-      paragraph.textContent = `${locations[i].name}, ${locations[i].admin1} ${locations[i].country}`;
+        const paragraph = document.createElement("p");
+        paragraph.className = "text-preset-7";
+        paragraph.textContent = `${locations[i].name}, ${locations[i].admin1} ${locations[i].country}`;
 
-      searchItem.appendChild(paragraph);
-      searchDropDown.appendChild(searchItem);
+        searchItem.appendChild(paragraph);
+        searchDropDown.appendChild(searchItem);
+      }
     }
   }
 }
