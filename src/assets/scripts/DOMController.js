@@ -643,7 +643,9 @@ export class DOMController {
   }
 
   updateSearchDropdown(locations, callback) {
-    if (locations.length > 0) {
+    if (locations === undefined) {
+      this.setPageToNoReultsFound();
+    } else {
       const searchDropDown = document.querySelector(".dropdown-search");
       this.#removeAllChildren(searchDropDown);
       searchDropDown.classList.add("visible");

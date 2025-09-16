@@ -17,7 +17,6 @@ searchButton.addEventListener("click", () => {
     // searchCity(query);
     getMultipleLocationsByCity(query)
       .then((locations) => {
-        console.log(locations);
         domController.updateSearchDropdown(
           locations,
           getWeatherByLocationAndUpdateDOM
@@ -53,14 +52,12 @@ async function getWeatherByCity(cityName, country_code) {
     // Get coordinates from city name
     const location = await getLocationByCity(cityName, country_code);
     if (location === undefined) {
-      console.log("Location not found");
       return;
     } else {
       // Get weather data using coordinates
       const weather = await getWeatherByLocation(location);
 
       if (weather === undefined) {
-        console.log("Weather not found");
         return;
       } else {
         return {
@@ -82,7 +79,6 @@ async function getLocationByCity(cityName, country_code) {
   try {
     const location = await weatherAPI.getCoordinates(cityName, country_code);
     if (location === undefined) {
-      console.log("Location not found");
       return;
     } else {
       return location;
@@ -101,8 +97,7 @@ async function getMultipleLocationsByCity(cityName, country_code) {
       country_code
     );
     if (locations === undefined) {
-      console.log("Location not found");
-      return;
+      domController.setPageToNoReultsFound();
     } else {
       return locations;
     }
@@ -118,7 +113,6 @@ async function getWeatherByLocation(location) {
   // Function should return the weather
   try {
     if (location === undefined) {
-      console.log("Location not found");
       return;
     } else {
       // Get weather data using coordinates
@@ -128,7 +122,6 @@ async function getWeatherByLocation(location) {
       );
 
       if (weather === undefined) {
-        console.log("weather not found");
         return;
       } else {
         return weather;
@@ -146,7 +139,6 @@ async function getWeatherByLocationAndUpdateDOM(location) {
   // Function should update DOM with the weather
   try {
     if (location === undefined) {
-      console.log("Location not found");
       domController.setPageToNoReultsFound();
     } else {
       // Get weather data using coordinates
@@ -156,7 +148,6 @@ async function getWeatherByLocationAndUpdateDOM(location) {
       );
 
       if (weather === undefined) {
-        console.log("weather not found");
         domController.setPageToNoReultsFound();
       } else {
         domController.setPageToResultsFound();
