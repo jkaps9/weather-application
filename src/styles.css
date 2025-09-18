@@ -636,25 +636,6 @@ body.light {
   .current-weather,
   .daily-forecast {
     grid-column: 1;
-    min-height: 0;
-  }
-
-  .current-weather {
-    max-height: fit-content;
-  }
-
-  .daily-forecast {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .daily-forecast .container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .forecast-cards {
-    flex: 1;
   }
 
   .hourly-forecast {
@@ -664,11 +645,11 @@ body.light {
     height: 100%;
     .container {
       height: 100%;
-      max-height: 100%;
     }
   }
 
   .hourly-forecast-card {
+    max-height: 54rem;
     overflow: scroll;
     overflow-x: hidden;
   }
