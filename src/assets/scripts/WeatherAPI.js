@@ -6,36 +6,6 @@ export class WeatherAPI {
   }
 
   // Get coordinates from city name
-  async getCoordinates(cityName, countryCode = "") {
-    const countryParameter =
-      countryCode === "" ? `` : `&countryCode=${countryCode}`;
-    try {
-      const response = await fetch(
-        `${this.geocodingURL}?name=${encodeURIComponent(
-          cityName
-        )}&count=1&language=en&format=json${countryParameter}`
-      );
-      const data = await response.json();
-
-      if (data.results && data.results.length > 0) {
-        const location = data.results[0];
-        return {
-          latitude: location.latitude,
-          longitude: location.longitude,
-          name: location.name,
-          country: location.country,
-          admin1: location.admin1, // state/province
-        };
-      } else {
-        // throw new Error("Location not found");
-        return;
-      }
-    } catch (error) {
-      console.error("Error fetching coordinates:", error);
-      throw error;
-    }
-  }
-
   async getMultipleCoordinates(cityName, countryCode = "") {
     const countryParameter =
       countryCode === "" || !countryCode ? `` : `&countryCode=${countryCode}`;
