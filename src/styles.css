@@ -590,42 +590,6 @@ h1 {
   }
 }
 
-body.inverted {
-  color: var(--neutral-900);
-  background-color: var(--neutral-0);
-
-  .card,
-  .dropdown-button,
-  .weather-info {
-    background-color: var(--neutral-200);
-    border-color: var(--neutral-300);
-  }
-
-  .search-button {
-    background-color: var(--orange-500);
-    color: var(--neutral-0);
-  }
-
-  input {
-    background-color: var(--neutral-200);
-    border: 1px solid var(--neutral-600);
-    color: var(--neutral-900);
-    &::placeholder {
-      color: var(--neutral-900);
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: var(--neutral-300);
-    }
-  }
-
-  .hourly-forecast-card {
-    scrollbar-color: var(--neutral-300) var(--neutral-200);
-  }
-}
-
 body.light {
   /* TODO: SWITCH UP BG IMAGES ON WEATHER-INFO */
   --neutral-900: hsl(0, 0%, 98%);
