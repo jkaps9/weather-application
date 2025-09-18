@@ -387,19 +387,6 @@ h1 {
   }
 }
 
-@media (min-width: 48rem) {
-  .search-bar {
-    flex-direction: row;
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 48rem) {
-  .search-bar .input-container {
-    max-width: 32.875rem;
-  }
-}
-
 /* Current Weather */
 .weather-info {
   background-image: url("assets/images/mobile-hero-bg.svg");
@@ -468,24 +455,6 @@ h1 {
   }
 }
 
-@media (min-width: 48rem) {
-  .weather-info {
-    background-image: url("assets/images/desktop-hero-bg.svg");
-    background-color: var(--neutral-0);
-    grid-template-columns: 1fr auto auto;
-    justify-items: start;
-    text-align: start;
-  }
-
-  .text {
-    grid-column: 1;
-  }
-
-  .save-location-button {
-    right: auto;
-  }
-}
-
 /* Daily Forecast */
 .daily-forecast > .container {
   height: 100%;
@@ -500,13 +469,6 @@ h1 {
   .card {
     flex-grow: 1;
     padding: 1rem 0.625rem;
-  }
-}
-
-@media (min-width: 48rem) {
-  .forecast-cards {
-    display: flex;
-    justify-content: space-between;
   }
 }
 
@@ -622,6 +584,38 @@ body.light {
 
   margin-left: auto;
   margin-right: 2rem;
+}
+
+@media (min-width: 48rem) {
+  .search-bar {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .search-bar .input-container {
+    max-width: 32.875rem;
+  }
+
+  .forecast-cards {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .weather-info {
+    background-image: url("assets/images/desktop-hero-bg.svg");
+    background-color: var(--neutral-0);
+    grid-template-columns: 1fr auto auto;
+    justify-items: start;
+    text-align: start;
+  }
+
+  .text {
+    grid-column: 1;
+  }
+
+  .save-location-button {
+    right: auto;
+  }
 }
 
 @media (min-width: 57rem) {
