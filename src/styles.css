@@ -635,6 +635,16 @@ body.light {
   --neutral-300: hsl(243, 23%, 24%);
   --neutral-200: hsl(243, 27%, 20%);
   --neutral-0: hsl(243, 96%, 9%);
+
+  .logo path.text,
+  .dropdown-button svg path,
+  .search-icon path {
+    fill: var(--neutral-0);
+  }
+
+  .search-button {
+    color: var(--neutral-900);
+  }
 }
 
 .dark-mode-toggle {

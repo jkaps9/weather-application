@@ -10,7 +10,6 @@ import snowIcon from "../images/icon-snow.webp";
 import stormIcon from "../images/icon-storm.webp";
 import errorIcon from "../images/icon-error.svg";
 import retryIcon from "../images/icon-retry.svg";
-import dropdownIcon from "../images/icon-dropdown.svg";
 
 export class DOMController {
   #forecastCards = document.querySelector(".daily-forecast .forecast-cards");
@@ -312,10 +311,7 @@ export class DOMController {
     );
     dropdownButton.innerHTML =
       days[0] +
-      ` <img
-                      src=${dropdownIcon}
-                      alt="dropdown icon"
-                    />`;
+      ` <svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" fill="none" viewBox="0 0 13 8"><path fill="#fff" d="M6.309 7.484 1.105 2.316c-.175-.14-.175-.421 0-.597l.704-.668a.405.405 0 0 1 .597 0l4.219 4.148 4.184-4.148c.175-.176.457-.176.597 0l.703.668c.176.176.176.457 0 .597L6.906 7.484a.405.405 0 0 1-.597 0Z"/></svg>`;
 
     this.#removeAllChildren(dropdownMenu);
 
@@ -333,10 +329,7 @@ export class DOMController {
         div.className = "dropdown-option selected";
         dropdownButton.innerHTML =
           days[i] +
-          ` <img
-                      src=${dropdownIcon}
-                      alt="dropdown icon"
-                    />`;
+          ` <svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" fill="none" viewBox="0 0 13 8"><path fill="#fff" d="M6.309 7.484 1.105 2.316c-.175-.14-.175-.421 0-.597l.704-.668a.405.405 0 0 1 .597 0l4.219 4.148 4.184-4.148c.175-.176.457-.176.597 0l.703.668c.176.176.176.457 0 .597L6.906 7.484a.405.405 0 0 1-.597 0Z"/></svg>`;
       });
       div.appendChild(button);
       dropdownMenu.appendChild(div);
