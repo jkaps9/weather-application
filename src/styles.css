@@ -628,17 +628,13 @@ body.inverted {
 
 body.light {
   /* TODO: SWITCH UP BG IMAGES ON WEATHER-INFO */
-  --neutral-900: hsl(184, 25%, 95%);
-  --neutral-800: hsl(184, 70%, 74%);
-  --neutral-700: hsl(184, 80%, 57%);
-  --netural-600: hsl(184, 90%, 30%);
-  --neutral-300: hsl(166, 100%, 24%);
-  --neutral-200: hsl(166, 100%, 20%);
-  --neutral-0: hsl(166, 100%, 5%);
-  --neutral-0-light: hsla(166, 100%, 6%, 0.8);
-
-  --blue-500: hsl(99, 59%, 48%);
-  --blue-700: hsl(96, 100%, 26%);
+  --neutral-900: hsl(0, 0%, 98%);
+  --neutral-800: hsl(235, 32%, 92%);
+  --neutral-700: hsl(233, 11%, 84%);
+  --neutral-600: hsl(233, 23%, 74%);
+  --neutral-300: hsl(243, 23%, 24%);
+  --neutral-200: hsl(243, 27%, 20%);
+  --neutral-0: hsl(243, 96%, 9%);
 }
 
 .dark-mode-toggle {
