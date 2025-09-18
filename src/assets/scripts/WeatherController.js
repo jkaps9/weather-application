@@ -118,11 +118,6 @@ export class WeatherController {
   handleError(message, error) {
     console.error(`${message}:`, error);
     this.domController.setPageToApiError();
-
-    // Optional: Show user-friendly error message
-    this.domController.showError(
-      "Sorry, we couldn't get the weather data. Please try again."
-    );
   }
 
   async loadSavedLocationWeather() {
