@@ -645,6 +645,10 @@ body.light {
   .search-button {
     color: var(--neutral-900);
   }
+
+  .weather-info {
+    color: var(--neutral-900);
+  }
 }
 
 .dark-mode-toggle {
