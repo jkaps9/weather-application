@@ -1,4 +1,10 @@
-const { fahrenheitToCelsius, celsiusToFahrenheit } = require('./UnitConverter');
+const {
+  fahrenheitToCelsius,
+  celsiusToFahrenheit,
+  mmToInches,
+  mbToInches,
+  kmhToMph,
+} = require('./UnitConverter');
 
 describe('UnitConverter', () => {
   describe('fahrenheitToCelsius', () => {
@@ -18,6 +24,24 @@ describe('UnitConverter', () => {
 
     test('should correctly convert 100 C to 212 F', () => {
       expect(celsiusToFahrenheit(100)).toBe(212);
+    });
+  });
+
+  describe('mmToInches', () => {
+    test('should correctly convert 25.4 mm to 1 inch', () => {
+      expect(mmToInches(25.4)).toBeCloseTo(1);
+    });
+  });
+
+  describe('mbToInches', () => {
+    test('should correctly convert 33.8639 mb to 1 inch', () => {
+      expect(mbToInches(33.8639)).toBeCloseTo(1);
+    });
+  });
+
+  describe('kmhToMph', () => {
+    test('should correctly convert 1 kmh to 0.621371 mph', () => {
+      expect(kmhToMph(1)).toBeCloseTo(0.621371);
     });
   });
 });
