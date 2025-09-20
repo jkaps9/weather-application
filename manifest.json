@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "/weather-application/",
   "display": "standalone",
   "theme_color": "hsl(243, 96%, 9%)",
   "background_color": "#FFFFFF"
