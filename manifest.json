@@ -1,0 +1,20 @@
+{
+  "short_name": "JKWeatherApp",
+  "name": "Josh F Kaplan Weather Application",
+  "icons": [
+    {
+      "src": "/src/assets/images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/src/assets/images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "hsl(243, 96%, 9%)",
+  "background_color": "#FFFFFF"
+}
