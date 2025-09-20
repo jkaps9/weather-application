@@ -15,6 +15,6 @@
   ],
   "start_url": "/weather-application/",
   "display": "standalone",
-  "theme_color": "hsl(243, 96%, 9%)",
+  "theme_color": "#0000FF",
   "background_color": "#FFFFFF"
 }
