@@ -84,7 +84,6 @@ export class DOMController {
 
     const locationElement = document.createElement("p");
     locationElement.className = "location textpreset4";
-    console.log(`X${this.location.country}X`);
     const cntryTxt =
       this.location.country !== "" ? `, ${this.location.country}` : "";
     locationElement.textContent = `${this.location.name}${cntryTxt}`;
