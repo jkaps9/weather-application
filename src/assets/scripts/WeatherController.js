@@ -121,11 +121,32 @@ export class WeatherController {
   }
 
   async loadSavedLocationWeather() {
+    localStorage.clear();
     const location = this.localStorage.getSavedLocation();
     if (location && location.latitude && location.longitude) {
       await this.getWeatherAndUpdateDOM(location);
     } else {
-      console.log(location);
+      this.getUserLocation();
+    }
+  }
+
+  async getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  async showPosition(position) {
+    const loc = {
+      name: "Current City",
+      country: "Current Country",
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    };
+    if (loc && loc.latitude && loc.longitude) {
+      await this.getWeatherAndUpdateDOM(loc);
     }
   }
 }

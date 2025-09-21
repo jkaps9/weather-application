@@ -33,14 +33,15 @@ Bonus Features:
 
 - [x] Geolocation
 - [x] Save one location
-- [ ] Saved/favorite locations
+- [x] Saved/favorite locations
 - [ ] Location comparison
 - [x] UV index, visibility, air pressure data
 - [x] Sunrise/sunset times
 - [ ] Animated weather backgrounds
 - [ ] Voice search
 - [x] Dark/light mode themes
-- [ ] PWA capabilities
+- [x] PWA capabilities
+- [ ] Loading screen
 
 TODO:
 
