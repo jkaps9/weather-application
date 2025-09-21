@@ -132,7 +132,9 @@ export class WeatherController {
 
   async getUserLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
+      navigator.geolocation.getCurrentPosition((position) =>
+        this.showPosition(position)
+      );
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
@@ -140,8 +142,8 @@ export class WeatherController {
 
   async showPosition(position) {
     const loc = {
-      name: "Current City",
-      country: "Current Country",
+      name: "Current Location",
+      country: "",
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
     };
