@@ -84,7 +84,10 @@ export class DOMController {
 
     const locationElement = document.createElement("p");
     locationElement.className = "location textpreset4";
-    locationElement.textContent = `${this.location.name}, ${this.location.country}`;
+    console.log(`X${this.location.country}X`);
+    const cntryTxt =
+      this.location.country !== "" ? `, ${this.location.country}` : "";
+    locationElement.textContent = `${this.location.name}${cntryTxt}`;
 
     const dateElement = document.createElement("p");
     dateElement.className = "date textpreset6";
