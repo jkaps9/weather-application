@@ -602,7 +602,7 @@ export class DOMController {
     retryButton.appendChild(retryImg);
     retryButton.innerHTML += "Retry";
     retryButton.addEventListener("click", () => {
-      window.location.reload();
+      this.getReloader()();
     });
 
     apiErrorContainer.appendChild(errorImg);
@@ -612,6 +612,10 @@ export class DOMController {
     apiError.appendChild(apiErrorContainer);
 
     document.querySelector(".main-container").appendChild(apiError);
+  }
+
+  getReloader() {
+    return () => window.location.reload();
   }
 
   #getWeatherIcon(weatherIcon) {

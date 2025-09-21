@@ -222,7 +222,7 @@ export class WeatherAPI {
     )
       return "icon-rain.webp";
     if (weatherCode >= 71 && weatherCode <= 77) return "icon-snow.webp";
-    if (weatherCode >= 95) return "icon-storm.webp";
+    if (weatherCode >= 95 && weatherCode <= 99) return "icon-storm.webp";
     return "icon-error.svg";
   }
 
