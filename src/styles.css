@@ -408,6 +408,7 @@ h1 {
 }
 
 .weather-info.loading {
+  background-image: none;
   display: block;
   place-content: center;
 }
@@ -417,6 +418,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .text {
@@ -612,9 +614,6 @@ body.light {
     grid-template-columns: 1fr auto auto;
     justify-items: start;
     text-align: start;
-  }
-
-  .weather-info {
     background-image: url("assets/images/desktop-hero-bg.svg");
   }
 
