@@ -419,6 +419,28 @@ h1 {
   align-items: center;
   gap: 1rem;
   width: 100%;
+
+  svg {
+    overflow: visible;
+  }
+
+  .circle1,
+  .circle2,
+  .circle3 {
+    animation-duration: 0.75s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+  }
+
+  .circle1,
+  .circle3 {
+    animation-name: bottom-to-top;
+  }
+
+  .circle2 {
+    animation-name: top-to-bottom;
+  }
 }
 
 .text {
@@ -681,5 +703,24 @@ body.light {
     max-height: 53.5rem;
     overflow: scroll;
     overflow-x: hidden;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes top-to-bottom {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(50%);
+  }
+}
+
+@keyframes bottom-to-top {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-25%);
   }
 }
