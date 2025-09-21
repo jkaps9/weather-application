@@ -89,6 +89,7 @@ export class WeatherController {
 
   async getWeatherAndUpdateDOM(location) {
     try {
+      this.domController.setPageToLoading();
       const weather = await this.getWeatherByLocation(location);
 
       if (!weather) {

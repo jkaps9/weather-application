@@ -390,10 +390,10 @@ h1 {
 /* Current Weather */
 .weather-info {
   background-image: url("assets/images/mobile-hero-bg.svg");
-  background-color: var(--neutral-0);
-  color: var(--neutral-0);
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: var(--neutral-800);
+  color: var(--neutral-0);
   min-height: 18rem;
 
   border-radius: var(--border-radius-lg);
@@ -405,6 +405,18 @@ h1 {
   place-items: center;
 
   margin-bottom: clamp(1.25rem, -0.0357rem + 2.6786vw, 2rem);
+}
+
+.weather-info.loading {
+  display: block;
+  place-content: center;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .text {
@@ -597,11 +609,13 @@ body.light {
   }
 
   .weather-info {
-    background-image: url("assets/images/desktop-hero-bg.svg");
-    background-color: var(--neutral-0);
     grid-template-columns: 1fr auto auto;
     justify-items: start;
     text-align: start;
+  }
+
+  .weather-info {
+    background-image: url("assets/images/desktop-hero-bg.svg");
   }
 
   .text {

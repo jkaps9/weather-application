@@ -25,6 +25,7 @@ export class DOMController {
     this.preferredSpeedUnit = "km/h"; // km/h or mph
     this.preferredPrecipitationUnit = "mm"; // mm or in
     this.#addOnClickListeners();
+    this.setPageToLoading();
   }
 
   setLocation(loc) {
@@ -666,5 +667,80 @@ export class DOMController {
         searchDropDown.appendChild(searchItem);
       }
     }
+  }
+
+  setPageToLoading() {
+    // Create the main div
+    const weatherInfo = document.querySelector(".weather-info");
+    weatherInfo.classList.add("loading");
+    this.#removeAllChildren(weatherInfo);
+
+    const loadingContainer = this.#createLoadingContainer();
+    weatherInfo.appendChild(loadingContainer);
+  }
+
+  #createLoadingContainer() {
+    // Create the main container div
+    const loadingContainer = document.createElement("div");
+    loadingContainer.className = "loading-container";
+
+    // Create the SVG element
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "56");
+    svg.setAttribute("height", "16");
+    svg.setAttribute("viewBox", "0 0 56 16");
+    svg.setAttribute("fill", "none");
+
+    // Create circle 1
+    const circle1 = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle"
+    );
+    circle1.setAttribute("class", "circle1");
+    circle1.setAttribute("opacity", "0.8");
+    circle1.setAttribute("cx", "6");
+    circle1.setAttribute("cy", "10");
+    circle1.setAttribute("r", "6");
+    circle1.setAttribute("fill", "white");
+
+    // Create circle 2
+    const circle2 = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle"
+    );
+    circle2.setAttribute("class", "circle2");
+    circle2.setAttribute("opacity", "0.8");
+    circle2.setAttribute("cx", "28");
+    circle2.setAttribute("cy", "6");
+    circle2.setAttribute("r", "6");
+    circle2.setAttribute("fill", "white");
+
+    // Create circle 3
+    const circle3 = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle"
+    );
+    circle3.setAttribute("class", "circle3");
+    circle3.setAttribute("opacity", "0.8");
+    circle3.setAttribute("cx", "50");
+    circle3.setAttribute("cy", "10");
+    circle3.setAttribute("r", "6");
+    circle3.setAttribute("fill", "white");
+
+    // Append circles to SVG
+    svg.appendChild(circle1);
+    svg.appendChild(circle2);
+    svg.appendChild(circle3);
+
+    // Create the loading text paragraph
+    const loadingText = document.createElement("p");
+    loadingText.className = "textpreset6";
+    loadingText.textContent = "Loading...";
+
+    // Append SVG and text to container
+    loadingContainer.appendChild(svg);
+    loadingContainer.appendChild(loadingText);
+
+    return loadingContainer;
   }
 }
