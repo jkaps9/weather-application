@@ -20,16 +20,22 @@ describe('WeatherController', () => {
   });
 
   describe('Initialization and loading saved location', () => {
-    test('should initialize and NOT fetch weather if no location is saved', () => {
+    test('should attempt to get user location if no location is saved', () => {
       // Arrange
       LocalStorage.prototype.getSavedLocation.mockReturnValue(undefined);
+      // Spy on getUserLocation to make sure it's called
+      const getUserLocationSpy = jest.spyOn(WeatherController.prototype, 'getUserLocation');
 
       // Act
       new WeatherController();
 
       // Assert
       expect(LocalStorage.prototype.getSavedLocation).toHaveBeenCalledTimes(1);
+      expect(getUserLocationSpy).toHaveBeenCalledTimes(1);
       expect(WeatherAPI.prototype.getWeatherData).not.toHaveBeenCalled();
+
+      // Clean up the spy
+      getUserLocationSpy.mockRestore();
     });
 
     test('should initialize and fetch weather if a location is saved', async () => {
@@ -128,6 +134,80 @@ describe('WeatherController', () => {
 
         // Restore console.error
         consoleErrorSpy.mockRestore();
+    });
+  });
+
+  describe('User Geolocation', () => {
+    let mockGeolocation;
+
+    beforeEach(() => {
+        // Mock navigator.geolocation
+        mockGeolocation = {
+            getCurrentPosition: jest.fn(),
+        };
+        Object.defineProperty(global.navigator, 'geolocation', {
+            value: mockGeolocation,
+            configurable: true,
+        });
+        LocalStorage.prototype.getSavedLocation.mockReturnValue(undefined);
+    });
+
+    afterEach(() => {
+        // Clean up the mock to avoid affecting other tests
+        Object.defineProperty(global.navigator, 'geolocation', {
+            value: null,
+            configurable: true,
+        });
+        // Restore all mocks
+        jest.restoreAllMocks();
+    });
+
+    test('should request user location on init if geolocation is available', () => {
+        // Act
+        new WeatherController();
+        // Assert
+        expect(mockGeolocation.getCurrentPosition).toHaveBeenCalledTimes(1);
+    });
+
+    test('should log message on init if geolocation is not available', () => {
+        // Arrange
+        Object.defineProperty(global.navigator, 'geolocation', {
+            value: undefined,
+            configurable: true,
+        });
+        const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+
+        // Act
+        new WeatherController();
+
+        // Assert
+        expect(mockGeolocation.getCurrentPosition).not.toHaveBeenCalled();
+        expect(consoleLogSpy).toHaveBeenCalledWith('Geolocation is not supported by this browser.');
+    });
+
+    test('should fetch weather for the position received', async () => {
+        // Arrange
+        const controller = new WeatherController();
+        const mockPosition = {
+            coords: {
+                latitude: 48.85,
+                longitude: 2.35,
+            },
+        };
+        // Spy on the method that should be called, and mock its implementation
+        const getWeatherSpy = jest.spyOn(controller, 'getWeatherAndUpdateDOM').mockImplementation(() => Promise.resolve());
+
+        // Act
+        await controller.showPosition(mockPosition);
+
+        // Assert
+        const expectedLocation = {
+            name: "Current City",
+            country: "Current Country",
+            latitude: mockPosition.coords.latitude,
+            longitude: mockPosition.coords.longitude,
+        };
+        expect(getWeatherSpy).toHaveBeenCalledWith(expectedLocation);
     });
   });
 });
