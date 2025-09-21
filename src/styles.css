@@ -648,8 +648,24 @@ body.light {
     }
   }
 
+  .daily-forecast {
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .forecast-cards {
+      flex-grow: 1;
+    }
+  }
+  .forecast-cards > .card {
+    height: 100%;
+    flex-grow: 1;
+  }
+
   .hourly-forecast-card {
-    max-height: 54rem;
+    max-height: 53.5rem;
     overflow: scroll;
     overflow-x: hidden;
   }

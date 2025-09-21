@@ -126,7 +126,7 @@ export class WeatherController {
     if (location && location.latitude && location.longitude) {
       await this.getWeatherAndUpdateDOM(location);
     } else {
-      this.getUserLocation();
+      // this.getUserLocation();
     }
   }
 
