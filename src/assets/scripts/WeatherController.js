@@ -124,6 +124,8 @@ export class WeatherController {
     const location = this.localStorage.getSavedLocation();
     if (location && location.latitude && location.longitude) {
       await this.getWeatherAndUpdateDOM(location);
+    } else {
+      console.log(location);
     }
   }
 }
