@@ -132,7 +132,7 @@ export class WeatherController {
 
   async getUserLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
     } else {
       console.log("Geolocation is not supported by this browser.");
     }

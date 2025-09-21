@@ -162,13 +162,6 @@ describe('WeatherController', () => {
         jest.restoreAllMocks();
     });
 
-    test('should request user location on init if geolocation is available', () => {
-        // Act
-        new WeatherController();
-        // Assert
-        expect(mockGeolocation.getCurrentPosition).toHaveBeenCalledTimes(1);
-    });
-
     test('should log message on init if geolocation is not available', () => {
         // Arrange
         Object.defineProperty(global.navigator, 'geolocation', {
@@ -185,29 +178,35 @@ describe('WeatherController', () => {
         expect(consoleLogSpy).toHaveBeenCalledWith('Geolocation is not supported by this browser.');
     });
 
-    test('should fetch weather for the position received', async () => {
-        // Arrange
-        const controller = new WeatherController();
-        const mockPosition = {
-            coords: {
-                latitude: 48.85,
-                longitude: 2.35,
-            },
-        };
-        // Spy on the method that should be called, and mock its implementation
-        const getWeatherSpy = jest.spyOn(controller, 'getWeatherAndUpdateDOM').mockImplementation(() => Promise.resolve());
+    test('should fetch and display weather on init when geolocation is successful', async () => {
+      // Arrange
+      // Mock getCurrentPosition to capture the callback
+      mockGeolocation.getCurrentPosition.mockImplementation((successCallback) => {
+          const mockPosition = {
+              coords: { latitude: 51.5074, longitude: -0.1278 },
+          };
+          successCallback(mockPosition);
+      });
 
-        // Act
-        await controller.showPosition(mockPosition);
+      // Spy on the prototype BEFORE the instance is created
+      const getWeatherSpy = jest.spyOn(WeatherController.prototype, 'getWeatherAndUpdateDOM').mockResolvedValue();
 
-        // Assert
-        const expectedLocation = {
-            name: "Current City",
-            country: "Current Country",
-            latitude: mockPosition.coords.latitude,
-            longitude: mockPosition.coords.longitude,
-        };
-        expect(getWeatherSpy).toHaveBeenCalledWith(expectedLocation);
+      // Act
+      const controller = new WeatherController();
+      // The controller's constructor already called getUserLocation, which called our mock...
+      // Now we need to wait for the async operations inside showPosition to complete.
+      await new Promise(resolve => setTimeout(resolve, 0));
+
+      // Assert
+      expect(mockGeolocation.getCurrentPosition).toHaveBeenCalledTimes(1);
+
+      const expectedLocation = {
+          name: "Current City",
+          country: "Current Country",
+          latitude: 51.5074,
+          longitude: -0.1278,
+      };
+      expect(getWeatherSpy).toHaveBeenCalledWith(expectedLocation);
     });
   });
 });
