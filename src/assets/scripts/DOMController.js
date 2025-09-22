@@ -11,6 +11,9 @@ import stormIcon from "../images/icon-storm.webp";
 import errorIcon from "../images/icon-error.svg";
 import retryIcon from "../images/icon-retry.svg";
 
+import lightModeIcon from "../images/icon-sun.svg";
+import darkModeIcon from "../images/icon-moon.svg";
+
 export class DOMController {
   #forecastCards = document.querySelector(".daily-forecast .forecast-cards");
   #hourlyCards = document.querySelector(".hourly-forecast .hourly-cards");
@@ -457,9 +460,9 @@ export class DOMController {
 
     darkModeToggle.addEventListener("click", () => {
       if (body.classList.contains("light")) {
-        darkModeToggle.innerHTML = `<img src="src/assets/images/icon-sun.svg" alt="dark-mode-toggle" />`;
+        darkModeToggle.innerHTML = `<img src="${lightModeIcon}" alt="dark-mode-toggle" />`;
       } else {
-        darkModeToggle.innerHTML = `<img src="src/assets/images/icon-moon.svg" alt="dark-mode-toggle" />`;
+        darkModeToggle.innerHTML = `<img src="${darkModeIcon}" alt="dark-mode-toggle" />`;
       }
 
       body.classList.toggle("light");
