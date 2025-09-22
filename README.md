@@ -41,12 +41,10 @@ Bonus Features:
 - [ ] Voice search
 - [x] Dark/light mode themes
 - [x] PWA capabilities
-- [ ] Loading screen
 
 TODO:
 
 - [x] icons break on live version of website
-- [ ] updating units updates the hourly forecast back to the first day, but does not reset the selected item in the dropdown
 
 Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
 

@@ -15,6 +15,6 @@
   ],
   "start_url": "/weather-application/",
   "display": "standalone",
-  "theme_color": "#0000FF",
+  "theme_color": "#03012d",
   "background_color": "#FFFFFF"
 }
