@@ -168,10 +168,10 @@ header {
 }
 
 .logo {
-  width: auto;
+  flex-grow: 0;
   height: clamp(1.75rem, 1.0344rem + 3.0534vw, 2.5rem);
 
-  img {
+  svg {
     height: 100%;
   }
 }
