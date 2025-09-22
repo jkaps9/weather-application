@@ -510,6 +510,9 @@ h1 {
   scrollbar-color: var(--neutral-700) var(--neutral-800);
   scrollbar-width: thin;
   padding-top: 0;
+  max-height: 28rem;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .hourly-header {
