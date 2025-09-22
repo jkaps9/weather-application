@@ -122,12 +122,11 @@ export class WeatherController {
   }
 
   async loadSavedLocationWeather() {
-    localStorage.clear();
     const location = this.localStorage.getSavedLocation();
     if (location && location.latitude && location.longitude) {
       await this.getWeatherAndUpdateDOM(location);
     } else {
-      // this.getUserLocation();
+      this.getUserLocation();
     }
   }
 
