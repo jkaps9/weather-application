@@ -139,10 +139,8 @@ export class DOMController {
       saveLocationButton.textContent = "Save Location";
       saveLocationButton.addEventListener("click", () => {
         const localStorage = new LocalStorage();
-        localStorage.saveLocation(this.location);
-        alert(
-          `${this.location.name}, ${this.location.country} saved successfully`
-        );
+        const msg = localStorage.saveLocation(this.location);
+        alert(`${msg}`);
       });
       weatherInfo.appendChild(saveLocationButton);
     }

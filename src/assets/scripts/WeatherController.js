@@ -125,10 +125,15 @@ export class WeatherController {
   }
 
   async loadFavoriteLocations() {
-    const locations = this.localStorage.getFavoriteLocations();
-    this.domController.updateSearchDropdown(locations, (location) =>
-      this.getWeatherAndUpdateDOM(location)
-    );
+    const searchDropdown = document.querySelector(".dropdown-search");
+    if (searchDropdown.classList.contains("visible")) {
+      this.domController.hideSearchDropdown();
+    } else {
+      const locations = this.localStorage.getFavoriteLocations();
+      this.domController.updateSearchDropdown(locations, (location) =>
+        this.getWeatherAndUpdateDOM(location)
+      );
+    }
   }
 
   async getUserLocation() {
