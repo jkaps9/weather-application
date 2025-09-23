@@ -10,6 +10,7 @@ export class LocalStorage {
   saveLocation(location) {
     const newLoc = {
       name: location.name,
+      admin1: location.admin1,
       country: location.country,
       latitude: location.latitude,
       longitude: location.longitude,
