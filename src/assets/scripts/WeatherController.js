@@ -89,7 +89,6 @@ export class WeatherController {
   }
 
   async getWeatherAndUpdateDOM(location) {
-    console.log(`loading weather for ${location.name}`);
     try {
       this.domController.setPageToLoading();
       const weather = await this.getWeatherByLocation(location);
@@ -136,7 +135,7 @@ export class WeatherController {
         this.showPosition(position)
       );
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      console.error("Geolocation is not supported by this browser.");
     }
   }
 

@@ -60,7 +60,7 @@ export class DOMController {
 
   #setWeather() {
     if (!this.weather) {
-      console.log("weather not set");
+      console.error("weather not set");
     } else {
       this.#createCurrentWeatherSection();
       this.#setDailyForecast();
@@ -232,7 +232,7 @@ export class DOMController {
 
   #setDailyForecast() {
     if (!this.weather) {
-      console.log("weather not set");
+      console.error("weather not set");
     } else {
       if (!this.#forecastCards) {
         console.error(
