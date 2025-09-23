@@ -1,7 +1,6 @@
 export class LocalStorage {
   constructor() {
     this.savedLocationArray = this.getFavoriteLocations();
-    console.log(this.savedLocationArray);
   }
 
   localStorageCheck() {
