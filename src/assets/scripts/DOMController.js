@@ -656,6 +656,7 @@ export class DOMController {
       this.setPageToNoReultsFound();
     } else {
       const searchDropDown = document.querySelector(".dropdown-search");
+      this.#removeAllChildren(searchDropDown);
       searchDropDown.classList.add("visible");
       for (let i = 0; i < locations.length; i++) {
         const searchItem = document.createElement("div");

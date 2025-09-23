@@ -57,7 +57,6 @@ export class WeatherController {
         this.domController.updateSearchDropdown(locations, (location) =>
           this.getWeatherAndUpdateDOM(location)
         );
-        this.domController.showSearchDropdown();
       }
     } catch (error) {
       this.handleError("Failed to search for weather data", error);
