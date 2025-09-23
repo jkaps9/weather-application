@@ -657,7 +657,6 @@ export class DOMController {
     } else {
       const searchDropDown = document.querySelector(".dropdown-search");
       this.#removeAllChildren(searchDropDown);
-      searchDropDown.classList.add("visible");
       for (let i = 0; i < locations.length; i++) {
         const searchItem = document.createElement("div");
         searchItem.className = "search-item";
@@ -675,6 +674,11 @@ export class DOMController {
         searchDropDown.appendChild(searchItem);
       }
     }
+  }
+
+  showSearchDropdown() {
+    const searchDropDown = document.querySelector(".dropdown-search");
+    searchDropDown.classList.add("visible");
   }
 
   setPageToLoading() {

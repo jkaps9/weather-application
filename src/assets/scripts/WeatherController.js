@@ -27,7 +27,7 @@ export class WeatherController {
     });
 
     this.getUserLocation();
-    this.loadSavedLocationWeather();
+    this.loadFavoriteLocations();
   }
 
   async handleSearch() {
@@ -57,6 +57,7 @@ export class WeatherController {
         this.domController.updateSearchDropdown(locations, (location) =>
           this.getWeatherAndUpdateDOM(location)
         );
+        this.domController.showSearchDropdown();
       }
     } catch (error) {
       this.handleError("Failed to search for weather data", error);
@@ -122,7 +123,7 @@ export class WeatherController {
     this.domController.setPageToApiError();
   }
 
-  async loadSavedLocationWeather() {
+  async loadFavoriteLocations() {
     const locations = this.localStorage.getFavoriteLocations();
     this.domController.updateSearchDropdown(locations, (location) =>
       this.getWeatherAndUpdateDOM(location)
