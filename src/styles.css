@@ -162,6 +162,12 @@ img {
   margin-bottom: 1.25rem;
 }
 
+.rain-drop {
+  position: absolute;
+  visibility: hidden;
+  height: 0;
+}
+
 /* Header */
 header {
   padding: clamp(1rem, 0.1082rem + 3.805vw, 3rem) 0 0;
@@ -715,15 +721,36 @@ body.light {
     overflow: scroll;
     overflow-x: hidden;
   }
+
+  body.raining {
+    .rain-drop {
+      visibility: visible;
+      height: 12px;
+      top: 0;
+      left: 2rem;
+      transform: translateX(-50%);
+      animation-name: top-to-bottom;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+    }
+  }
 }
 
 /* ANIMATIONS */
 @keyframes top-to-bottom {
   from {
-    transform: translateY(0%);
+    transform: translateY(0) translateX(-50%); /* Start at the top */
   }
   to {
-    transform: translateY(50%);
+    transform: translateY(calc(100vh - 24px)) translateX(-50%); /* Move to the bottom, accounting for element height */
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
