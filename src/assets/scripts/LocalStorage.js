@@ -1,14 +1,11 @@
 export class LocalStorage {
-  constructor() {}
+  constructor() {
+    this.savedLocationArray = this.getFavoriteLocations();
+    console.log(this.savedLocationArray);
+  }
 
   localStorageCheck() {
     return typeof Storage !== "undefined";
-  }
-
-  saveLocation(location) {
-    for (let key in location) {
-      localStorage.setItem(key, location[key]);
-    }
   }
 
   getSavedLocation() {
@@ -22,5 +19,27 @@ export class LocalStorage {
         longitude: Number(localStorage.getItem("longitude")),
       };
     }
+  }
+
+  saveLocation(location) {
+    const newLoc = {
+      name: location.name,
+      country: location.country,
+      latitude: location.latitude,
+      longitude: location.longitude,
+    };
+    this.savedLocationArray.push(newLoc);
+    localStorage.setItem(
+      "savedLocations",
+      JSON.stringify(this.savedLocationArray)
+    );
+  }
+
+  getFavoriteLocations() {
+    const favoriteLocations = JSON.parse(
+      localStorage.getItem("savedLocations")
+    );
+    if (favoriteLocations) return favoriteLocations;
+    else return [];
   }
 }
