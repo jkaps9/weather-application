@@ -8,7 +8,7 @@ export class LocalStorage {
   }
 
   saveLocation(location) {
-    if (!this.isLocationSaved) {
+    if (!this.isLocationSaved(location)) {
       const newLoc = {
         name: location.name,
         admin1: location.admin1,
