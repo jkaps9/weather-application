@@ -681,6 +681,11 @@ export class DOMController {
     searchDropDown.classList.add("visible");
   }
 
+  hideSearchDropdown() {
+    const searchDropDown = document.querySelector(".dropdown-search");
+    searchDropDown.classList.remove("visible");
+  }
+
   setPageToLoading() {
     // Create the main div
     const weatherInfo = document.querySelector(".weather-info");
