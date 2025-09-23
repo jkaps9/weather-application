@@ -26,6 +26,7 @@ export class WeatherController {
       if (e.key === "Enter") this.handleSearch();
     });
 
+    this.getUserLocation();
     this.loadSavedLocationWeather();
   }
 
@@ -122,12 +123,10 @@ export class WeatherController {
   }
 
   async loadSavedLocationWeather() {
-    const location = this.localStorage.getSavedLocation();
-    if (location && location.latitude && location.longitude) {
-      await this.getWeatherAndUpdateDOM(location);
-    } else {
-      this.getUserLocation();
-    }
+    const locations = this.localStorage.getFavoriteLocations();
+    this.domController.updateSearchDropdown(locations, (location) =>
+      this.getWeatherAndUpdateDOM(location)
+    );
   }
 
   async getUserLocation() {
