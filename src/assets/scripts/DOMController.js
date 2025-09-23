@@ -111,6 +111,7 @@ export class DOMController {
     weatherImg.className = "weather-icon-image";
     weatherImg.src = weatherImage;
     weatherImg.alt = this.weather.current.altText;
+    weatherImg.title = this.weather.current.altText;
 
     // Add weather image to weather icon
     weatherIcon.appendChild(weatherImg);
@@ -268,6 +269,7 @@ export class DOMController {
     const iconImg = document.createElement("img");
     iconImg.src = weatherImage;
     iconImg.alt = dayData.altText;
+    iconImg.title = dayData.altText;
 
     // Append image to container
     iconContainer.appendChild(iconImg);
@@ -412,6 +414,7 @@ export class DOMController {
     const iconImg = document.createElement("img");
     iconImg.src = weatherImage;
     iconImg.alt = hourData.altText;
+    iconImg.title = hourData.altText;
 
     // Append image to container
     iconContainer.appendChild(iconImg);
