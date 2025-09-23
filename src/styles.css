@@ -371,6 +371,14 @@ h1 {
     transform: translateY(-50%);
     pointer-events: none; /* Allow clicking through to input */
   }
+
+  .favorites-icon {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
 }
 
 .search-button {

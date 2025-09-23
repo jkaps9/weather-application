@@ -13,6 +13,7 @@ export class WeatherController {
   init() {
     const searchButton = document.querySelector(".search-button");
     const searchInput = document.querySelector("#search");
+    const favoritesIcon = document.querySelector(".favorites-icon");
 
     if (!searchButton || !searchInput) {
       console.error("Required DOM elements not found");
@@ -21,13 +22,14 @@ export class WeatherController {
 
     searchButton.addEventListener("click", () => this.handleSearch());
 
+    favoritesIcon.addEventListener("click", () => this.loadFavoriteLocations());
+
     // Add Enter key support
     searchInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") this.handleSearch();
     });
 
     this.getUserLocation();
-    this.loadFavoriteLocations();
   }
 
   async handleSearch() {
