@@ -127,23 +127,25 @@ export class DOMController {
         : this.weather.current.temperature;
     temperatureElement.textContent = `${currentTemp}°`;
 
-    // Create the save location button element
-    const saveLocationButton = document.createElement("button");
-    saveLocationButton.className = "save-location-button";
-    saveLocationButton.textContent = "Save Location";
-    saveLocationButton.addEventListener("click", () => {
-      const localStorage = new LocalStorage();
-      localStorage.saveLocation(this.location);
-      alert(
-        `${this.location.name}, ${this.location.country} saved successfully`
-      );
-    });
-
     // Add all elements to weather info
     weatherInfo.appendChild(textElements);
     weatherInfo.appendChild(weatherIcon);
     weatherInfo.appendChild(temperatureElement);
-    weatherInfo.appendChild(saveLocationButton);
+
+    // Create the save location button element if not current location
+    if (this.location.name !== "Current Location") {
+      const saveLocationButton = document.createElement("button");
+      saveLocationButton.className = "save-location-button";
+      saveLocationButton.textContent = "Save Location";
+      saveLocationButton.addEventListener("click", () => {
+        const localStorage = new LocalStorage();
+        localStorage.saveLocation(this.location);
+        alert(
+          `${this.location.name}, ${this.location.country} saved successfully`
+        );
+      });
+      weatherInfo.appendChild(saveLocationButton);
+    }
 
     return weatherInfo;
   }
