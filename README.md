@@ -50,7 +50,7 @@ This is a solution to the [Weather app challenge on Frontend Mentor](https://www
 ### Links
 
 - Solution URL: [https://github.com/jkaps9/weather-application](https://github.com/jkaps9/weather-application)
-- Live Site URL: [https://jkaps9.github.io/weather-application/](https://jkaps9.github.io/weather-application/)
+- Live Site URL: [https://weatheryourway.netlify.app/](https://weatheryourway.netlify.app/)
 
 ## My process
 
