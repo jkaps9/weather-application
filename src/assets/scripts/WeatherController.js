@@ -28,7 +28,6 @@ export class WeatherController {
 
     this.getUserLocation();
     this.loadFavoriteLocations();
-    this.setSearchOnFocus();
   }
 
   async handleSearch() {
@@ -91,6 +90,7 @@ export class WeatherController {
   }
 
   async getWeatherAndUpdateDOM(location) {
+    console.log(`loading weather for ${location.name}`);
     try {
       this.domController.setPageToLoading();
       const weather = await this.getWeatherByLocation(location);
@@ -151,16 +151,5 @@ export class WeatherController {
     if (loc && loc.latitude && loc.longitude) {
       await this.getWeatherAndUpdateDOM(loc);
     }
-  }
-
-  setSearchOnFocus() {
-    const searchInput = document.querySelector("#search");
-    searchInput.addEventListener("focus", () => {
-      this.domController.showSearchDropdown();
-    });
-
-    searchInput.addEventListener("blur", () => {
-      this.domController.hideSearchDropdown();
-    });
   }
 }

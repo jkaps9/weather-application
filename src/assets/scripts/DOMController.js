@@ -656,14 +656,14 @@ export class DOMController {
       this.setPageToNoReultsFound();
     } else {
       const searchDropDown = document.querySelector(".dropdown-search");
-      this.#removeAllChildren(searchDropDown);
+      searchDropDown.classList.add("visible");
       for (let i = 0; i < locations.length; i++) {
         const searchItem = document.createElement("div");
         searchItem.className = "search-item";
 
         searchItem.addEventListener("click", () => {
           callback(locations[i]);
-          searchDropDown.classList.remove("visible");
+          this.hideSearchDropdown();
         });
 
         const paragraph = document.createElement("p");
@@ -676,13 +676,9 @@ export class DOMController {
     }
   }
 
-  showSearchDropdown() {
-    const searchDropDown = document.querySelector(".dropdown-search");
-    searchDropDown.classList.add("visible");
-  }
-
   hideSearchDropdown() {
     const searchDropDown = document.querySelector(".dropdown-search");
+    this.#removeAllChildren(searchDropDown);
     searchDropDown.classList.remove("visible");
   }
 
