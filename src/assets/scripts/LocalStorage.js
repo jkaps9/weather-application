@@ -7,19 +7,6 @@ export class LocalStorage {
     return typeof Storage !== "undefined";
   }
 
-  getSavedLocation() {
-    if (localStorage.length <= 0) {
-      return;
-    } else {
-      return {
-        name: localStorage.getItem("name"),
-        country: localStorage.getItem("country"),
-        latitude: Number(localStorage.getItem("latitude")),
-        longitude: Number(localStorage.getItem("longitude")),
-      };
-    }
-  }
-
   saveLocation(location) {
     const newLoc = {
       name: location.name,
