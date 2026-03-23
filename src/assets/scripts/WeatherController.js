@@ -32,9 +32,16 @@ export class WeatherController {
 
     if (dropdownButtons) {
       dropdownButtons.forEach((button) => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (e) => {
+          e.stopPropagation();
           const dropdownMenu = button.nextElementSibling;
           if (dropdownMenu) {
+            document.addEventListener("click", (e) => {
+              // If the click target is NOT inside the menu, close it
+              if (!dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove("active");
+              }
+            });
             dropdownMenu.classList.toggle("active");
           }
         });
