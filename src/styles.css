@@ -223,8 +223,7 @@ header {
   min-width: 13.375rem;
 }
 
-.dropdown-button:hover + .dropdown-menu,
-.dropdown-menu:hover {
+.dropdown-menu.active {
   display: block;
 }
 
@@ -391,7 +390,9 @@ h1 {
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px var(--neutral-900), 0 0 0 5px var(--blue-500);
+    box-shadow:
+      0 0 0 3px var(--neutral-900),
+      0 0 0 5px var(--blue-500);
   }
 }
 
@@ -629,6 +630,10 @@ body.light {
 }
 
 @media (min-width: 48rem) {
+  .dropdown-button:hover + .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
   .search-bar {
     flex-direction: row;
     gap: 1rem;

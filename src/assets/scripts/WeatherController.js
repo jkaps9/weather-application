@@ -14,6 +14,7 @@ export class WeatherController {
     const searchButton = document.querySelector(".search-button");
     const searchInput = document.querySelector("#search");
     const favoritesIcon = document.querySelector(".favorites-icon");
+    const dropdownButtons = document.querySelectorAll(".dropdown-button");
 
     if (!searchButton || !searchInput) {
       console.error("Required DOM elements not found");
@@ -28,6 +29,17 @@ export class WeatherController {
     searchInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") this.handleSearch();
     });
+
+    if (dropdownButtons) {
+      dropdownButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const dropdownMenu = button.nextElementSibling;
+          if (dropdownMenu) {
+            dropdownMenu.classList.toggle("active");
+          }
+        });
+      });
+    }
 
     this.getUserLocation();
   }
@@ -57,7 +69,7 @@ export class WeatherController {
       } else {
         // Multiple locations - show dropdown
         this.domController.updateSearchDropdown(locations, (location) =>
-          this.getWeatherAndUpdateDOM(location)
+          this.getWeatherAndUpdateDOM(location),
         );
       }
     } catch (error) {
@@ -74,7 +86,7 @@ export class WeatherController {
   async getLocationsByCity(cityName, countryCode = null) {
     return this.executeWithErrorHandling(
       () => this.weatherAPI.getMultipleCoordinates(cityName, countryCode),
-      "Failed to get location data"
+      "Failed to get location data",
     );
   }
 
@@ -86,7 +98,7 @@ export class WeatherController {
     return this.executeWithErrorHandling(
       () =>
         this.weatherAPI.getWeatherData(location.latitude, location.longitude),
-      "Failed to get weather data"
+      "Failed to get weather data",
     );
   }
 
@@ -131,7 +143,7 @@ export class WeatherController {
     } else {
       const locations = this.localStorage.getFavoriteLocations();
       this.domController.updateSearchDropdown(locations, (location) =>
-        this.getWeatherAndUpdateDOM(location)
+        this.getWeatherAndUpdateDOM(location),
       );
     }
   }
@@ -139,7 +151,7 @@ export class WeatherController {
   async getUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) =>
-        this.showPosition(position)
+        this.showPosition(position),
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
